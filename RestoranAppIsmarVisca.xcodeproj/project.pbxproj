@@ -13,6 +13,11 @@
 		CE75EF112A1BC37600E5B8C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE75EF0F2A1BC37600E5B8C9 /* Main.storyboard */; };
 		CE75EF132A1BC37800E5B8C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE75EF122A1BC37800E5B8C9 /* Assets.xcassets */; };
 		CE75EF162A1BC37800E5B8C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE75EF142A1BC37800E5B8C9 /* LaunchScreen.storyboard */; };
+		CE75EF1E2A1BC64800E5B8C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE75EF1D2A1BC64800E5B8C9 /* GoogleService-Info.plist */; };
+		CE75EF212A1BC6D300E5B8C9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CE75EF202A1BC6D300E5B8C9 /* FirebaseAuth */; };
+		CE75EF232A1BC6D300E5B8C9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CE75EF222A1BC6D300E5B8C9 /* FirebaseFirestore */; };
+		CE75EF252A1BC6D300E5B8C9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CE75EF242A1BC6D300E5B8C9 /* FirebaseFirestoreSwift */; };
+		CE75EF282A1BD62500E5B8C9 /* DancingScript-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE75EF272A1BD62500E5B8C9 /* DancingScript-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,8 @@
 		CE75EF122A1BC37800E5B8C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE75EF152A1BC37800E5B8C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE75EF172A1BC37800E5B8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE75EF1D2A1BC64800E5B8C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE75EF272A1BD62500E5B8C9 /* DancingScript-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE75EF212A1BC6D300E5B8C9 /* FirebaseAuth in Frameworks */,
+				CE75EF232A1BC6D300E5B8C9 /* FirebaseFirestore in Frameworks */,
+				CE75EF252A1BC6D300E5B8C9 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +66,33 @@
 		CE75EF082A1BC37600E5B8C9 /* RestoranAppIsmarVisca */ = {
 			isa = PBXGroup;
 			children = (
+				CE75EF262A1BD60D00E5B8C9 /* fonts */,
 				CE75EF092A1BC37600E5B8C9 /* AppDelegate.swift */,
 				CE75EF0B2A1BC37600E5B8C9 /* SceneDelegate.swift */,
-				CE75EF0D2A1BC37600E5B8C9 /* ViewController.swift */,
+				CE75EF292A1BD6CC00E5B8C9 /* Controllers */,
 				CE75EF0F2A1BC37600E5B8C9 /* Main.storyboard */,
 				CE75EF122A1BC37800E5B8C9 /* Assets.xcassets */,
 				CE75EF142A1BC37800E5B8C9 /* LaunchScreen.storyboard */,
 				CE75EF172A1BC37800E5B8C9 /* Info.plist */,
+				CE75EF1D2A1BC64800E5B8C9 /* GoogleService-Info.plist */,
 			);
 			path = RestoranAppIsmarVisca;
+			sourceTree = "<group>";
+		};
+		CE75EF262A1BD60D00E5B8C9 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CE75EF272A1BD62500E5B8C9 /* DancingScript-VariableFont_wght.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		CE75EF292A1BD6CC00E5B8C9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE75EF0D2A1BC37600E5B8C9 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +111,11 @@
 			dependencies = (
 			);
 			name = RestoranAppIsmarVisca;
+			packageProductDependencies = (
+				CE75EF202A1BC6D300E5B8C9 /* FirebaseAuth */,
+				CE75EF222A1BC6D300E5B8C9 /* FirebaseFirestore */,
+				CE75EF242A1BC6D300E5B8C9 /* FirebaseFirestoreSwift */,
+			);
 			productName = RestoranAppIsmarVisca;
 			productReference = CE75EF062A1BC37600E5B8C9 /* RestoranAppIsmarVisca.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +144,9 @@
 				Base,
 			);
 			mainGroup = CE75EEFD2A1BC37600E5B8C9;
+			packageReferences = (
+				CE75EF1F2A1BC6D300E5B8C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = CE75EF072A1BC37600E5B8C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +162,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE75EF162A1BC37800E5B8C9 /* LaunchScreen.storyboard in Resources */,
+				CE75EF1E2A1BC64800E5B8C9 /* GoogleService-Info.plist in Resources */,
 				CE75EF132A1BC37800E5B8C9 /* Assets.xcassets in Resources */,
+				CE75EF282A1BD62500E5B8C9 /* DancingScript-VariableFont_wght.ttf in Resources */,
 				CE75EF112A1BC37600E5B8C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +396,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE75EF1F2A1BC6D300E5B8C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE75EF202A1BC6D300E5B8C9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE75EF1F2A1BC6D300E5B8C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CE75EF222A1BC6D300E5B8C9 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE75EF1F2A1BC6D300E5B8C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		CE75EF242A1BC6D300E5B8C9 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE75EF1F2A1BC6D300E5B8C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE75EEFE2A1BC37600E5B8C9 /* Project object */;
 }
