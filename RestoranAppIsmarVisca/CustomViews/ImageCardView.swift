@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryCardView : UIView {
+class ImageCardView : UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

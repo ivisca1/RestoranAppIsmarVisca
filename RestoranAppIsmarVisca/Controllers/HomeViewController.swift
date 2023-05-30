@@ -27,6 +27,8 @@ class HomeViewController: UIViewController {
         .init(id: "1", image: "pomfrit", name: "Pomfrit", price: "2 KM")
     ]
     
+    var index = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +40,15 @@ class HomeViewController: UIViewController {
         categoryCollectionView.register(UINib(nibName: CategoryViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CategoryViewCell.identifier)
         popularDishesCollectionView.register(UINib(nibName: HomeFoodViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeFoodViewCell.identifier)
         specialsCollectionView.register(UINib(nibName: HomeFoodViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeFoodViewCell.identifier)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDishDetail" {
+            let destinationVC = segue.destination as! DishDetailViewController
+            destinationVC.image = populars[index].image
+            destinationVC.name = populars[index].name
+            destinationVC.price = populars[index].price
+        }
     }
 
 }
@@ -73,6 +84,16 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             return cell
         default:
             return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == categoryCollectionView {
+            populars.append(FoodDish(id: "5", image: "burger", name: "svasta", price: "5 KM"))
+            popularDishesCollectionView.reloadData()
+        } else {
+            index = indexPath.row
+            performSegue(withIdentifier: "goToDishDetail", sender: collectionView)
         }
     }
 }

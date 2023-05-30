@@ -8,5 +8,5 @@
 import Foundation
 
 struct FoodDish {
-    let id, image, name, price : String
+    var id, image, name, price : String
 }
