@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE41DAA92A24FFA5006429EE /* SearchFoodViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41DAA72A24FFA5006429EE /* SearchFoodViewCell.swift */; };
 		CE41DAAA2A24FFA5006429EE /* SearchFoodViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE41DAA82A24FFA5006429EE /* SearchFoodViewCell.xib */; };
+		CE4C24C72A290B8200586A89 /* MyVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C24C62A290B8200586A89 /* MyVariables.swift */; };
 		CE6A6F412A222F0F0054017A /* DishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A6F402A222F0F0054017A /* DishDetailViewController.swift */; };
 		CE75EF0A2A1BC37600E5B8C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75EF092A1BC37600E5B8C9 /* AppDelegate.swift */; };
 		CE75EF0C2A1BC37600E5B8C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75EF0B2A1BC37600E5B8C9 /* SceneDelegate.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		CE41DAA72A24FFA5006429EE /* SearchFoodViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewCell.swift; sourceTree = "<group>"; };
 		CE41DAA82A24FFA5006429EE /* SearchFoodViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchFoodViewCell.xib; sourceTree = "<group>"; };
+		CE4C24C62A290B8200586A89 /* MyVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVariables.swift; sourceTree = "<group>"; };
 		CE6A6F402A222F0F0054017A /* DishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
 		CE75EF062A1BC37600E5B8C9 /* RestoranAppIsmarVisca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestoranAppIsmarVisca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE75EF092A1BC37600E5B8C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				CE9280B92A1E6B17009AC83B /* FoodDish.swift */,
 				CE820DD22A20C3DC0043D8BC /* DishCategory.swift */,
 				CE8059792A279DD00078887F /* FoodManager.swift */,
+				CE4C24C62A290B8200586A89 /* MyVariables.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				CECEFC9E2A261EA400B84B21 /* LeftAlignedCollectionViewLayout.swift in Sources */,
 				CE75EF0C2A1BC37600E5B8C9 /* SceneDelegate.swift in Sources */,
 				CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */,
+				CE4C24C72A290B8200586A89 /* MyVariables.swift in Sources */,
 				CE820DD02A20BFFC0043D8BC /* CategoryViewCell.swift in Sources */,
 				CE9280AC2A1E5DF3009AC83B /* HomeViewController.swift in Sources */,
 				CE80597A2A279DD00078887F /* FoodManager.swift in Sources */,

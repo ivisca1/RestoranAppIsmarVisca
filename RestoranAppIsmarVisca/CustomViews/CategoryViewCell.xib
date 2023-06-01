@@ -58,6 +58,7 @@
             <connections>
                 <outlet property="categoryImageView" destination="mPA-35-55G" id="8VN-5J-t7T"/>
                 <outlet property="categoryTitleLabel" destination="hfQ-WH-9uM" id="U5X-eo-NGD"/>
+                <outlet property="view" destination="PX1-gu-qj1" id="o97-Qq-aHM"/>
             </connections>
             <point key="canvasLocation" x="155.72519083969465" y="38.380281690140848"/>
         </collectionViewCell>

@@ -33,6 +33,9 @@ class FoodManager {
                 for document in querySnapshot!.documents {
                     self.categories.append(DishCategory(id: document.data()["id"] as! String, name: document.data()["name"] as! String, image: document.data()["image"] as! String))
                 }
+                self.categories.sort {
+                    $0.id < $1.id
+                }
                 self.delegate?.didUpdateCategories(self, categoriesList: self.categories)
             }
         }
@@ -51,6 +54,12 @@ class FoodManager {
                     } else {
                         self.restDishes.append(FoodDish(id: document.data()["id"] as! String, image: document.data()["image"] as! String, name: document.data()["name"] as! String, price: document.data()["price"] as! String, description: document.data()["description"] as! String, categoryId: document.data()["categoryId"] as! String, popular: document.data()["popular"] as! Bool))
                     }
+                }
+                self.popularDishes.sort {
+                    $0.id < $1.id
+                }
+                self.restDishes.sort {
+                    $0.id < $1.id
                 }
                 self.delegate?.didUpdateDishes(self, popularDishes: self.popularDishes, restDishes: self.restDishes)
             }

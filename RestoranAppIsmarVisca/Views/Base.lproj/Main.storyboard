@@ -196,7 +196,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.92114132640000002" green="0.29479083420000002" blue="0.30192360280000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" red="0.92156862745098034" green="0.29411764705882354" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="KLl-01-tGe" secondAttribute="trailing" constant="28" id="4ng-JC-n4c"/>
                                                             <constraint firstItem="k94-d5-62K" firstAttribute="top" secondItem="cfM-p9-vw4" secondAttribute="top" constant="34" id="Ueq-5H-wKj"/>
@@ -357,7 +357,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FpL-Iw-S08"/>
-                        <color key="backgroundColor" red="0.1069632396" green="0.1078381315" blue="0.1764785945" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.10588235294117647" green="0.10588235294117647" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="9nq-M3-yOd" firstAttribute="top" secondItem="FpL-Iw-S08" secondAttribute="top" id="0LK-Lm-lNG"/>
                             <constraint firstItem="9nq-M3-yOd" firstAttribute="trailing" secondItem="FpL-Iw-S08" secondAttribute="trailing" id="Lh6-xh-LzL"/>
