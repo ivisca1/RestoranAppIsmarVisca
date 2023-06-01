@@ -14,23 +14,23 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var promotionView: UIView!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
-    var categories : [DishCategory] = [
-        .init(id: "1", name: "Roštilj", image: "burger"),
-        .init(id: "2", name: "Pizza", image: "margarita"),
-        .init(id: "3", name: "Dezert", image: "sladoled")
-    ]
+    var categories = [DishCategory]()
     
-    var populars : [FoodDish] = [
-        .init(id: "1", image: "burger", name: "Hamburger", price: "12 KM"),
-        .init(id: "1", image: "margarita", name: "Margarita", price: "8 KM"),
-        .init(id: "1", image: "sladoled", name: "Sladoled", price: "5 KM"),
-        .init(id: "1", image: "pomfrit", name: "Pomfrit", price: "2 KM")
-    ]
+    var populars = [FoodDish]()
+    
+    var restOfTheDishes = [FoodDish]()
+    
+    var foodManager = FoodManager()
     
     var index = 0
+    var temp = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        foodManager.delegate = self
+        foodManager.fetchCategories(document: "categories")
+        foodManager.fetchFood(document: "food", categoryId: "1")
 
         promotionView.layer.cornerRadius = 20
         registerCells()
@@ -45,9 +45,17 @@ class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToDishDetail" {
             let destinationVC = segue.destination as! DishDetailViewController
-            destinationVC.image = populars[index].image
-            destinationVC.name = populars[index].name
-            destinationVC.price = populars[index].price
+            if temp == 0 {
+                destinationVC.image = populars[index].image
+                destinationVC.name = populars[index].name
+                destinationVC.price = populars[index].price
+                destinationVC.desc = populars[index].description
+            } else {
+                destinationVC.image = restOfTheDishes[index].image
+                destinationVC.name = restOfTheDishes[index].name
+                destinationVC.price = restOfTheDishes[index].price
+                destinationVC.desc = restOfTheDishes[index].description
+            }
         }
     }
 
@@ -62,7 +70,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         case popularDishesCollectionView:
             return populars.count
         case specialsCollectionView:
-            return populars.count
+            return restOfTheDishes.count
         default:
             return 0
         }
@@ -80,7 +88,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             return cell
         case specialsCollectionView:
             let cell = specialsCollectionView.dequeueReusableCell(withReuseIdentifier: HomeFoodViewCell.identifier, for: indexPath) as! HomeFoodViewCell
-            cell.setup(foodDish: populars[indexPath.row])
+            cell.setup(foodDish: restOfTheDishes[indexPath.row])
             return cell
         default:
             return UICollectionViewCell()
@@ -89,11 +97,40 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == categoryCollectionView {
-            populars.append(FoodDish(id: "5", image: "burger", name: "svasta", price: "5 KM"))
-            popularDishesCollectionView.reloadData()
+            
+        } else if collectionView == popularDishesCollectionView {
+            index = indexPath.row
+            temp = 0
+            performSegue(withIdentifier: "goToDishDetail", sender: collectionView)
         } else {
             index = indexPath.row
+            temp = 1
             performSegue(withIdentifier: "goToDishDetail", sender: collectionView)
         }
+    }
+}
+
+extension HomeViewController : FoodManagerDelegate {
+    func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {
+        categories = categoriesList.sorted {
+            $0.id < $1.id
+        }
+        categoryCollectionView.reloadData()
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+    
+    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {
+        populars = popularDishes.sorted {
+            $0.id < $1.id
+        }
+        popularDishesCollectionView.reloadData()
+        
+        restOfTheDishes = restDishes.sorted {
+            $0.id < $1.id
+        }
+        specialsCollectionView.reloadData()
     }
 }

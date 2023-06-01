@@ -13,14 +13,14 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     var populars : [FoodDish] = [
-        .init(id: "1", image: "burger", name: "Hamburger", price: "12 KM"),
-        .init(id: "1", image: "margarita", name: "Margarita", price: "8 KM"),
-        .init(id: "1", image: "sladoled", name: "Sladoled", price: "5 KM"),
-        .init(id: "1", image: "pomfrit", name: "Pomfrit", price: "2 KM"),
-        .init(id: "1", image: "burger", name: "Pomfrit", price: "2 KM"),
-        .init(id: "1", image: "margarita", name: "Pomfrit", price: "2 KM"),
-        .init(id: "1", image: "sladoled", name: "Pomfrit", price: "2 KM"),
-        .init(id: "1", image: "pomfrit", name: "Pomfrit", price: "2 KM")
+        .init(id: "1", image: "burger", name: "Hamburger", price: "12 KM", description: "desc", categoryId: "1", popular: true),
+        .init(id: "1", image: "margarita", name: "Margarita", price: "8 KM", description: "desc", categoryId: "1", popular: true),
+        .init(id: "1", image: "sladoled", name: "Sladoled", price: "5 KM", description: "desc", categoryId: "1", popular: true),
+        .init(id: "1", image: "pomfrit", name: "Pomfrit", price: "2 KM", description: "desc", categoryId: "1", popular: true),
+        .init(id: "1", image: "burger", name: "Pomfrit", price: "2 KM", description: "desc", categoryId: "1", popular: true),
+        .init(id: "1", image: "margarita", name: "Pomfrit", price: "2 KM", description: "desc", categoryId: "1", popular: true),
+        .init(id: "1", image: "sladoled", name: "Pomfrit", price: "2 KM", description: "desc", categoryId: "1", popular: true),
+        .init(id: "1", image: "pomfrit", name: "Pomfrit", price: "2 KM", description: "desc", categoryId: "1", popular: true)
     ]
     
     override func viewDidLoad() {

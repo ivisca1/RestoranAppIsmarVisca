@@ -8,5 +8,6 @@
 import Foundation
 
 struct FoodDish {
-    var id, image, name, price : String
+    var id, image, name, price, description, categoryId : String
+    var popular : Bool
 }

@@ -19,6 +19,7 @@ class DishDetailViewController: UIViewController {
     var image : String?
     var name : String?
     var price : String?
+    var desc : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class DishDetailViewController: UIViewController {
         dishImageView.image = UIImage(named: image ?? "burger")
         dishTitleLabel.text = name
         dishPriceLabel.text = price
+        dishDescriptionLabel.text = desc
         foodDetailView.layer.cornerRadius = 70
     }
 
