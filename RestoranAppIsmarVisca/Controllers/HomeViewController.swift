@@ -23,10 +23,14 @@ class HomeViewController: UIViewController {
         
         MyVariables.foodManager.delegate = self
         MyVariables.foodManager.fetchCategories(document: "categories")
-        MyVariables.foodManager.fetchFood(document: "food", categoryId: "1")
+        //MyVariables.foodManager.fetchFood(document: "food", categoryId: "1")
 
         promotionView.layer.cornerRadius = 20
         registerCells()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        MyVariables.foodManager.delegate = self
     }
     
     private func registerCells() {
@@ -122,4 +126,6 @@ extension HomeViewController : FoodManagerDelegate {
         popularDishesCollectionView.reloadData()
         specialsCollectionView.reloadData()
     }
+    
+    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
 }

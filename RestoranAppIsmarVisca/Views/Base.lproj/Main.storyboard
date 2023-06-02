@@ -90,7 +90,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTJ-51-7rR">
                                         <rect key="frame" x="0.0" y="60" width="393" height="650"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PHo-9m-BDL">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PHo-9m-BDL">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="650"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
@@ -123,6 +123,7 @@
                     <connections>
                         <outlet property="searchTextField" destination="hku-PD-TgB" id="SyT-uo-rey"/>
                         <outlet property="tableView" destination="PHo-9m-BDL" id="BXr-MZ-KOD"/>
+                        <segue destination="3f8-xH-33G" kind="presentation" identifier="searchDishDetail" modalPresentationStyle="fullScreen" id="b3p-6l-lT7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tn9-SJ-SmZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -538,6 +539,9 @@
             <point key="canvasLocation" x="851" y="89"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="b3p-6l-lT7"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="basket" catalog="system" width="128" height="108"/>
