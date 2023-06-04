@@ -9,6 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 protocol FoodManagerDelegate {
+    func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish])
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish])
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory])
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish])
@@ -27,6 +28,8 @@ class FoodManager {
     var allDishes = [FoodDish]()
     
     var searchDishes = [FoodDish]()
+    
+    var basketDishes = [FoodDish]()
     
     var delegate : FoodManagerDelegate?
     
@@ -77,5 +80,19 @@ class FoodManager {
             $0.name.lowercased().contains(searchText.lowercased()) || $0.name.contains(searchText)
         }
         delegate?.didUpdateSearch(self, dishes: searchDishes)
+    }
+    
+    func addToBasket(dishName: String) {
+        basketDishes.append(allDishes.first {
+            $0.name == dishName
+        }!)
+        delegate?.didUpdateBasket(self, dishes: basketDishes)
+    }
+    
+    func removeFromBasket(dishName: String) {
+        basketDishes.removeAll {
+            $0.name == dishName
+        }
+        delegate?.didUpdateBasket(self, dishes: basketDishes)
     }
 }

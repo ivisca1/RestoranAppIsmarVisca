@@ -35,5 +35,9 @@ class DishDetailViewController: UIViewController {
         self.dismiss(animated: true,completion: nil)
     }
     @IBAction func placeOrderButtonClicked(_ sender: UIButton) {
+        MyVariables.foodManager.addToBasket(dishName: dishTitleLabel.text ?? "Hamburger")
+        let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

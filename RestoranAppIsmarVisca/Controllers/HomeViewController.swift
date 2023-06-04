@@ -23,7 +23,6 @@ class HomeViewController: UIViewController {
         
         MyVariables.foodManager.delegate = self
         MyVariables.foodManager.fetchCategories(document: "categories")
-        //MyVariables.foodManager.fetchFood(document: "food", categoryId: "1")
 
         promotionView.layer.cornerRadius = 20
         registerCells()
@@ -31,6 +30,11 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         MyVariables.foodManager.delegate = self
+        
+        let tabBar = self.tabBarController!.tabBar
+        let basketItem = tabBar.items![2]
+        basketItem.badgeColor = UIColor.red
+        basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
     }
     
     private func registerCells() {
@@ -114,6 +118,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension HomeViewController : FoodManagerDelegate {
+    
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {
         categoryCollectionView.reloadData()
     }
@@ -128,4 +133,5 @@ extension HomeViewController : FoodManagerDelegate {
     }
     
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
 }
