@@ -12,6 +12,8 @@
 		CE41DAA92A24FFA5006429EE /* SearchFoodViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41DAA72A24FFA5006429EE /* SearchFoodViewCell.swift */; };
 		CE41DAAA2A24FFA5006429EE /* SearchFoodViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE41DAA82A24FFA5006429EE /* SearchFoodViewCell.xib */; };
 		CE4C24C72A290B8200586A89 /* MyVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C24C62A290B8200586A89 /* MyVariables.swift */; };
+		CE4D25512A2E75EE00891CEE /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D25502A2E75EE00891CEE /* UIViewControllerExtension.swift */; };
+		CE569DD92A30CDE20002CC05 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE569DD82A30CDE20002CC05 /* StringExtension.swift */; };
 		CE6A6F412A222F0F0054017A /* DishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A6F402A222F0F0054017A /* DishDetailViewController.swift */; };
 		CE75EF0A2A1BC37600E5B8C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75EF092A1BC37600E5B8C9 /* AppDelegate.swift */; };
 		CE75EF0C2A1BC37600E5B8C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75EF0B2A1BC37600E5B8C9 /* SceneDelegate.swift */; };
@@ -44,6 +46,8 @@
 		CE41DAA72A24FFA5006429EE /* SearchFoodViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewCell.swift; sourceTree = "<group>"; };
 		CE41DAA82A24FFA5006429EE /* SearchFoodViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchFoodViewCell.xib; sourceTree = "<group>"; };
 		CE4C24C62A290B8200586A89 /* MyVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVariables.swift; sourceTree = "<group>"; };
+		CE4D25502A2E75EE00891CEE /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		CE569DD82A30CDE20002CC05 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		CE6A6F402A222F0F0054017A /* DishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
 		CE75EF062A1BC37600E5B8C9 /* RestoranAppIsmarVisca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestoranAppIsmarVisca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE75EF092A1BC37600E5B8C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE4D254F2A2E75D700891CEE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D25502A2E75EE00891CEE /* UIViewControllerExtension.swift */,
+				CE569DD82A30CDE20002CC05 /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CE6A6F422A22380D0054017A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +124,7 @@
 		CE75EF082A1BC37600E5B8C9 /* RestoranAppIsmarVisca */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D254F2A2E75D700891CEE /* Extensions */,
 				CE9280B82A1E6B02009AC83B /* Models */,
 				CE9280B32A1E662A009AC83B /* CustomViews */,
 				CE75EF262A1BD60D00E5B8C9 /* fonts */,
@@ -260,6 +274,7 @@
 			files = (
 				CE9280B22A1E5E7C009AC83B /* ProfileViewController.swift in Sources */,
 				CE820DD32A20C3DC0043D8BC /* DishCategory.swift in Sources */,
+				CE4D25512A2E75EE00891CEE /* UIViewControllerExtension.swift in Sources */,
 				CE41DAA92A24FFA5006429EE /* SearchFoodViewCell.swift in Sources */,
 				CE9280BA2A1E6B17009AC83B /* FoodDish.swift in Sources */,
 				CE6A6F412A222F0F0054017A /* DishDetailViewController.swift in Sources */,
@@ -273,6 +288,7 @@
 				CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */,
 				CE4C24C72A290B8200586A89 /* MyVariables.swift in Sources */,
 				CE820DD02A20BFFC0043D8BC /* CategoryViewCell.swift in Sources */,
+				CE569DD92A30CDE20002CC05 /* StringExtension.swift in Sources */,
 				CE9280AC2A1E5DF3009AC83B /* HomeViewController.swift in Sources */,
 				CE80597A2A279DD00078887F /* FoodManager.swift in Sources */,
 			);

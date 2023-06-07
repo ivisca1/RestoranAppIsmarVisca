@@ -12,10 +12,10 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     
-    var index = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "MarkerFelt-Thin", size: 36)!, NSAttributedString.Key.foregroundColor: UIColor(red: 0.831, green: 0.765, blue: 0.51, alpha: 1.0)]
 
         searchTextField.delegate = self
         registerCells()
@@ -23,20 +23,15 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         MyVariables.foodManager.delegate = self
+        
+        let tabBar = self.tabBarController!.tabBar
+        let basketItem = tabBar.items![2]
+        basketItem.badgeColor = UIColor.red
+        basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
     }
     
     private func registerCells() {
         tableView.register(UINib(nibName: SearchFoodViewCell.identifier, bundle: nil), forCellReuseIdentifier: SearchFoodViewCell.identifier)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "searchDishDetail" {
-            let destinationVC = segue.destination as! DishDetailViewController
-            destinationVC.image = MyVariables.foodManager.searchDishes[index].image
-            destinationVC.name = MyVariables.foodManager.searchDishes[index].name
-            destinationVC.price = MyVariables.foodManager.searchDishes[index].price
-            destinationVC.desc = MyVariables.foodManager.searchDishes[index].description
-        }
     }
 }
 
@@ -87,8 +82,9 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        index = indexPath.row
-        performSegue(withIdentifier: "searchDishDetail", sender: tableView)
+        let controller = DishDetailViewController.instantiate()
+        controller.dish = MyVariables.foodManager.searchDishes[indexPath.row]
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 

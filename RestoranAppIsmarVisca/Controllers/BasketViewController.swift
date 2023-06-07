@@ -9,24 +9,29 @@ import UIKit
 
 class BasketViewController: UIViewController {
 
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var basketTableView: UITableView!
     @IBOutlet weak var orderButton: UIButton!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var changeButton: UIButton!
-    @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var basketTabBar: UITabBarItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        orderButton.layer.cornerRadius = 10
+        orderButton.layer.cornerRadius = 20
         changeButton.layer.cornerRadius = 10
-        acceptButton.layer.cornerRadius = 15
         registerCells()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         MyVariables.foodManager.delegate = self
+        
+        var totalPrice = 0
+        for dish in MyVariables.foodManager.basketDishes {
+            totalPrice = totalPrice + (Int(dish.price.digits) ?? 0)
+        }
+        priceLabel.text = "\(totalPrice) KM"
         basketTableView.reloadData()
     }
     
@@ -37,8 +42,18 @@ class BasketViewController: UIViewController {
     @IBAction func orderButtonPressed(_ sender: UIButton) {
     }
     @IBAction func changeButtonPressed(_ sender: UIButton) {
-    }
-    @IBAction func acceptButtonPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
+
+        alert.addTextField { (textField) in
+            textField.text = "Some default text"
+        }
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            print("Text field: \(String(describing: textField?.text))")
+        }))
+
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -49,7 +64,7 @@ extension BasketViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BasketFoodCollectionViewCell.identifier) as! BasketFoodCollectionViewCell
-        cell.setup(foodDish: MyVariables.foodManager.basketDishes[indexPath.row])
+        cell.setup(foodDish: MyVariables.foodManager.basketDishes[indexPath.row], indexRow: indexPath.row)
         return cell
     }
     
@@ -80,6 +95,12 @@ extension BasketViewController : FoodManagerDelegate {
     }
     
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {
+        var totalPrice = 0
+        for dish in MyVariables.foodManager.basketDishes {
+            totalPrice = totalPrice + (Int(dish.price.digits) ?? 0)
+        }
+        priceLabel.text = "\(totalPrice) KM"
+        
         basketTableView.reloadData()
         let tabBar = self.tabBarController!.tabBar
         let basketItem = tabBar.items![2]

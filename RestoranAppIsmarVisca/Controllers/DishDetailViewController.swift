@@ -15,20 +15,24 @@ class DishDetailViewController: UIViewController {
     @IBOutlet weak var dishPriceLabel: UILabel!
     @IBOutlet weak var dishTitleLabel: UILabel!
     @IBOutlet weak var dishImageView: UIImageView!
-    
-    var image : String?
-    var name : String?
-    var price : String?
-    var desc : String?
+
+    var dish : FoodDish!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dishImageView.image = UIImage(named: image ?? "burger")
-        dishTitleLabel.text = name
-        dishPriceLabel.text = price
-        dishDescriptionLabel.text = desc
+        dishImageView.image = UIImage(named: dish.image)
+        dishTitleLabel.text = dish.name
+        dishPriceLabel.text = dish.price
+        dishDescriptionLabel.text = dish.description
+        orderButton.layer.cornerRadius = 20
         foodDetailView.layer.cornerRadius = 70
+        navigationController?.navigationBar.tintColor = UIColor.white
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
     }
 
     @IBAction func backButtonPressed(_ sender: UIButton) {

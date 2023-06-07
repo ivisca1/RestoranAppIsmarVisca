@@ -89,10 +89,8 @@ class FoodManager {
         delegate?.didUpdateBasket(self, dishes: basketDishes)
     }
     
-    func removeFromBasket(dishName: String) {
-        basketDishes.removeAll {
-            $0.name == dishName
-        }
+    func removeFromBasket(index: Int) {
+        basketDishes.remove(at: index)
         delegate?.didUpdateBasket(self, dishes: basketDishes)
     }
 }

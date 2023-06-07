@@ -14,15 +14,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var promotionView: UIView!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
-    var index = 0
     var indexCategory = 0
-    var temp = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MyVariables.foodManager.delegate = self
         MyVariables.foodManager.fetchCategories(document: "categories")
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "MarkerFelt-Thin", size: 36)!, NSAttributedString.Key.foregroundColor: UIColor(red: 0.831, green: 0.765, blue: 0.51, alpha: 1.0)]
 
         promotionView.layer.cornerRadius = 20
         registerCells()
@@ -41,23 +41,6 @@ class HomeViewController: UIViewController {
         categoryCollectionView.register(UINib(nibName: CategoryViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CategoryViewCell.identifier)
         popularDishesCollectionView.register(UINib(nibName: HomeFoodViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeFoodViewCell.identifier)
         specialsCollectionView.register(UINib(nibName: HomeFoodViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeFoodViewCell.identifier)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToDishDetail" {
-            let destinationVC = segue.destination as! DishDetailViewController
-            if temp == 0 {
-                destinationVC.image = MyVariables.foodManager.popularDishes[index].image
-                destinationVC.name = MyVariables.foodManager.popularDishes[index].name
-                destinationVC.price = MyVariables.foodManager.popularDishes[index].price
-                destinationVC.desc = MyVariables.foodManager.popularDishes[index].description
-            } else {
-                destinationVC.image = MyVariables.foodManager.restDishes[index].image
-                destinationVC.name = MyVariables.foodManager.restDishes[index].name
-                destinationVC.price = MyVariables.foodManager.restDishes[index].price
-                destinationVC.desc = MyVariables.foodManager.restDishes[index].description
-            }
-        }
     }
 
 }
@@ -106,13 +89,13 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             indexCategory = indexPath.row
             categoryCollectionView.reloadData()
         } else if collectionView == popularDishesCollectionView {
-            index = indexPath.row
-            temp = 0
-            performSegue(withIdentifier: "goToDishDetail", sender: collectionView)
+            let controller = DishDetailViewController.instantiate()
+            controller.dish = MyVariables.foodManager.popularDishes[indexPath.row]
+            navigationController?.pushViewController(controller, animated: true)
         } else {
-            index = indexPath.row
-            temp = 1
-            performSegue(withIdentifier: "goToDishDetail", sender: collectionView)
+            let controller = DishDetailViewController.instantiate()
+            controller.dish = MyVariables.foodManager.restDishes[indexPath.row]
+            navigationController?.pushViewController(controller, animated: true)
         }
     }
 }
