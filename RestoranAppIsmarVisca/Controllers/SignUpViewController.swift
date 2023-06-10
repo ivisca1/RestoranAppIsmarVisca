@@ -35,7 +35,53 @@ class SignUpViewController: UIViewController {
         signUpButton.layer.cornerRadius = 20
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        MyVariables.foodManager.delegate = self
+    }
+    
 
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
+        if let name = nameSurnameTextField.text?.components(separatedBy: " ").first {
+            if let surname = nameSurnameTextField.text?.components(separatedBy: " ")[1] {
+                if let phoneNumber = phoneNumberTextField.text {
+                    if let email = emailTextField.text {
+                        if let address = addressTextField.text {
+                            if let password = passwordTextField.text {
+                                if let passwordAgain = passwordAgainTextField.text {
+                                    if password == passwordAgain {
+                                        let user = User(name: name, surname: surname, phoneNumber: phoneNumber, email: email, address: address)
+                                        MyVariables.foodManager.createUser(userToCreate: user, password: password)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+}
+
+extension SignUpViewController : FoodManagerDelegate {
+    func didLogOutUser(_ foodManager: FoodManager) {
+        
+    }
+    
+    func didSignInUser(_ foodManager: FoodManager, user: User) {
+        let controller = UserProfileViewController.instantiate()
+        controller.user = user
+        tabBarController?.viewControllers?.append(controller)
+        tabBarController?.viewControllers?.remove(at: 3)
+        tabBarController?.selectedViewController = tabBarController?.viewControllers?.last
+    }
+    
+    func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    
+    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    
+    func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
+    
+    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
+    
+    func didFailWithError(error: Error) {}
 }

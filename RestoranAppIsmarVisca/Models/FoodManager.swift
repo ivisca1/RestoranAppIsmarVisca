@@ -7,8 +7,11 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 
 protocol FoodManagerDelegate {
+    func didLogOutUser(_ foodManager: FoodManager)
+    func didSignInUser(_ foodManager: FoodManager, user: User)
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish])
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish])
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory])
@@ -32,6 +35,8 @@ class FoodManager {
     var basketDishes = [FoodDish]()
     
     var delegate : FoodManagerDelegate?
+    
+    var user : User?
     
     init() {
         db.collection("food").getDocuments()  { (querySnapshot, err) in
@@ -92,5 +97,66 @@ class FoodManager {
     func removeFromBasket(index: Int) {
         basketDishes.remove(at: index)
         delegate?.didUpdateBasket(self, dishes: basketDishes)
+    }
+    
+    func createUser(userToCreate : User, password: String) {
+        FirebaseAuth.Auth.auth().createUser(withEmail: userToCreate.email, password: password, completion: { result, error in
+            if error != nil {
+                print(error!)
+            }
+            else {
+                self.db.collection("users").document(userToCreate.email).setData([
+                    "name": userToCreate.name,
+                    "surname": userToCreate.surname,
+                    "email": userToCreate.email,
+                    "address": userToCreate.address,
+                    "phoneNumber": userToCreate.phoneNumber
+                ]) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                        self.user = userToCreate
+                        self.delegate?.didSignInUser(self, user: userToCreate)
+                    }
+                }
+            }
+        })
+    }
+    
+    func logInUser(email: String, password: String) {
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password,completion: { result, error in
+            if error != nil {
+                print(error!)
+            }
+            else {
+                self.db.collection("users").whereField("email", isEqualTo: email)
+                    .getDocuments() { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            let foundUser = querySnapshot?.documents[0]
+                            self.user = User(name: foundUser?.data()["name"] as! String, surname: foundUser?.data()["surname"] as! String, phoneNumber: foundUser?.data()["phoneNumber"] as! String, email: foundUser?.data()["email"] as! String, address: foundUser?.data()["address"] as! String)
+                            self.delegate?.didSignInUser(self, user: self.user!)
+                        }
+                }
+            }
+        })
+    }
+    
+    func logOutUser() {
+        do {
+            try FirebaseAuth.Auth.auth().signOut()
+            user = nil
+            self.delegate?.didLogOutUser(self)
+        } catch {
+            print("An error occurred")
+        }
+    }
+    
+    func isAnyoneSignedIn() {
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            self.delegate?.didSignInUser(self, user: User(name: "a", surname: "a", phoneNumber: "a", email: "a", address: "a"))
+        }
     }
 }

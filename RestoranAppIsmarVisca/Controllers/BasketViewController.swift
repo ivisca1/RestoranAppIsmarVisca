@@ -78,6 +78,14 @@ extension BasketViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension BasketViewController : FoodManagerDelegate {
+    func didLogOutUser(_ foodManager: FoodManager) {
+        
+    }
+    
+    func didSignInUser(_ foodManager: FoodManager, user: User) {
+        
+    }
+    
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {
         
     }

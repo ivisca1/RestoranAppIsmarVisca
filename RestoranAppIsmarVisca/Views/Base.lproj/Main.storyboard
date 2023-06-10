@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile View Controller-->
+        <!--Profil-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ProfileViewController" customModule="RestoranAppIsmarVisca" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="BYZ-38-t0r" customClass="ProfileViewController" customModule="RestoranAppIsmarVisca" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,7 +77,9 @@
                             <constraint firstItem="xAY-0H-Xmd" firstAttribute="centerX" secondItem="SWV-5G-d8j" secondAttribute="centerX" id="uOn-cQ-23w"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Profil" image="person.fill" catalog="system" id="Sbn-GH-4d0"/>
                     <navigationItem key="navigationItem" id="8Cb-ZR-QNq"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="logInButton" destination="xAY-0H-Xmd" id="jmP-I7-RY4"/>
                         <outlet property="signUpButton" destination="SWV-5G-d8j" id="iG0-Pm-rq6"/>
@@ -87,7 +89,7 @@
             </objects>
             <point key="canvasLocation" x="782" y="941"/>
         </scene>
-        <!--User Profile View Controller-->
+        <!--Profil-->
         <scene sceneID="o8l-vS-nPD">
             <objects>
                 <viewController storyboardIdentifier="UserProfileViewController" id="5wM-Gn-6uV" customClass="UserProfileViewController" customModule="RestoranAppIsmarVisca" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,7 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70q-gN-0k5">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="t2N-nH-6jr">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="630"/>
@@ -305,7 +307,9 @@
                             <constraint firstItem="70q-gN-0k5" firstAttribute="leading" secondItem="U2h-RK-rO5" secondAttribute="leading" id="uca-3X-HNl"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Profil" image="person.fill" catalog="system" id="G4d-dj-gW7"/>
                     <navigationItem key="navigationItem" id="pXP-nr-w4T"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addressLabel" destination="pro-bz-fXx" id="0Ug-g2-cMv"/>
                         <outlet property="emailLabel" destination="b4A-7d-JY4" id="PyM-Sf-2BI"/>
@@ -748,7 +752,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Traži" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hku-PD-TgB">
-                                                <rect key="frame" x="16" y="6" width="303.33333333333331" height="38.333333333333336"/>
+                                                <rect key="frame" x="16" y="6" width="303.33333333333337" height="38.333333333333336"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.329999999999998" id="ilD-TU-AtO"/>
@@ -1236,7 +1240,7 @@
         <!--Profil-->
         <scene sceneID="DYD-wb-jhq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lfn-CA-cOr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ProfileNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="Lfn-CA-cOr" customClass="ProfileNavigationViewController" customModule="RestoranAppIsmarVisca" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profil" image="person.fill" catalog="system" id="pw5-Hf-NmN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wPi-ay-ath">
@@ -1257,6 +1261,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7oa-pw-ThS" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Saw-Bp-v0r">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

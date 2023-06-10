@@ -41,6 +41,7 @@
 		CE9280B62A1E665F009AC83B /* HomeFoodViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9280B42A1E665F009AC83B /* HomeFoodViewCell.swift */; };
 		CE9280B72A1E665F009AC83B /* HomeFoodViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9280B52A1E665F009AC83B /* HomeFoodViewCell.xib */; };
 		CE9280BA2A1E6B17009AC83B /* FoodDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9280B92A1E6B17009AC83B /* FoodDish.swift */; };
+		CE95508D2A34C67300467CE4 /* ProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */; };
 		CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		CE9280B42A1E665F009AC83B /* HomeFoodViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFoodViewCell.swift; sourceTree = "<group>"; };
 		CE9280B52A1E665F009AC83B /* HomeFoodViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFoodViewCell.xib; sourceTree = "<group>"; };
 		CE9280B92A1E6B17009AC83B /* FoodDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDish.swift; sourceTree = "<group>"; };
+		CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationViewController.swift; sourceTree = "<group>"; };
 		CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +168,7 @@
 				CE57D1282A3247FD0009BBF3 /* LogInViewController.swift */,
 				CE57D12A2A32481B0009BBF3 /* SignUpViewController.swift */,
 				CE15CA3A2A33662500870A3C /* UserProfileViewController.swift */,
+				CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE95508D2A34C67300467CE4 /* ProfileNavigationViewController.swift in Sources */,
 				CE9280B22A1E5E7C009AC83B /* ProfileViewController.swift in Sources */,
 				CE820DD32A20C3DC0043D8BC /* DishCategory.swift in Sources */,
 				CE4D25512A2E75EE00891CEE /* UIViewControllerExtension.swift in Sources */,

@@ -26,6 +26,8 @@ class HomeViewController: UIViewController {
 
         promotionView.layer.cornerRadius = 20
         registerCells()
+        
+        MyVariables.foodManager.isAnyoneSignedIn()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +103,12 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension HomeViewController : FoodManagerDelegate {
+    func didSignInUser(_ foodManager: FoodManager, user: User) {
+        tabBarController?.viewControllers?.removeLast()
+        let controller = UserProfileViewController.instantiate()
+        controller.user = user
+        tabBarController?.viewControllers?.append(controller)
+    }
     
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {
         categoryCollectionView.reloadData()
@@ -117,4 +125,5 @@ extension HomeViewController : FoodManagerDelegate {
     
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    func didLogOutUser(_ foodManager: FoodManager) {}
 }

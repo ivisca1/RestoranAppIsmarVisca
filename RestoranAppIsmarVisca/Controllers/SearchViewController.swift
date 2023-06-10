@@ -89,6 +89,14 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SearchViewController : FoodManagerDelegate {
+    func didLogOutUser(_ foodManager: FoodManager) {
+        
+    }
+    
+    func didSignInUser(_ foodManager: FoodManager, user: User) {
+        
+    }
+    
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {
         tableView.reloadData()
     }
