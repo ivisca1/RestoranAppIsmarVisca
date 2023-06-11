@@ -43,6 +43,7 @@
 		CE9280BA2A1E6B17009AC83B /* FoodDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9280B92A1E6B17009AC83B /* FoodDish.swift */; };
 		CE95508D2A34C67300467CE4 /* ProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */; };
 		CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */; };
+		CEECAA2D2A35ECB5009107A7 /* NoBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECAA2C2A35ECB5009107A7 /* NoBasketViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		CE9280B92A1E6B17009AC83B /* FoodDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDish.swift; sourceTree = "<group>"; };
 		CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationViewController.swift; sourceTree = "<group>"; };
 		CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
+		CEECAA2C2A35ECB5009107A7 /* NoBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBasketViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				CE57D12A2A32481B0009BBF3 /* SignUpViewController.swift */,
 				CE15CA3A2A33662500870A3C /* UserProfileViewController.swift */,
 				CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */,
+				CEECAA2C2A35ECB5009107A7 /* NoBasketViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				CE75EF0C2A1BC37600E5B8C9 /* SceneDelegate.swift in Sources */,
 				CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */,
 				CE57D12B2A32481B0009BBF3 /* SignUpViewController.swift in Sources */,
+				CEECAA2D2A35ECB5009107A7 /* NoBasketViewController.swift in Sources */,
 				CE4C24C72A290B8200586A89 /* MyVariables.swift in Sources */,
 				CE820DD02A20BFFC0043D8BC /* CategoryViewCell.swift in Sources */,
 				CE569DD92A30CDE20002CC05 /* StringExtension.swift in Sources */,

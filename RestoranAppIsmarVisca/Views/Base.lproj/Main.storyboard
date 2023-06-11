@@ -573,7 +573,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i07-CJ-lny">
                                                 <rect key="frame" x="0.0" y="50" width="393" height="308"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LFk-fd-alK">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LFk-fd-alK">
                                                         <rect key="frame" x="0.0" y="0.0" width="393" height="308"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
@@ -735,7 +735,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Azs-72-X3z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1711" y="618"/>
+            <point key="canvasLocation" x="1807" y="941"/>
+        </scene>
+        <!--Korpa-->
+        <scene sceneID="X83-ee-LRS">
+            <objects>
+                <viewController storyboardIdentifier="NoBasketViewController" id="faV-bh-dzR" customClass="NoBasketViewController" customModule="RestoranAppIsmarVisca" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7UP-6K-O7F">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prijavite se da biste pristupili korpi!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dut-hK-pMo">
+                                <rect key="frame" x="16" y="411.66666666666669" width="361" height="28.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="etf2" translatesAutoresizingMaskIntoConstraints="NO" id="5ID-Pp-rOx">
+                                <rect key="frame" x="121.66666666666669" y="98" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="O6K-ZK-1xc"/>
+                                    <constraint firstAttribute="width" constant="150" id="a4k-Vf-8IR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yummie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6b-YI-Sl8">
+                                <rect key="frame" x="135" y="256" width="123" height="44"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
+                                <color key="textColor" red="0.83137254900000002" green="0.76470588240000004" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Isl-DQ-b7w"/>
+                        <color key="backgroundColor" red="0.1069632396" green="0.1078381315" blue="0.1764785945" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Isl-DQ-b7w" firstAttribute="trailing" secondItem="Dut-hK-pMo" secondAttribute="trailing" constant="16" id="BVG-9c-kZF"/>
+                            <constraint firstItem="5ID-Pp-rOx" firstAttribute="top" secondItem="Isl-DQ-b7w" secondAttribute="top" constant="39" id="FRo-Ni-XfF"/>
+                            <constraint firstItem="Dut-hK-pMo" firstAttribute="centerX" secondItem="7UP-6K-O7F" secondAttribute="centerX" id="LIo-00-Usa"/>
+                            <constraint firstItem="Dut-hK-pMo" firstAttribute="centerY" secondItem="7UP-6K-O7F" secondAttribute="centerY" id="UhV-6t-c8h"/>
+                            <constraint firstItem="T6b-YI-Sl8" firstAttribute="centerX" secondItem="5ID-Pp-rOx" secondAttribute="centerX" id="WM4-6U-nIq"/>
+                            <constraint firstItem="5ID-Pp-rOx" firstAttribute="centerX" secondItem="7UP-6K-O7F" secondAttribute="centerX" id="gE3-ec-ysj"/>
+                            <constraint firstItem="Dut-hK-pMo" firstAttribute="leading" secondItem="Isl-DQ-b7w" secondAttribute="leading" constant="16" id="m9y-dA-Wnk"/>
+                            <constraint firstItem="T6b-YI-Sl8" firstAttribute="top" secondItem="5ID-Pp-rOx" secondAttribute="bottom" constant="8" id="xJU-vI-fiT"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Korpa" image="basket" catalog="system" id="U7z-8X-leK"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Bo-8g-4FY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2838.9312977099235" y="940.84507042253529"/>
         </scene>
         <!--Yummie-->
         <scene sceneID="hO9-Bg-kW9">
@@ -752,7 +800,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Traži" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hku-PD-TgB">
-                                                <rect key="frame" x="16" y="6" width="303.33333333333337" height="38.333333333333336"/>
+                                                <rect key="frame" x="16" y="6" width="303.33333333333331" height="38.333333333333336"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.329999999999998" id="ilD-TU-AtO"/>
@@ -827,7 +875,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tn9-SJ-SmZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3563" y="282"/>
+            <point key="canvasLocation" x="3563" y="250"/>
         </scene>
         <!--Yummie-->
         <scene sceneID="0Y4-yV-6ZA">
@@ -1235,7 +1283,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHi-5z-kmN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2636" y="282"/>
+            <point key="canvasLocation" x="2636" y="250"/>
         </scene>
         <!--Profil-->
         <scene sceneID="DYD-wb-jhq">
@@ -1277,7 +1325,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="b3p-6l-lT7"/>
+        <segue reference="SaL-Pi-63r"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="basket" catalog="system" width="128" height="108"/>

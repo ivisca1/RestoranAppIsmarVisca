@@ -16,9 +16,11 @@ class BasketViewController: UIViewController {
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var basketTabBar: UITabBarItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addressLabel.text = MyVariables.foodManager.user?.address
         orderButton.layer.cornerRadius = 20
         changeButton.layer.cornerRadius = 10
         registerCells()
@@ -40,17 +42,22 @@ class BasketViewController: UIViewController {
     }
     
     @IBAction func orderButtonPressed(_ sender: UIButton) {
+        if MyVariables.foodManager.basketDishes.isEmpty {
+            let alert = UIAlertController(title: "Neuspješna narudžba!", message: "Vaša korpa je prazna", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     @IBAction func changeButtonPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Promjena adrese", message: "Promjena važi samo za ovu narudžbu!", preferredStyle: .alert)
 
         alert.addTextField { (textField) in
-            textField.text = "Some default text"
+            textField.text = self.addressLabel.text
         }
 
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
-            print("Text field: \(String(describing: textField?.text))")
+            self.addressLabel.text = textField?.text
         }))
 
         self.present(alert, animated: true, completion: nil)
@@ -82,7 +89,7 @@ extension BasketViewController : FoodManagerDelegate {
         
     }
     
-    func didSignInUser(_ foodManager: FoodManager, user: User) {
+    func didSignInUser(_ foodManager: FoodManager, user: User?) {
         
     }
     

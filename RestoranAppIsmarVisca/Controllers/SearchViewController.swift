@@ -24,10 +24,12 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         MyVariables.foodManager.delegate = self
         
-        let tabBar = self.tabBarController!.tabBar
-        let basketItem = tabBar.items![2]
-        basketItem.badgeColor = UIColor.red
-        basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
+        if MyVariables.foodManager.user != nil {
+            let tabBar = self.tabBarController!.tabBar
+            let basketItem = tabBar.items![2]
+            basketItem.badgeColor = UIColor.red
+            basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
+        }
     }
     
     private func registerCells() {
@@ -93,7 +95,7 @@ extension SearchViewController : FoodManagerDelegate {
         
     }
     
-    func didSignInUser(_ foodManager: FoodManager, user: User) {
+    func didSignInUser(_ foodManager: FoodManager, user: User?) {
         
     }
     

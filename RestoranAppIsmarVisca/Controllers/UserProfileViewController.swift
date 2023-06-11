@@ -38,12 +38,14 @@ class UserProfileViewController: UIViewController {
 
 extension UserProfileViewController : FoodManagerDelegate {
     func didLogOutUser(_ foodManager: FoodManager) {
+        tabBarController?.viewControllers?.append(NoBasketViewController.instantiate())
         tabBarController?.viewControllers?.append(ProfileNavigationViewController.instantiate())
-        tabBarController?.viewControllers?.remove(at: 3)
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.last
+        tabBarController?.viewControllers?.remove(at: 2)
+        tabBarController?.viewControllers?.remove(at: 2)
     }
     
-    func didSignInUser(_ foodManager: FoodManager, user: User) {
+    func didSignInUser(_ foodManager: FoodManager, user: User?) {
         
     }
     

@@ -11,7 +11,7 @@ import FirebaseAuth
 
 protocol FoodManagerDelegate {
     func didLogOutUser(_ foodManager: FoodManager)
-    func didSignInUser(_ foodManager: FoodManager, user: User)
+    func didSignInUser(_ foodManager: FoodManager, user: User?)
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish])
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish])
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory])
@@ -156,7 +156,18 @@ class FoodManager {
     
     func isAnyoneSignedIn() {
         if FirebaseAuth.Auth.auth().currentUser != nil {
-            self.delegate?.didSignInUser(self, user: User(name: "a", surname: "a", phoneNumber: "a", email: "a", address: "a"))
+            self.db.collection("users").whereField("email", isEqualTo: FirebaseAuth.Auth.auth().currentUser?.email! ?? "a")
+                .getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        let foundUser = querySnapshot?.documents[0]
+                        self.user = User(name: foundUser?.data()["name"] as! String, surname: foundUser?.data()["surname"] as! String, phoneNumber: foundUser?.data()["phoneNumber"] as! String, email: foundUser?.data()["email"] as! String, address: foundUser?.data()["address"] as! String)
+                        self.delegate?.didSignInUser(self, user: self.user!)
+                    }
+            }
+        } else {
+            self.delegate?.didSignInUser(self, user: nil)
         }
     }
 }

@@ -33,10 +33,12 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         MyVariables.foodManager.delegate = self
         
-        let tabBar = self.tabBarController!.tabBar
-        let basketItem = tabBar.items![2]
-        basketItem.badgeColor = UIColor.red
-        basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
+        if MyVariables.foodManager.user != nil {
+            let tabBar = self.tabBarController!.tabBar
+            let basketItem = tabBar.items![2]
+            basketItem.badgeColor = UIColor.red
+            basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
+        }
     }
     
     private func registerCells() {
@@ -103,11 +105,16 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension HomeViewController : FoodManagerDelegate {
-    func didSignInUser(_ foodManager: FoodManager, user: User) {
-        tabBarController?.viewControllers?.removeLast()
-        let controller = UserProfileViewController.instantiate()
-        controller.user = user
-        tabBarController?.viewControllers?.append(controller)
+    func didSignInUser(_ foodManager: FoodManager, user: User?) {
+        if user != nil {
+            tabBarController?.viewControllers?.removeLast()
+            let controller = UserProfileViewController.instantiate()
+            controller.user = user
+            tabBarController?.viewControllers?.append(controller)
+        } else {
+            tabBarController?.viewControllers?.remove(at: 2)
+            tabBarController?.viewControllers?.insert(NoBasketViewController.instantiate(), at: 2)
+        }
     }
     
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {

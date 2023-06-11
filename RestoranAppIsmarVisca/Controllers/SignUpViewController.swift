@@ -67,7 +67,7 @@ extension SignUpViewController : FoodManagerDelegate {
         
     }
     
-    func didSignInUser(_ foodManager: FoodManager, user: User) {
+    func didSignInUser(_ foodManager: FoodManager, user: User?) {
         let controller = UserProfileViewController.instantiate()
         controller.user = user
         tabBarController?.viewControllers?.append(controller)
