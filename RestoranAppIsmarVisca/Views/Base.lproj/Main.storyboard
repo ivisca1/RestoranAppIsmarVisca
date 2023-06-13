@@ -374,7 +374,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gZC-ns-aem"/>
-                        <color key="backgroundColor" red="0.1069632396" green="0.1078381315" blue="0.1764785945" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.10588235294117647" green="0.10588235294117647" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Iso-no-Nmd" firstAttribute="top" secondItem="yA4-C1-z00" secondAttribute="bottom" constant="22" id="9lo-5d-20l"/>
                             <constraint firstItem="gZC-ns-aem" firstAttribute="bottom" secondItem="Lpk-IU-QtC" secondAttribute="bottom" constant="70" id="Cvu-Kz-MAT"/>
@@ -547,7 +547,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fBm-F2-ZgG">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="712"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="710"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Jd-Ek-xv0">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
@@ -592,7 +592,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ac-Pe-yN4">
-                                                <rect key="frame" x="0.0" y="358" width="393" height="354"/>
+                                                <rect key="frame" x="0.0" y="358" width="393" height="352"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instrukcije za narudžbu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1j-GN-k4p">
                                                         <rect key="frame" x="16" y="8" width="361" height="24"/>
@@ -690,7 +690,7 @@
                                                     <constraint firstItem="Snn-sP-JS5" firstAttribute="top" secondItem="kbu-Sv-uy9" secondAttribute="bottom" constant="50" id="OKG-ao-epU"/>
                                                     <constraint firstItem="kbu-Sv-uy9" firstAttribute="leading" secondItem="2Ac-Pe-yN4" secondAttribute="leading" constant="16" id="OwE-nu-bam"/>
                                                     <constraint firstAttribute="trailing" secondItem="THX-Bz-AUt" secondAttribute="trailing" constant="16" id="PoT-qR-awd"/>
-                                                    <constraint firstAttribute="height" constant="354" id="Q8H-j6-Xxc"/>
+                                                    <constraint firstAttribute="height" constant="352" id="Q8H-j6-Xxc"/>
                                                     <constraint firstItem="THX-Bz-AUt" firstAttribute="top" secondItem="kbu-Sv-uy9" secondAttribute="bottom" constant="50" id="T6P-gw-jOA"/>
                                                     <constraint firstItem="HVH-yH-MfJ" firstAttribute="centerX" secondItem="2Ac-Pe-yN4" secondAttribute="centerX" id="UUY-XY-DYD"/>
                                                     <constraint firstAttribute="trailing" secondItem="Vn4-MH-C9t" secondAttribute="trailing" constant="16" id="VLW-1M-xPF"/>

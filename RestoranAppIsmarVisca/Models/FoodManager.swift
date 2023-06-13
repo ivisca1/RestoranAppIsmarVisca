@@ -91,11 +91,27 @@ class FoodManager {
         basketDishes.append(allDishes.first {
             $0.name == dishName
         }!)
+        db.collection("orders").whereField("email", isEqualTo: user?.email ?? "a").getDocuments { (result, error) in
+            if error == nil{
+                for document in result!.documents{
+                    self.db.collection("orders").document(document.documentID).setData([ "food": FieldValue.arrayUnion([dishName]) ], merge: true)
+                }
+            }
+        }
         delegate?.didUpdateBasket(self, dishes: basketDishes)
     }
     
     func removeFromBasket(index: Int) {
+        let dishName = basketDishes[index].name
         basketDishes.remove(at: index)
+        db.collection("orders").whereField("email", isEqualTo: user?.email ?? "a").getDocuments { (result, error) in
+            if error == nil{
+                for document in result!.documents{
+                    self.db.collection("orders").document(document.documentID).setData([ "food": FieldValue.arrayRemove([dishName]) ], merge: true)
+                    break
+                }
+            }
+        }
         delegate?.didUpdateBasket(self, dishes: basketDishes)
     }
     
@@ -164,10 +180,39 @@ class FoodManager {
                         let foundUser = querySnapshot?.documents[0]
                         self.user = User(name: foundUser?.data()["name"] as! String, surname: foundUser?.data()["surname"] as! String, phoneNumber: foundUser?.data()["phoneNumber"] as! String, email: foundUser?.data()["email"] as! String, address: foundUser?.data()["address"] as! String)
                         self.delegate?.didSignInUser(self, user: self.user!)
+                        self.fetchBasket()
                     }
             }
         } else {
             self.delegate?.didSignInUser(self, user: nil)
+        }
+    }
+    
+    func fetchBasket() {
+        basketDishes.removeAll()
+        if user != nil {
+            db.collection("orders").whereField("email", isEqualTo: user?.email ?? "a")
+                .getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        if (querySnapshot?.documents.count)! > 0 {
+                            let foundOrder = querySnapshot?.documents[0]
+                            self.db.collection("food").whereField("name", in: foundOrder?.data()["food"] as! [String]).getDocuments() { (querySnapshot2, err2) in
+                                if let err = err2 {
+                                    print("Error getting documents: \(err)")
+                                } else {
+                                    for document in querySnapshot2!.documents {
+                                        self.basketDishes.append(FoodDish(id: document.data()["id"] as! String, image: document.data()["image"] as! String, name: document.data()["name"] as! String, price: document.data()["price"] as! String, description: document.data()["description"] as! String, categoryId: document.data()["categoryId"] as! String, popular: document.data()["popular"] as! Bool))
+                                    }
+                                    self.delegate?.didUpdateBasket(self, dishes: self.basketDishes)
+                                }
+                            }
+                        } else {
+                            self.delegate?.didUpdateBasket(self, dishes: self.basketDishes)
+                        }
+                    }
+            }
         }
     }
 }

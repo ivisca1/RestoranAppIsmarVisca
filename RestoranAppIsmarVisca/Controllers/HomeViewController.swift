@@ -69,9 +69,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         case categoryCollectionView:
             let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: CategoryViewCell.identifier, for: indexPath) as! CategoryViewCell
             if(indexPath.row == indexCategory) {
-                cell.setup(category: MyVariables.foodManager.categories[indexPath.row], redBackground: true)
-            } else {
                 cell.setup(category: MyVariables.foodManager.categories[indexPath.row], redBackground: false)
+            } else {
+                cell.setup(category: MyVariables.foodManager.categories[indexPath.row], redBackground: true)
             }
             return cell
         case popularDishesCollectionView:
@@ -131,6 +131,11 @@ extension HomeViewController : FoodManagerDelegate {
     }
     
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
-    func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {
+        let tabBar = self.tabBarController!.tabBar
+        let basketItem = tabBar.items![2]
+        basketItem.badgeColor = UIColor.red
+        basketItem.badgeValue = "\(dishes.count)"
+    }
     func didLogOutUser(_ foodManager: FoodManager) {}
 }

@@ -23,6 +23,7 @@ class BasketViewController: UIViewController {
         addressLabel.text = MyVariables.foodManager.user?.address
         orderButton.layer.cornerRadius = 20
         changeButton.layer.cornerRadius = 10
+        //basketTableView.layer.cornerRadius = 30
         registerCells()
     }
     
