@@ -93,8 +93,39 @@ class FoodManager {
         }!)
         db.collection("orders").whereField("email", isEqualTo: user?.email ?? "a").getDocuments { (result, error) in
             if error == nil{
-                for document in result!.documents{
-                    self.db.collection("orders").document(document.documentID).setData([ "food": FieldValue.arrayUnion([dishName]) ], merge: true)
+                if result!.documents.count > 0 {
+                    let order = self.db.collection("orders").document(self.user!.email)
+                    order.getDocument { (document, error) in
+                        if let document = document, document.exists {
+                            var foodArray = document.data()!["food"] as! [String]
+                            foodArray.append(dishName)
+                            order.updateData([
+                                "food": foodArray as Any
+                            ]) { err in
+                                if let err = err {
+                                    print("Error updating document: \(err)")
+                                } else {
+                                    print("Document successfully updated")
+                                }
+                            }
+                        } else {
+                            print("Document does not exist")
+                        }
+                    }
+                } else {
+                    self.db.collection("orders").document(self.user!.email).setData([
+                        "email": self.user!.email,
+                        "address": self.user!.address,
+                        "delivered": false,
+                        "ordered": false,
+                        "food": [dishName]
+                    ]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
                 }
             }
         }
@@ -104,11 +135,32 @@ class FoodManager {
     func removeFromBasket(index: Int) {
         let dishName = basketDishes[index].name
         basketDishes.remove(at: index)
-        db.collection("orders").whereField("email", isEqualTo: user?.email ?? "a").getDocuments { (result, error) in
+        db.collection("orders").whereField("email", isEqualTo: user!.email).getDocuments { (result, error) in
             if error == nil{
-                for document in result!.documents{
-                    self.db.collection("orders").document(document.documentID).setData([ "food": FieldValue.arrayRemove([dishName]) ], merge: true)
-                    break
+                let order = self.db.collection("orders").document(self.user!.email)
+                order.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        var foodArray = document.data()!["food"] as! [String]
+                        var index = 0
+                        for dish in foodArray {
+                            if dish == dishName {
+                                break
+                            }
+                            index = index + 1
+                        }
+                        foodArray.remove(at: index)
+                        order.updateData([
+                            "food": foodArray as Any
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            } else {
+                                print("Document successfully updated")
+                            }
+                        }
+                    } else {
+                        print("Document does not exist")
+                    }
                 }
             }
         }
@@ -198,14 +250,22 @@ class FoodManager {
                     } else {
                         if (querySnapshot?.documents.count)! > 0 {
                             let foundOrder = querySnapshot?.documents[0]
-                            self.db.collection("food").whereField("name", in: foundOrder?.data()["food"] as! [String]).getDocuments() { (querySnapshot2, err2) in
-                                if let err = err2 {
-                                    print("Error getting documents: \(err)")
-                                } else {
-                                    for document in querySnapshot2!.documents {
-                                        self.basketDishes.append(FoodDish(id: document.data()["id"] as! String, image: document.data()["image"] as! String, name: document.data()["name"] as! String, price: document.data()["price"] as! String, description: document.data()["description"] as! String, categoryId: document.data()["categoryId"] as! String, popular: document.data()["popular"] as! Bool))
+                            let foodArray = foundOrder?.data()["food"] as! [String]
+                            if foodArray.count > 0 {
+                                self.db.collection("food").whereField("name", in: foundOrder?.data()["food"] as! [String]).getDocuments() { (querySnapshot2, err2) in
+                                    if let err = err2 {
+                                        print("Error getting documents: \(err)")
+                                    } else {
+                                        for document in querySnapshot2!.documents {
+                                            for dish in foodArray {
+                                                let name = document.data()["name"] as! String
+                                                if dish == name {
+                                                    self.basketDishes.append(FoodDish(id: document.data()["id"] as! String, image: document.data()["image"] as! String, name: document.data()["name"] as! String, price: document.data()["price"] as! String, description: document.data()["description"] as! String, categoryId: document.data()["categoryId"] as! String, popular: document.data()["popular"] as! Bool))
+                                                }
+                                            }
+                                        }
+                                        self.delegate?.didUpdateBasket(self, dishes: self.basketDishes)
                                     }
-                                    self.delegate?.didUpdateBasket(self, dishes: self.basketDishes)
                                 }
                             }
                         } else {
