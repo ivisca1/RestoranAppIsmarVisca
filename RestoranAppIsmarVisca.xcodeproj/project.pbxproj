@@ -42,6 +42,9 @@
 		CE9280B72A1E665F009AC83B /* HomeFoodViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9280B52A1E665F009AC83B /* HomeFoodViewCell.xib */; };
 		CE9280BA2A1E6B17009AC83B /* FoodDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9280B92A1E6B17009AC83B /* FoodDish.swift */; };
 		CE95508D2A34C67300467CE4 /* ProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */; };
+		CE9B2EF72A3A5555007393B7 /* BasketOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B2EF62A3A5555007393B7 /* BasketOrderViewController.swift */; };
+		CEB508432A3B83FC008E7347 /* ChangeUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */; };
+		CEB508452A3B8633008E7347 /* UserProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */; };
 		CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */; };
 		CEECAA2D2A35ECB5009107A7 /* NoBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECAA2C2A35ECB5009107A7 /* NoBasketViewController.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +84,9 @@
 		CE9280B52A1E665F009AC83B /* HomeFoodViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeFoodViewCell.xib; sourceTree = "<group>"; };
 		CE9280B92A1E6B17009AC83B /* FoodDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDish.swift; sourceTree = "<group>"; };
 		CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationViewController.swift; sourceTree = "<group>"; };
+		CE9B2EF62A3A5555007393B7 /* BasketOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketOrderViewController.swift; sourceTree = "<group>"; };
+		CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserDetailsViewController.swift; sourceTree = "<group>"; };
+		CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileNavigationController.swift; sourceTree = "<group>"; };
 		CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
 		CEECAA2C2A35ECB5009107A7 /* NoBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBasketViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +178,9 @@
 				CE15CA3A2A33662500870A3C /* UserProfileViewController.swift */,
 				CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */,
 				CEECAA2C2A35ECB5009107A7 /* NoBasketViewController.swift */,
+				CE9B2EF62A3A5555007393B7 /* BasketOrderViewController.swift */,
+				CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */,
+				CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -302,7 +311,9 @@
 				CE57D1292A3247FE0009BBF3 /* LogInViewController.swift in Sources */,
 				CE15CA3B2A33662500870A3C /* UserProfileViewController.swift in Sources */,
 				CE9280B62A1E665F009AC83B /* HomeFoodViewCell.swift in Sources */,
+				CEB508452A3B8633008E7347 /* UserProfileNavigationController.swift in Sources */,
 				CE75EF0A2A1BC37600E5B8C9 /* AppDelegate.swift in Sources */,
+				CE9B2EF72A3A5555007393B7 /* BasketOrderViewController.swift in Sources */,
 				CE820DD52A20CDFE0043D8BC /* CategoryCardView.swift in Sources */,
 				CE2BD5722A2BB20800F0A567 /* BasketFoodCollectionViewCell.swift in Sources */,
 				CE75EF0C2A1BC37600E5B8C9 /* SceneDelegate.swift in Sources */,
@@ -313,6 +324,7 @@
 				CE820DD02A20BFFC0043D8BC /* CategoryViewCell.swift in Sources */,
 				CE569DD92A30CDE20002CC05 /* StringExtension.swift in Sources */,
 				CE9280AC2A1E5DF3009AC83B /* HomeViewController.swift in Sources */,
+				CEB508432A3B83FC008E7347 /* ChangeUserDetailsViewController.swift in Sources */,
 				CE80597A2A279DD00078887F /* FoodManager.swift in Sources */,
 				CE15CA3D2A33687B00870A3C /* User.swift in Sources */,
 			);

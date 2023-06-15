@@ -37,9 +37,9 @@ class LogInViewController: UIViewController {
 }
 
 extension LogInViewController : FoodManagerDelegate {
+    
     func didSignInUser(_ foodManager: FoodManager, user: User?) {
-        let controller = UserProfileViewController.instantiate()
-        controller.user = user
+        let controller = UserProfileNavigationController.instantiate()
         tabBarController?.viewControllers?.append(BasketViewController.instantiate())
         tabBarController?.viewControllers?.append(controller)
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.last
@@ -47,6 +47,8 @@ extension LogInViewController : FoodManagerDelegate {
         tabBarController?.viewControllers?.remove(at: 2)
     }
     
+    func didDeliverOrder(_ foodManager: FoodManager) {}
+    func didMakeOrder(_ foodManager: FoodManager) {}
     func didLogOutUser(_ foodManager: FoodManager) {}
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}

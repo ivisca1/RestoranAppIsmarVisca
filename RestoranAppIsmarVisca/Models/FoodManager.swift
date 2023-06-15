@@ -10,6 +10,8 @@ import FirebaseFirestore
 import FirebaseAuth
 
 protocol FoodManagerDelegate {
+    func didDeliverOrder(_ foodManager: FoodManager)
+    func didMakeOrder(_ foodManager: FoodManager)
     func didLogOutUser(_ foodManager: FoodManager)
     func didSignInUser(_ foodManager: FoodManager, user: User?)
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish])
@@ -37,6 +39,8 @@ class FoodManager {
     var delegate : FoodManagerDelegate?
     
     var user : User?
+    
+    var ordered = false
     
     init() {
         db.collection("food").getDocuments()  { (querySnapshot, err) in
@@ -251,6 +255,10 @@ class FoodManager {
                         if (querySnapshot?.documents.count)! > 0 {
                             let foundOrder = querySnapshot?.documents[0]
                             let foodArray = foundOrder?.data()["food"] as! [String]
+                            let isOrdered = foundOrder?.data()["ordered"] as! Bool
+                            if isOrdered {
+                                self.delegate?.didMakeOrder(self)
+                            }
                             if foodArray.count > 0 {
                                 self.db.collection("food").whereField("name", in: foundOrder?.data()["food"] as! [String]).getDocuments() { (querySnapshot2, err2) in
                                     if let err = err2 {
@@ -272,6 +280,48 @@ class FoodManager {
                             self.delegate?.didUpdateBasket(self, dishes: self.basketDishes)
                         }
                     }
+            }
+        }
+    }
+    
+    func makeOrder() {
+        db.collection("orders").whereField("email", isEqualTo: user!.email).getDocuments { (result, error) in
+            if error == nil{
+                let order = self.db.collection("orders").document(self.user!.email)
+                order.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        self.ordered = true
+                        order.updateData([
+                            "ordered": true
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            } else {
+                                print("Document successfully updated")
+                                self.delegate?.didMakeOrder(self)
+                            }
+                        }
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
+            }
+        }
+    }
+    
+    func isOrderDelivered() {
+        db.collection("orders").whereField("email", isEqualTo: user!.email).getDocuments { (result, error) in
+            if error == nil{
+                let order = self.db.collection("orders").document(self.user!.email)
+                order.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let delivered = document.data()?["delivered"] as! Bool
+                        if delivered {
+                            self.basketDishes.removeAll()
+                            self.delegate?.didDeliverOrder(self)
+                        }
+                    }
+                }
             }
         }
     }

@@ -23,7 +23,7 @@ class BasketViewController: UIViewController {
         addressLabel.text = MyVariables.foodManager.user?.address
         orderButton.layer.cornerRadius = 20
         changeButton.layer.cornerRadius = 10
-        //basketTableView.layer.cornerRadius = 30
+        basketTableView.layer.cornerRadius = 30
         registerCells()
     }
     
@@ -47,8 +47,11 @@ class BasketViewController: UIViewController {
             let alert = UIAlertController(title: "Neuspješna narudžba!", message: "Vaša korpa je prazna", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        } else {
+            MyVariables.foodManager.makeOrder()
         }
     }
+    
     @IBAction func changeButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "Promjena adrese", message: "Promjena važi samo za ovu narudžbu!", preferredStyle: .alert)
 
@@ -58,7 +61,9 @@ class BasketViewController: UIViewController {
 
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
-            self.addressLabel.text = textField?.text
+            if textField?.text?.isEmpty == false {
+                self.addressLabel.text = textField?.text
+            }
         }))
 
         self.present(alert, animated: true, completion: nil)
@@ -86,28 +91,20 @@ extension BasketViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension BasketViewController : FoodManagerDelegate {
-    func didLogOutUser(_ foodManager: FoodManager) {
-        
-    }
+    func didDeliverOrder(_ foodManager: FoodManager) {}
+    func didLogOutUser(_ foodManager: FoodManager) {}
+    func didSignInUser(_ foodManager: FoodManager, user: User?) {}
+    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}    
+    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
+    func didFailWithError(error: Error) {}
     
-    func didSignInUser(_ foodManager: FoodManager, user: User?) {
-        
-    }
-    
-    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {
-        
-    }
-    
-    func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {
-        
-    }
-    
-    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {
-        
-    }
-    
-    func didFailWithError(error: Error) {
-        
+    func didMakeOrder(_ foodManager: FoodManager) {
+        let controller = BasketOrderViewController.instantiate()
+        controller.address = addressLabel.text!
+        tabBarController?.viewControllers?.insert(controller, at: 2)
+        tabBarController?.selectedViewController = tabBarController?.viewControllers?[2]
+        tabBarController?.viewControllers?.remove(at: 3)
     }
     
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {

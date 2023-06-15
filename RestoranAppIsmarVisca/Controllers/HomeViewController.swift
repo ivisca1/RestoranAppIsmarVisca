@@ -39,6 +39,10 @@ class HomeViewController: UIViewController {
             basketItem.badgeColor = UIColor.red
             basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
         }
+        
+        if MyVariables.foodManager.user != nil && MyVariables.foodManager.ordered {
+            MyVariables.foodManager.isOrderDelivered()
+        }
     }
     
     private func registerCells() {
@@ -105,11 +109,23 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension HomeViewController : FoodManagerDelegate {
+    func didDeliverOrder(_ foodManager: FoodManager) {
+        let controller = BasketViewController.instantiate()
+        tabBarController?.viewControllers?.insert(controller, at: 2)
+        tabBarController?.viewControllers?.remove(at: 3)
+    }
+    
+    func didMakeOrder(_ foodManager: FoodManager) {
+        let controller = BasketOrderViewController.instantiate()
+        controller.address = MyVariables.foodManager.user?.address
+        tabBarController?.viewControllers?.insert(controller, at: 2)
+        tabBarController?.viewControllers?.remove(at: 3)
+    }
+    
     func didSignInUser(_ foodManager: FoodManager, user: User?) {
         if user != nil {
             tabBarController?.viewControllers?.removeLast()
-            let controller = UserProfileViewController.instantiate()
-            controller.user = user
+            let controller = UserProfileNavigationController.instantiate()
             tabBarController?.viewControllers?.append(controller)
         } else {
             tabBarController?.viewControllers?.remove(at: 2)

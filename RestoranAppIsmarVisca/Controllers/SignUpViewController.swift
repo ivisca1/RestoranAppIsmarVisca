@@ -9,18 +9,22 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var surnameTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var passwordAgainTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var nameSurnameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameSurnameTextField.layer.cornerRadius = 15
-        nameSurnameTextField.clipsToBounds = true
+        nameTextField.layer.cornerRadius = 15
+        nameTextField.clipsToBounds = true
+        surnameTextField.layer.cornerRadius = 15
+        surnameTextField.clipsToBounds = true
         phoneNumberTextField.layer.cornerRadius = 15
         phoneNumberTextField.clipsToBounds = true
         emailTextField.layer.cornerRadius = 15
@@ -41,8 +45,8 @@ class SignUpViewController: UIViewController {
     
 
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
-        if let name = nameSurnameTextField.text?.components(separatedBy: " ").first {
-            if let surname = nameSurnameTextField.text?.components(separatedBy: " ")[1] {
+        if let name = nameTextField.text {
+            if let surname = surnameTextField.text {
                 if let phoneNumber = phoneNumberTextField.text {
                     if let email = emailTextField.text {
                         if let address = addressTextField.text {
@@ -63,25 +67,19 @@ class SignUpViewController: UIViewController {
 }
 
 extension SignUpViewController : FoodManagerDelegate {
-    func didLogOutUser(_ foodManager: FoodManager) {
-        
-    }
-    
     func didSignInUser(_ foodManager: FoodManager, user: User?) {
-        let controller = UserProfileViewController.instantiate()
-        controller.user = user
+        let controller = UserProfileNavigationController.instantiate()
         tabBarController?.viewControllers?.append(controller)
         tabBarController?.viewControllers?.remove(at: 3)
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.last
     }
     
+    func didMakeOrder(_ foodManager: FoodManager) {}
+    func didLogOutUser(_ foodManager: FoodManager) {}
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
-    
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
-    
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
-    
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
-    
     func didFailWithError(error: Error) {}
+    func didDeliverOrder(_ foodManager: FoodManager) {}
 }

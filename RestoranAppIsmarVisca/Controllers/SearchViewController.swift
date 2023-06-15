@@ -30,6 +30,10 @@ class SearchViewController: UIViewController {
             basketItem.badgeColor = UIColor.red
             basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
         }
+        
+        if MyVariables.foodManager.user != nil && MyVariables.foodManager.ordered {
+            MyVariables.foodManager.isOrderDelivered()
+        }
     }
     
     private func registerCells() {
@@ -91,12 +95,10 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SearchViewController : FoodManagerDelegate {
-    func didLogOutUser(_ foodManager: FoodManager) {
-        
-    }
-    
-    func didSignInUser(_ foodManager: FoodManager, user: User?) {
-        
+    func didDeliverOrder(_ foodManager: FoodManager) {
+        let controller = BasketViewController.instantiate()
+        tabBarController?.viewControllers?.insert(controller, at: 2)
+        tabBarController?.viewControllers?.remove(at: 3)
     }
     
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {
@@ -109,5 +111,8 @@ extension SearchViewController : FoodManagerDelegate {
     
     func didFailWithError(error: Error) {}
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    func didMakeOrder(_ foodManager: FoodManager) {}
+    func didLogOutUser(_ foodManager: FoodManager) {}
+    func didSignInUser(_ foodManager: FoodManager, user: User?) {}
 }
 
