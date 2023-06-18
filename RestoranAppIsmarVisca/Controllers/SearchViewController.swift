@@ -109,7 +109,7 @@ extension SearchViewController : FoodManagerDelegate {
     
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     
-    func didFailWithError(error: Error) {}
+    func didFailWithError(error: String) {}
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didMakeOrder(_ foodManager: FoodManager) {}
     func didLogOutUser(_ foodManager: FoodManager) {}

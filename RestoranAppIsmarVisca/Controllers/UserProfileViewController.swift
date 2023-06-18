@@ -78,7 +78,7 @@ extension UserProfileViewController : FoodManagerDelegate {
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
-    func didFailWithError(error: Error) {}
+    func didFailWithError(error: String) {}
     func didMakeOrder(_ foodManager: FoodManager) {}
     func didSignInUser(_ foodManager: FoodManager, user: User?) {}
 }

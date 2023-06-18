@@ -80,6 +80,6 @@ extension SignUpViewController : FoodManagerDelegate {
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
-    func didFailWithError(error: Error) {}
+    func didFailWithError(error: String) {}
     func didDeliverOrder(_ foodManager: FoodManager) {}
 }

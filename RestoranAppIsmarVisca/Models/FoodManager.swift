@@ -18,7 +18,7 @@ protocol FoodManagerDelegate {
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish])
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory])
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish])
-    func didFailWithError(error: Error)
+    func didFailWithError(error: String)
 }
 
 class FoodManager {
@@ -199,7 +199,23 @@ class FoodManager {
     func logInUser(email: String, password: String) {
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password,completion: { result, error in
             if error != nil {
-                print(error!)
+                let errCode = AuthErrorCode(_nsError: error! as NSError)
+                var errorMsg = ""
+                switch errCode.code {
+                /*case .accountExistsWithDifferentCredential, .credentialAlreadyInUse, .emailAlreadyInUse:
+                    errorMsg = "Account already exists"
+                case .missingEmail:
+                    errorMsg = "Email is missing"
+                case .weakPassword:
+                    errorMsg = "Password is weak."*/
+                case .userNotFound:
+                    errorMsg = "Korisnik nije pronađen. Prvo kreirajte profil."
+                case .wrongPassword:
+                    errorMsg = "Password neispravan"
+                default:
+                    errorMsg = "Neuspješan Log In"
+                }
+                self.delegate?.didFailWithError(error: errorMsg)
             }
             else {
                 self.db.collection("users").whereField("email", isEqualTo: email)

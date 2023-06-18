@@ -137,7 +137,7 @@ extension HomeViewController : FoodManagerDelegate {
         categoryCollectionView.reloadData()
     }
     
-    func didFailWithError(error: Error) {
+    func didFailWithError(error: String) {
         print(error)
     }
     
