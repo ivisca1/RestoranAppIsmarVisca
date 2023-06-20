@@ -67,6 +67,7 @@ class SignUpViewController: UIViewController {
 }
 
 extension SignUpViewController : FoodManagerDelegate {
+    
     func didSignInUser(_ foodManager: FoodManager, user: User?) {
         let controller = UserProfileNavigationController.instantiate()
         tabBarController?.viewControllers?.append(controller)
@@ -82,4 +83,5 @@ extension SignUpViewController : FoodManagerDelegate {
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     func didFailWithError(error: String) {}
     func didDeliverOrder(_ foodManager: FoodManager) {}
+    func didUpdateUser(_ foodManager: FoodManager) {}
 }

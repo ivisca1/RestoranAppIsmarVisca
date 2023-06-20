@@ -91,13 +91,6 @@ extension BasketViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension BasketViewController : FoodManagerDelegate {
-    func didDeliverOrder(_ foodManager: FoodManager) {}
-    func didLogOutUser(_ foodManager: FoodManager) {}
-    func didSignInUser(_ foodManager: FoodManager, user: User?) {}
-    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
-    func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}    
-    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
-    func didFailWithError(error: String) {}
     
     func didMakeOrder(_ foodManager: FoodManager) {
         let controller = BasketOrderViewController.instantiate()
@@ -120,4 +113,13 @@ extension BasketViewController : FoodManagerDelegate {
         basketItem.badgeColor = UIColor.red
         basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
     }
+    
+    func didDeliverOrder(_ foodManager: FoodManager) {}
+    func didLogOutUser(_ foodManager: FoodManager) {}
+    func didSignInUser(_ foodManager: FoodManager, user: User?) {}
+    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
+    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
+    func didFailWithError(error: String) {}
+    func didUpdateUser(_ foodManager: FoodManager) {}
 }

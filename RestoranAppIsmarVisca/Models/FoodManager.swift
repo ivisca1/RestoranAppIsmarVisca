@@ -10,6 +10,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 protocol FoodManagerDelegate {
+    func didUpdateUser(_ foodManager: FoodManager)
     func didDeliverOrder(_ foodManager: FoodManager)
     func didMakeOrder(_ foodManager: FoodManager)
     func didLogOutUser(_ foodManager: FoodManager)
@@ -244,7 +245,7 @@ class FoodManager {
     
     func isAnyoneSignedIn() {
         if FirebaseAuth.Auth.auth().currentUser != nil {
-            self.db.collection("users").whereField("email", isEqualTo: FirebaseAuth.Auth.auth().currentUser?.email! ?? "a")
+            self.db.collection("users").whereField("email", isEqualTo: FirebaseAuth.Auth.auth().currentUser!.email!)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -336,6 +337,34 @@ class FoodManager {
                             self.basketDishes.removeAll()
                             self.delegate?.didDeliverOrder(self)
                         }
+                    }
+                }
+            }
+        }
+    }
+    
+    func updateUser(name: String, surname: String, phoneNumber: String, address: String) {
+        user = User(name: name, surname: surname, phoneNumber: phoneNumber, email: user!.email, address: address)
+        db.collection("users").whereField("email", isEqualTo: user!.email).getDocuments { (result, error) in
+            if error == nil{
+                let foundUser = self.db.collection("users").document(self.user!.email)
+                foundUser.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        foundUser.updateData([
+                            "name": name,
+                            "surname": surname,
+                            "phoneNumber": phoneNumber,
+                            "address": address
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            } else {
+                                print("Document successfully updated")
+                                self.delegate?.didUpdateUser(self)
+                            }
+                        }
+                    } else {
+                        print("Document does not exist")
                     }
                 }
             }

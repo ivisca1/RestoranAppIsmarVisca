@@ -109,6 +109,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension HomeViewController : FoodManagerDelegate {
+    
     func didDeliverOrder(_ foodManager: FoodManager) {
         let controller = BasketViewController.instantiate()
         tabBarController?.viewControllers?.insert(controller, at: 2)
@@ -137,10 +138,6 @@ extension HomeViewController : FoodManagerDelegate {
         categoryCollectionView.reloadData()
     }
     
-    func didFailWithError(error: String) {
-        print(error)
-    }
-    
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {
         popularDishesCollectionView.reloadData()
         specialsCollectionView.reloadData()
@@ -154,4 +151,6 @@ extension HomeViewController : FoodManagerDelegate {
         basketItem.badgeValue = "\(dishes.count)"
     }
     func didLogOutUser(_ foodManager: FoodManager) {}
+    func didUpdateUser(_ foodManager: FoodManager) {}
+    func didFailWithError(error: String) {}
 }

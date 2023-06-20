@@ -95,6 +95,7 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SearchViewController : FoodManagerDelegate {
+    
     func didDeliverOrder(_ foodManager: FoodManager) {
         let controller = BasketViewController.instantiate()
         tabBarController?.viewControllers?.insert(controller, at: 2)
@@ -106,13 +107,12 @@ extension SearchViewController : FoodManagerDelegate {
     }
     
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
-    
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
-    
     func didFailWithError(error: String) {}
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didMakeOrder(_ foodManager: FoodManager) {}
     func didLogOutUser(_ foodManager: FoodManager) {}
     func didSignInUser(_ foodManager: FoodManager, user: User?) {}
+    func didUpdateUser(_ foodManager: FoodManager) {}
 }
 

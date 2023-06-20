@@ -100,13 +100,6 @@ extension LogInViewController : FoodManagerDelegate {
         tabBarController?.viewControllers?.remove(at: 2)
     }
     
-    func didDeliverOrder(_ foodManager: FoodManager) {}
-    func didMakeOrder(_ foodManager: FoodManager) {}
-    func didLogOutUser(_ foodManager: FoodManager) {}
-    func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
-    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
-    func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
-    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     func didFailWithError(error: String) {
         if error == "Password neispravan" {
             passwordFieldInvalid(error)
@@ -117,4 +110,13 @@ extension LogInViewController : FoodManagerDelegate {
             emailFieldInvalid(error)
         }
     }
+    
+    func didDeliverOrder(_ foodManager: FoodManager) {}
+    func didMakeOrder(_ foodManager: FoodManager) {}
+    func didLogOutUser(_ foodManager: FoodManager) {}
+    func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
+    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
+    func didUpdateUser(_ foodManager: FoodManager) {}
 }

@@ -67,6 +67,7 @@ extension BasketOrderViewController : UITableViewDelegate, UITableViewDataSource
 }
 
 extension BasketOrderViewController : FoodManagerDelegate {
+    
     func didDeliverOrder(_ foodManager: FoodManager) {
         let controller = BasketViewController.instantiate()
         tabBarController?.viewControllers?.insert(controller, at: 2)
@@ -82,6 +83,5 @@ extension BasketOrderViewController : FoodManagerDelegate {
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     func didFailWithError(error: String) {}
-    
-    
+    func didUpdateUser(_ foodManager: FoodManager) {}
 }

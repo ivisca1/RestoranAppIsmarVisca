@@ -14,21 +14,21 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var nameSurnameLabel: UILabel!
     
-    var user = MyVariables.foodManager.user!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        nameSurnameLabel.text = "\(user.name) \(user.surname)"
-        phoneNumberLabel.text = user.phoneNumber
-        emailLabel.text = user.email
-        addressLabel.text = user.address
         
         MyVariables.foodManager.fetchBasket()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         MyVariables.foodManager.delegate = self
+        
+        let user = MyVariables.foodManager.user!
+        
+        nameSurnameLabel.text = "\(user.name) \(user.surname)"
+        phoneNumberLabel.text = user.phoneNumber
+        emailLabel.text = user.email
+        addressLabel.text = user.address
         
         if MyVariables.foodManager.user != nil {
             let tabBar = self.tabBarController!.tabBar
@@ -52,6 +52,7 @@ class UserProfileViewController: UIViewController {
 }
 
 extension UserProfileViewController : FoodManagerDelegate {
+    
     func didDeliverOrder(_ foodManager: FoodManager) {
         let controller = BasketViewController.instantiate()
         tabBarController?.viewControllers?.insert(controller, at: 2)
@@ -81,4 +82,5 @@ extension UserProfileViewController : FoodManagerDelegate {
     func didFailWithError(error: String) {}
     func didMakeOrder(_ foodManager: FoodManager) {}
     func didSignInUser(_ foodManager: FoodManager, user: User?) {}
+    func didUpdateUser(_ foodManager: FoodManager) {}
 }
