@@ -12,6 +12,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     
+    var shouldSearchFood = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +21,8 @@ class SearchViewController: UIViewController {
 
         searchTextField.delegate = self
         registerCells()
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,26 +47,22 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController : UITextFieldDelegate {
     @IBAction func searchButtonPressed(_ sender: UIButton) {
+        let food = searchTextField.text!
+        MyVariables.foodManager.fetchFoodSearch(document: "food", searchText: food)
         searchTextField.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        shouldSearchFood = true
         searchTextField.endEditing(true)
         return true
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField.text != "" {
-            return true
-        } else {
-            textField.placeholder = "Search"
-            return false
-        }
-    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let food = searchTextField.text {
+        let food = searchTextField.text!
+        if food.isEmpty == false && shouldSearchFood {
             MyVariables.foodManager.fetchFoodSearch(document: "food", searchText: food)
+            shouldSearchFood = false
         }
     }
 }

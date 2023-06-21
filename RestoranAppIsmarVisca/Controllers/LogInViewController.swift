@@ -32,6 +32,8 @@ class LogInViewController: UIViewController {
         
         emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange), for: .editingChanged)
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     @objc func emailTextFieldDidChange() {

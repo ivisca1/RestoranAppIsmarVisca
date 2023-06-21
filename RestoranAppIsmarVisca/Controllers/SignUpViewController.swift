@@ -37,6 +37,8 @@ class SignUpViewController: UIViewController {
         passwordAgainTextField.clipsToBounds = true
         
         signUpButton.layer.cornerRadius = 20
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
