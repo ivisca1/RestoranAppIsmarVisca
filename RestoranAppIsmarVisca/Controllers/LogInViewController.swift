@@ -72,7 +72,7 @@ class LogInViewController: UIViewController {
                 MyVariables.foodManager.logInUser(email: email, password: password)
             }
         } else {
-            textFieldInvalid("Password polje je obavezno!", textField: passwordTextField, label: invalidPasswordLabel)
+            textFieldInvalid("Šifra polje je obavezno!", textField: passwordTextField, label: invalidPasswordLabel)
         }
     }
 }
@@ -89,9 +89,9 @@ extension LogInViewController : FoodManagerDelegate {
     }
     
     func didFailWithError(error: String) {
-        if error == "Password neispravan" {
+        if error == "Šifra neispravna!" {
             textFieldInvalid(error, textField: passwordTextField, label: invalidPasswordLabel)
-        } else if error == "Korisnik nije pronađen. Prvo kreirajte profil." {
+        } else if error == "Korisnik nije pronađen. Prvo kreirajte profil!" {
             textFieldInvalid(error, textField: emailTextField, label: invalidEmailLabel)
         } else {
             textFieldInvalid(error, textField: passwordTextField, label: invalidPasswordLabel)

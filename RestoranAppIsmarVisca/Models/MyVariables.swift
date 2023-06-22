@@ -28,3 +28,12 @@ func containsOnlyLetters(str: String) -> Bool {
    }
    return true
 }
+
+func containsOnlyNumbers(str: String) -> Bool {
+   for chr in str {
+      if (!(chr >= "0" && chr <= "9")) {
+         return false
+      }
+   }
+   return true
+}

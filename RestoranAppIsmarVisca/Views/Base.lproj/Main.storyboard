@@ -449,12 +449,12 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GHs-uE-7Wa">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ime" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GHs-uE-7Wa">
                                                         <rect key="frame" x="16" y="67" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rep-R5-3vK">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Broj Telefona" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rep-R5-3vK">
                                                         <rect key="frame" x="16" y="183" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -464,7 +464,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zi4-mC-dFe">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adresa" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zi4-mC-dFe">
                                                         <rect key="frame" x="16" y="299" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -474,7 +474,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password again" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yNR-po-Uzj">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Potvrdi password" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yNR-po-Uzj">
                                                         <rect key="frame" x="16" y="415" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
@@ -493,7 +493,7 @@
                                                             <action selector="signUpButtonPressed:" destination="ZgI-us-K7n" eventType="touchUpInside" id="TcI-5b-78I"/>
                                                         </connections>
                                                     </button>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XpA-Yh-kGp">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prezime" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XpA-Yh-kGp">
                                                         <rect key="frame" x="16" y="125" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -540,6 +540,15 @@
                                                         <color key="textColor" systemColor="systemRedColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ae7-e1-g8u">
+                                                        <rect key="frame" x="16" y="526" width="361" height="15"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="15" id="eiU-aP-pd9"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -567,11 +576,14 @@
                                                     <constraint firstItem="ij6-7N-ZXB" firstAttribute="leading" secondItem="jYc-Au-dd8" secondAttribute="leading" constant="16" id="OFo-9C-yG7"/>
                                                     <constraint firstItem="yNR-po-Uzj" firstAttribute="top" secondItem="Us8-VU-ob8" secondAttribute="bottom" constant="6.6699999999999999" id="RAi-53-UZ3"/>
                                                     <constraint firstAttribute="trailing" secondItem="Yly-Du-EKc" secondAttribute="trailing" constant="16" id="TxY-O5-IIl"/>
+                                                    <constraint firstItem="ae7-e1-g8u" firstAttribute="top" secondItem="yf9-vp-JiT" secondAttribute="bottom" constant="3" id="W0x-4Q-qFv"/>
                                                     <constraint firstItem="HAO-jL-Bmc" firstAttribute="leading" secondItem="jYc-Au-dd8" secondAttribute="leading" constant="16" id="W8r-HU-JsM"/>
                                                     <constraint firstItem="ij6-7N-ZXB" firstAttribute="top" secondItem="HAO-jL-Bmc" secondAttribute="bottom" constant="6.6699999999999999" id="WMj-Pi-zfL"/>
                                                     <constraint firstAttribute="trailing" secondItem="rep-R5-3vK" secondAttribute="trailing" constant="16" id="ZyQ-Lc-4Xt"/>
                                                     <constraint firstAttribute="trailing" secondItem="9so-ig-tE4" secondAttribute="trailing" constant="16" id="a9f-Qe-q5o"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ae7-e1-g8u" secondAttribute="trailing" constant="16" id="aNQ-8M-sXi"/>
                                                     <constraint firstAttribute="trailing" secondItem="XpA-Yh-kGp" secondAttribute="trailing" constant="16" id="bDw-jS-kNp"/>
+                                                    <constraint firstItem="ae7-e1-g8u" firstAttribute="leading" secondItem="jYc-Au-dd8" secondAttribute="leading" constant="16" id="bah-xe-sPr"/>
                                                     <constraint firstItem="rep-R5-3vK" firstAttribute="top" secondItem="l4C-R7-7ge" secondAttribute="bottom" constant="6.6699999999999999" id="dda-sM-YAB"/>
                                                     <constraint firstAttribute="trailing" secondItem="zi4-mC-dFe" secondAttribute="trailing" constant="16" id="djl-d4-qX1"/>
                                                     <constraint firstItem="yf9-vp-JiT" firstAttribute="centerX" secondItem="jYc-Au-dd8" secondAttribute="centerX" id="dyb-an-RtG"/>
@@ -619,6 +631,7 @@
                     <connections>
                         <outlet property="addressTextField" destination="zi4-mC-dFe" id="riz-jF-T7b"/>
                         <outlet property="emailTextField" destination="mfJ-yH-Vcu" id="iLZ-VW-APi"/>
+                        <outlet property="errorLabel" destination="ae7-e1-g8u" id="0MB-di-ZfV"/>
                         <outlet property="invalidAddressLabel" destination="HAO-jL-Bmc" id="Etd-rm-MPB"/>
                         <outlet property="invalidEmailLabel" destination="yLx-vt-xva" id="SLp-cK-q5P"/>
                         <outlet property="invalidNameLabel" destination="o6O-wO-u73" id="YPB-1v-c3Q"/>
@@ -661,22 +674,22 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Rf-sc-egd">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ime" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Rf-sc-egd">
                                                         <rect key="frame" x="16" y="66.333333333333329" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SqI-j0-rha">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Prezime" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SqI-j0-rha">
                                                         <rect key="frame" x="16" y="124.33333333333334" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WEv-av-ViP">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Broj Telefona" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WEv-av-ViP">
                                                         <rect key="frame" x="16" y="182.33333333333334" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cEb-Fy-rsI">
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adresa" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cEb-Fy-rsI">
                                                         <rect key="frame" x="16" y="240.33333333333331" width="361" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -1262,7 +1275,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Traži" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hku-PD-TgB">
-                                                <rect key="frame" x="16" y="6" width="303.33333333333337" height="38.333333333333336"/>
+                                                <rect key="frame" x="16" y="6" width="303.33333333333331" height="38.333333333333336"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.329999999999998" id="ilD-TU-AtO"/>

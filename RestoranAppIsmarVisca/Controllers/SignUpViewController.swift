@@ -9,6 +9,7 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var invalidPasswordAgainLabel: UILabel!
     @IBOutlet weak var invalidPasswordLabel: UILabel!
     @IBOutlet weak var invalidAddressLabel: UILabel!
@@ -52,7 +53,7 @@ class SignUpViewController: UIViewController {
         var nameValid = false
         if name.isEmpty == false {
             if containsOnlyLetters(str: name) {
-                print("TU SAM")
+                nameValid = true
             } else {
                 textFieldInvalid("Ime treba da sadrži samo slova!", textField: nameTextField, label: invalidNameLabel)
             }
@@ -60,9 +61,72 @@ class SignUpViewController: UIViewController {
             textFieldInvalid("Ime polje je obavezno!", textField: nameTextField, label: invalidNameLabel)
         }
         
-        //let user = User(name: name, surname: surname, phoneNumber: phoneNumber, email: email, address: address)
-        //MyVariables.foodManager.createUser(userToCreate: user, password: password)
-
+        var surnameValid = false
+        if surname.isEmpty == false {
+            if containsOnlyLetters(str: name) {
+                surnameValid = true
+            } else {
+                textFieldInvalid("Prezime treba da sadrži samo slova!", textField: surnameTextField, label: invalidSurnameLabel)
+            }
+        } else {
+            textFieldInvalid("Prezime polje je obavezno!", textField: surnameTextField, label: invalidSurnameLabel)
+        }
+        
+        var phoneNumberValid = false
+        if phoneNumber.isEmpty == false {
+            if containsOnlyNumbers(str: name) {
+                phoneNumberValid = true
+            } else {
+                textFieldInvalid("Broj telefona treba da sadrži samo brojeve!", textField: phoneNumberTextField, label: invalidPhoneNumberLabel)
+            }
+        } else {
+            textFieldInvalid("Broj telefona polje je obavezno!", textField: phoneNumberTextField, label: invalidPhoneNumberLabel)
+        }
+        
+        var emailValid = false
+        if email.isEmpty == false {
+            if email.isValid(String.ValidityType.email) {
+                emailValid = true
+            } else {
+                textFieldInvalid("Format email adrese nije validan!",textField: emailTextField, label: invalidEmailLabel)
+            }
+        } else {
+            textFieldInvalid("Email polje je obavezno!",textField: emailTextField, label: invalidEmailLabel)
+        }
+        
+        var addressValid = false
+        if address.isEmpty == false {
+            addressValid = true
+        } else {
+            textFieldInvalid("Adresa polje je obavezno!", textField: addressTextField, label: invalidAddressLabel)
+        }
+        
+        var passwordValid = false
+        if password.isEmpty == false {
+            if password.count < 6 {
+                textFieldInvalid("Šifra mora imati bar 6 karaktera!", textField: passwordTextField, label: invalidPasswordLabel)
+            } else {
+                passwordValid = true
+            }
+        } else {
+            textFieldInvalid("Šifra polje je obavezno!", textField: passwordTextField, label: invalidPasswordLabel)
+        }
+        
+        if passwordAgain.isEmpty == false {
+            if password == passwordAgain {
+                if nameValid && surnameValid && phoneNumberValid && addressValid && emailValid && passwordValid {
+                    let user = User(name: name, surname: surname, phoneNumber: phoneNumber, email: email, address: address)
+                    MyVariables.foodManager.createUser(userToCreate: user, password: password)
+                }
+            } else {
+                if passwordValid {
+                    textFieldInvalid("Šifre se ne podudaraju!", textField: passwordTextField, label: invalidPasswordLabel)
+                }
+                textFieldInvalid("Šifre se ne podudaraju!", textField: passwordAgainTextField, label: invalidPasswordAgainLabel)
+            }
+        } else {
+            textFieldInvalid("Potvrdi Šifru polje je obavezno!", textField: passwordAgainTextField, label: invalidPasswordAgainLabel)
+        }
     }
 }
 
@@ -75,13 +139,21 @@ extension SignUpViewController : FoodManagerDelegate {
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.last
     }
     
+    func didFailWithError(error: String) {
+        if error == "Profil sa ovim email-om već postoji!" {
+            textFieldInvalid(error, textField: emailTextField, label: invalidEmailLabel)
+        } else {
+            errorLabel.text = error
+            errorLabel.isHidden = false
+        }
+    }
+    
     func didMakeOrder(_ foodManager: FoodManager) {}
     func didLogOutUser(_ foodManager: FoodManager) {}
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
-    func didFailWithError(error: String) {}
     func didDeliverOrder(_ foodManager: FoodManager) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
 }
@@ -92,42 +164,49 @@ extension SignUpViewController {
         emailTextField.layer.borderColor = defaultColor
         emailTextField.layer.borderWidth = 0.25
         invalidEmailLabel.isHidden = true
+        errorLabel.isHidden = true
     }
     
     @objc func passwordTextFieldDidChange() {
         passwordTextField.layer.borderColor = defaultColor
         passwordTextField.layer.borderWidth = 0.25
         invalidPasswordLabel.isHidden = true
+        errorLabel.isHidden = true
     }
     
     @objc func passwordAgainTextFieldDidChange() {
         passwordAgainTextField.layer.borderColor = defaultColor
         passwordAgainTextField.layer.borderWidth = 0.25
         invalidPasswordAgainLabel.isHidden = true
+        errorLabel.isHidden = true
     }
     
     @objc func nameTextFieldDidChange() {
         nameTextField.layer.borderColor = defaultColor
         nameTextField.layer.borderWidth = 0.25
         invalidNameLabel.isHidden = true
+        errorLabel.isHidden = true
     }
     
     @objc func surnameTextFieldDidChange() {
         surnameTextField.layer.borderColor = defaultColor
         surnameTextField.layer.borderWidth = 0.25
         invalidSurnameLabel.isHidden = true
+        errorLabel.isHidden = true
     }
     
     @objc func addressTextFieldDidChange() {
         addressTextField.layer.borderColor = defaultColor
         addressTextField.layer.borderWidth = 0.25
         invalidAddressLabel.isHidden = true
+        errorLabel.isHidden = true
     }
     
     @objc func phoneNumberTextFieldDidChange() {
         phoneNumberTextField.layer.borderColor = defaultColor
         phoneNumberTextField.layer.borderWidth = 0.25
         invalidPhoneNumberLabel.isHidden = true
+        errorLabel.isHidden = true
     }
     
     private func setUpEverything() {
@@ -155,6 +234,7 @@ extension SignUpViewController {
         invalidSurnameLabel.isHidden = true
         invalidAddressLabel.isHidden = true
         invalidPhoneNumberLabel.isHidden = true
+        errorLabel.isHidden = true
         
         emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange), for: .editingChanged)

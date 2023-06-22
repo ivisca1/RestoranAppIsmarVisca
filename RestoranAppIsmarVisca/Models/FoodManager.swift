@@ -175,7 +175,15 @@ class FoodManager {
     func createUser(userToCreate : User, password: String) {
         FirebaseAuth.Auth.auth().createUser(withEmail: userToCreate.email, password: password, completion: { result, error in
             if error != nil {
-                print(error!)
+                let errCode = AuthErrorCode(_nsError: error! as NSError)
+                var errorMsg = ""
+                switch errCode.code {
+                case .accountExistsWithDifferentCredential, .credentialAlreadyInUse, .emailAlreadyInUse:
+                    errorMsg = "Profil sa ovim email-om već postoji!"
+                default:
+                    errorMsg = "Neuspješan Sign Up!"
+                }
+                self.delegate?.didFailWithError(error: errorMsg)
             }
             else {
                 self.db.collection("users").document(userToCreate.email).setData([
@@ -210,11 +218,11 @@ class FoodManager {
                 case .weakPassword:
                     errorMsg = "Password is weak."*/
                 case .userNotFound:
-                    errorMsg = "Korisnik nije pronađen. Prvo kreirajte profil."
+                    errorMsg = "Korisnik nije pronađen. Prvo kreirajte profil!"
                 case .wrongPassword:
-                    errorMsg = "Password neispravan"
+                    errorMsg = "Šifra neispravna!"
                 default:
-                    errorMsg = "Neuspješan Log In"
+                    errorMsg = "Neuspješan Log In!"
                 }
                 self.delegate?.didFailWithError(error: errorMsg)
             }
