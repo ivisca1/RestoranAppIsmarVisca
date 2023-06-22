@@ -15,8 +15,8 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    let redColor = UIColor.red.cgColor
     let defaultColor = UIColor.lightGray.cgColor
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,10 +61,10 @@ class LogInViewController: UIViewController {
             if email.isValid(String.ValidityType.email) {
                 emailValid = true
             } else {
-                emailFieldInvalid("Format email adrese nije validan!")
+                textFieldInvalid("Format email adrese nije validan!",textField: emailTextField, label: invalidEmailLabel)
             }
         } else {
-            emailFieldInvalid("Email polje je obavezno!")
+            textFieldInvalid("Email polje je obavezno!",textField: emailTextField, label: invalidEmailLabel)
         }
         
         if password.isEmpty == false {
@@ -72,22 +72,8 @@ class LogInViewController: UIViewController {
                 MyVariables.foodManager.logInUser(email: email, password: password)
             }
         } else {
-            passwordFieldInvalid("Password polje je obavezno!")
+            textFieldInvalid("Password polje je obavezno!", textField: passwordTextField, label: invalidPasswordLabel)
         }
-    }
-    
-    private func emailFieldInvalid(_ msg: String) {
-        emailTextField.layer.borderColor = redColor
-        emailTextField.layer.borderWidth = 1.0
-        invalidEmailLabel.text = msg
-        invalidEmailLabel.isHidden = false
-    }
-    
-    private func passwordFieldInvalid(_ msg: String) {
-        passwordTextField.layer.borderColor = redColor
-        passwordTextField.layer.borderWidth = 1.0
-        invalidPasswordLabel.text = msg
-        invalidPasswordLabel.isHidden = false
     }
 }
 
@@ -104,12 +90,12 @@ extension LogInViewController : FoodManagerDelegate {
     
     func didFailWithError(error: String) {
         if error == "Password neispravan" {
-            passwordFieldInvalid(error)
+            textFieldInvalid(error, textField: passwordTextField, label: invalidPasswordLabel)
         } else if error == "Korisnik nije pronađen. Prvo kreirajte profil." {
-            emailFieldInvalid(error)
+            textFieldInvalid(error, textField: emailTextField, label: invalidEmailLabel)
         } else {
-            passwordFieldInvalid(error)
-            emailFieldInvalid(error)
+            textFieldInvalid(error, textField: passwordTextField, label: invalidPasswordLabel)
+            textFieldInvalid(error, textField: emailTextField, label: invalidEmailLabel)
         }
     }
     

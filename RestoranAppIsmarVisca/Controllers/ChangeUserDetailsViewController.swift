@@ -9,6 +9,10 @@ import UIKit
 
 class ChangeUserDetailsViewController: UIViewController {
 
+    @IBOutlet weak var invalidAddressLabel: UILabel!
+    @IBOutlet weak var invalidPhoneNumberLabel: UILabel!
+    @IBOutlet weak var invalidSurnameLabel: UILabel!
+    @IBOutlet weak var invalidNameLabel: UILabel!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var surnameTextField: UITextField!
