@@ -32,4 +32,10 @@ extension String {
         
         return NSPredicate(format: format, regex).evaluate(with: self)
     }
+    
+    var isNumber: Bool {
+        return self.range(
+            of: "^[0-9]*$",
+            options: .regularExpression) != nil
+    }
 }

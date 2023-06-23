@@ -63,7 +63,7 @@ class SignUpViewController: UIViewController {
         
         var surnameValid = false
         if surname.isEmpty == false {
-            if containsOnlyLetters(str: name) {
+            if containsOnlyLetters(str: surname) {
                 surnameValid = true
             } else {
                 textFieldInvalid("Prezime treba da sadrži samo slova!", textField: surnameTextField, label: invalidSurnameLabel)
@@ -74,7 +74,7 @@ class SignUpViewController: UIViewController {
         
         var phoneNumberValid = false
         if phoneNumber.isEmpty == false {
-            if containsOnlyNumbers(str: name) {
+            if phoneNumber.isNumber {
                 phoneNumberValid = true
             } else {
                 textFieldInvalid("Broj telefona treba da sadrži samo brojeve!", textField: phoneNumberTextField, label: invalidPhoneNumberLabel)
