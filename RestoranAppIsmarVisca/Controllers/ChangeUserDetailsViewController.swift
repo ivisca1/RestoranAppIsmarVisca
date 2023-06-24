@@ -20,6 +20,7 @@ class ChangeUserDetailsViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     
     let defaultColor = UIColor.lightGray.cgColor
+    var shouldChangeDetails = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,17 +70,12 @@ extension ChangeUserDetailsViewController : UITextFieldDelegate {
         }
         
         if textField.tag == 3 {
+            tryToChange()
             textField.endEditing(true)
             return true
         }
         
         return false
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField.tag == 3 {
-            tryToChange()
-        }
     }
 }
 

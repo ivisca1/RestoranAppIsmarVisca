@@ -42,6 +42,162 @@ class SignUpViewController: UIViewController {
     
 
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
+        tryToSignUp()
+    }
+}
+
+extension SignUpViewController : FoodManagerDelegate {
+    
+    func didSignInUser(_ foodManager: FoodManager, user: User?) {
+        let controller = UserProfileNavigationController.instantiate()
+        tabBarController?.viewControllers?.append(controller)
+        tabBarController?.viewControllers?.remove(at: 3)
+        tabBarController?.selectedViewController = tabBarController?.viewControllers?.last
+    }
+    
+    func didFailWithError(error: String) {
+        if error == "Profil sa ovim email-om već postoji!" {
+            textFieldInvalid(error, textField: emailTextField, label: invalidEmailLabel)
+        } else {
+            errorLabel.text = error
+            errorLabel.isHidden = false
+        }
+    }
+    
+    func didMakeOrder(_ foodManager: FoodManager) {}
+    func didLogOutUser(_ foodManager: FoodManager) {}
+    func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
+    func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
+    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
+    func didDeliverOrder(_ foodManager: FoodManager) {}
+    func didUpdateUser(_ foodManager: FoodManager) {}
+}
+
+extension SignUpViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+           nextField.becomeFirstResponder()
+       } else {
+           textField.resignFirstResponder()
+       }
+       
+       if textField.tag == 6 {
+           tryToSignUp()
+           textField.endEditing(true)
+           return true
+       }
+       
+       return false
+   }
+}
+
+extension SignUpViewController {
+    
+    @objc func emailTextFieldDidChange() {
+        emailTextField.layer.borderColor = defaultColor
+        emailTextField.layer.borderWidth = 0.25
+        invalidEmailLabel.isHidden = true
+        errorLabel.isHidden = true
+    }
+    
+    @objc func passwordTextFieldDidChange() {
+        passwordTextField.layer.borderColor = defaultColor
+        passwordTextField.layer.borderWidth = 0.25
+        invalidPasswordLabel.isHidden = true
+        errorLabel.isHidden = true
+    }
+    
+    @objc func passwordAgainTextFieldDidChange() {
+        passwordAgainTextField.layer.borderColor = defaultColor
+        passwordAgainTextField.layer.borderWidth = 0.25
+        invalidPasswordAgainLabel.isHidden = true
+        errorLabel.isHidden = true
+    }
+    
+    @objc func nameTextFieldDidChange() {
+        nameTextField.layer.borderColor = defaultColor
+        nameTextField.layer.borderWidth = 0.25
+        invalidNameLabel.isHidden = true
+        errorLabel.isHidden = true
+    }
+    
+    @objc func surnameTextFieldDidChange() {
+        surnameTextField.layer.borderColor = defaultColor
+        surnameTextField.layer.borderWidth = 0.25
+        invalidSurnameLabel.isHidden = true
+        errorLabel.isHidden = true
+    }
+    
+    @objc func addressTextFieldDidChange() {
+        addressTextField.layer.borderColor = defaultColor
+        addressTextField.layer.borderWidth = 0.25
+        invalidAddressLabel.isHidden = true
+        errorLabel.isHidden = true
+    }
+    
+    @objc func phoneNumberTextFieldDidChange() {
+        phoneNumberTextField.layer.borderColor = defaultColor
+        phoneNumberTextField.layer.borderWidth = 0.25
+        invalidPhoneNumberLabel.isHidden = true
+        errorLabel.isHidden = true
+    }
+    
+    private func setUpEverything() {
+        nameTextField.delegate = self
+        surnameTextField.delegate = self
+        phoneNumberTextField.delegate = self
+        emailTextField.delegate = self
+        addressTextField.delegate = self
+        passwordTextField.delegate = self
+        passwordAgainTextField.delegate = self
+        
+        nameTextField.tag = 0
+        surnameTextField.tag = 1
+        phoneNumberTextField.tag = 2
+        emailTextField.tag = 3
+        addressTextField.tag = 4
+        passwordTextField.tag = 5
+        passwordAgainTextField.tag = 6
+        
+        nameTextField.layer.cornerRadius = 15
+        nameTextField.clipsToBounds = true
+        surnameTextField.layer.cornerRadius = 15
+        surnameTextField.clipsToBounds = true
+        phoneNumberTextField.layer.cornerRadius = 15
+        phoneNumberTextField.clipsToBounds = true
+        emailTextField.layer.cornerRadius = 15
+        emailTextField.clipsToBounds = true
+        addressTextField.layer.cornerRadius = 15
+        addressTextField.clipsToBounds = true
+        passwordTextField.layer.cornerRadius = 15
+        passwordTextField.clipsToBounds = true
+        passwordAgainTextField.layer.cornerRadius = 15
+        passwordAgainTextField.clipsToBounds = true
+        
+        signUpButton.layer.cornerRadius = 20
+        
+        invalidEmailLabel.isHidden = true
+        invalidPasswordLabel.isHidden = true
+        invalidPasswordAgainLabel.isHidden = true
+        invalidNameLabel.isHidden = true
+        invalidSurnameLabel.isHidden = true
+        invalidAddressLabel.isHidden = true
+        invalidPhoneNumberLabel.isHidden = true
+        errorLabel.isHidden = true
+        
+        emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange), for: .editingChanged)
+        passwordAgainTextField.addTarget(self, action: #selector(passwordAgainTextFieldDidChange), for: .editingChanged)
+        nameTextField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
+        surnameTextField.addTarget(self, action: #selector(surnameTextFieldDidChange), for: .editingChanged)
+        addressTextField.addTarget(self, action: #selector(addressTextFieldDidChange), for: .editingChanged)
+        phoneNumberTextField.addTarget(self, action: #selector(phoneNumberTextFieldDidChange), for: .editingChanged)
+    }
+    
+    private func tryToSignUp() {
+        
         let name = nameTextField.text!
         let surname = surnameTextField.text!
         let phoneNumber = phoneNumberTextField.text!
@@ -127,121 +283,5 @@ class SignUpViewController: UIViewController {
         } else {
             textFieldInvalid("Potvrdi Šifru polje je obavezno!", textField: passwordAgainTextField, label: invalidPasswordAgainLabel)
         }
-    }
-}
-
-extension SignUpViewController : FoodManagerDelegate {
-    
-    func didSignInUser(_ foodManager: FoodManager, user: User?) {
-        let controller = UserProfileNavigationController.instantiate()
-        tabBarController?.viewControllers?.append(controller)
-        tabBarController?.viewControllers?.remove(at: 3)
-        tabBarController?.selectedViewController = tabBarController?.viewControllers?.last
-    }
-    
-    func didFailWithError(error: String) {
-        if error == "Profil sa ovim email-om već postoji!" {
-            textFieldInvalid(error, textField: emailTextField, label: invalidEmailLabel)
-        } else {
-            errorLabel.text = error
-            errorLabel.isHidden = false
-        }
-    }
-    
-    func didMakeOrder(_ foodManager: FoodManager) {}
-    func didLogOutUser(_ foodManager: FoodManager) {}
-    func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
-    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
-    func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
-    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
-    func didDeliverOrder(_ foodManager: FoodManager) {}
-    func didUpdateUser(_ foodManager: FoodManager) {}
-}
-
-extension SignUpViewController {
-    
-    @objc func emailTextFieldDidChange() {
-        emailTextField.layer.borderColor = defaultColor
-        emailTextField.layer.borderWidth = 0.25
-        invalidEmailLabel.isHidden = true
-        errorLabel.isHidden = true
-    }
-    
-    @objc func passwordTextFieldDidChange() {
-        passwordTextField.layer.borderColor = defaultColor
-        passwordTextField.layer.borderWidth = 0.25
-        invalidPasswordLabel.isHidden = true
-        errorLabel.isHidden = true
-    }
-    
-    @objc func passwordAgainTextFieldDidChange() {
-        passwordAgainTextField.layer.borderColor = defaultColor
-        passwordAgainTextField.layer.borderWidth = 0.25
-        invalidPasswordAgainLabel.isHidden = true
-        errorLabel.isHidden = true
-    }
-    
-    @objc func nameTextFieldDidChange() {
-        nameTextField.layer.borderColor = defaultColor
-        nameTextField.layer.borderWidth = 0.25
-        invalidNameLabel.isHidden = true
-        errorLabel.isHidden = true
-    }
-    
-    @objc func surnameTextFieldDidChange() {
-        surnameTextField.layer.borderColor = defaultColor
-        surnameTextField.layer.borderWidth = 0.25
-        invalidSurnameLabel.isHidden = true
-        errorLabel.isHidden = true
-    }
-    
-    @objc func addressTextFieldDidChange() {
-        addressTextField.layer.borderColor = defaultColor
-        addressTextField.layer.borderWidth = 0.25
-        invalidAddressLabel.isHidden = true
-        errorLabel.isHidden = true
-    }
-    
-    @objc func phoneNumberTextFieldDidChange() {
-        phoneNumberTextField.layer.borderColor = defaultColor
-        phoneNumberTextField.layer.borderWidth = 0.25
-        invalidPhoneNumberLabel.isHidden = true
-        errorLabel.isHidden = true
-    }
-    
-    private func setUpEverything() {
-        nameTextField.layer.cornerRadius = 15
-        nameTextField.clipsToBounds = true
-        surnameTextField.layer.cornerRadius = 15
-        surnameTextField.clipsToBounds = true
-        phoneNumberTextField.layer.cornerRadius = 15
-        phoneNumberTextField.clipsToBounds = true
-        emailTextField.layer.cornerRadius = 15
-        emailTextField.clipsToBounds = true
-        addressTextField.layer.cornerRadius = 15
-        addressTextField.clipsToBounds = true
-        passwordTextField.layer.cornerRadius = 15
-        passwordTextField.clipsToBounds = true
-        passwordAgainTextField.layer.cornerRadius = 15
-        passwordAgainTextField.clipsToBounds = true
-        
-        signUpButton.layer.cornerRadius = 20
-        
-        invalidEmailLabel.isHidden = true
-        invalidPasswordLabel.isHidden = true
-        invalidPasswordAgainLabel.isHidden = true
-        invalidNameLabel.isHidden = true
-        invalidSurnameLabel.isHidden = true
-        invalidAddressLabel.isHidden = true
-        invalidPhoneNumberLabel.isHidden = true
-        errorLabel.isHidden = true
-        
-        emailTextField.addTarget(self, action: #selector(emailTextFieldDidChange), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange), for: .editingChanged)
-        passwordAgainTextField.addTarget(self, action: #selector(passwordAgainTextFieldDidChange), for: .editingChanged)
-        nameTextField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
-        surnameTextField.addTarget(self, action: #selector(surnameTextFieldDidChange), for: .editingChanged)
-        addressTextField.addTarget(self, action: #selector(addressTextFieldDidChange), for: .editingChanged)
-        phoneNumberTextField.addTarget(self, action: #selector(phoneNumberTextFieldDidChange), for: .editingChanged)
     }
 }
