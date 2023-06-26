@@ -31,10 +31,7 @@ class UserProfileViewController: UIViewController {
         addressLabel.text = user.address
         
         if MyVariables.foodManager.user != nil {
-            let tabBar = self.tabBarController!.tabBar
-            let basketItem = tabBar.items![2]
-            basketItem.badgeColor = UIColor.red
-            basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
+            self.updateBasketBadge()
         }
         
         if MyVariables.foodManager.user != nil && MyVariables.foodManager.ordered {
@@ -68,17 +65,20 @@ extension UserProfileViewController : FoodManagerDelegate {
     }
     
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {
-        let tabBar = self.tabBarController!.tabBar
-        let basketItem = tabBar.items![2]
-        basketItem.badgeColor = UIColor.red
-        basketItem.badgeValue = "\(dishes.count)"
+        self.updateBasketBadge()
+    }
+    
+    func didMakeOrder(_ foodManager: FoodManager) {
+        let controller = BasketOrderViewController.instantiate()
+        controller.address = MyVariables.foodManager.user?.address
+        tabBarController?.viewControllers?.insert(controller, at: 2)
+        tabBarController?.viewControllers?.remove(at: 3)
     }
     
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     func didFailWithError(error: String) {}
-    func didMakeOrder(_ foodManager: FoodManager) {}
     func didSignInUser(_ foodManager: FoodManager, user: User?) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
 }

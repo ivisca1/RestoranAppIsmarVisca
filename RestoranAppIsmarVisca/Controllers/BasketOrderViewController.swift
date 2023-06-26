@@ -19,15 +19,12 @@ class BasketOrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        addressLabel.text = address
-        nameSurnameLabel.text = "\(MyVariables.foodManager.user!.name) \(MyVariables.foodManager.user!.surname)"
-        phoneNumberLabel.text = MyVariables.foodManager.user?.phoneNumber
-        var totalPrice = 0
-        for dish in MyVariables.foodManager.basketDishes {
-            totalPrice = totalPrice + (Int(dish.price.digits) ?? 0)
+        
+        if MyVariables.foodManager.user != nil {
+            self.updateBasketBadge()
         }
-        totalPriceLabel.text = "\(totalPrice) KM"
+
+        setUpEverything()
         
         registerCells()
     }
@@ -38,10 +35,6 @@ class BasketOrderViewController: UIViewController {
         if MyVariables.foodManager.user != nil && MyVariables.foodManager.ordered {
             MyVariables.foodManager.isOrderDelivered()
         }
-    }
-
-    private func registerCells() {
-        basketTableView.register(UINib(nibName: SearchFoodViewCell.identifier, bundle: nil), forCellReuseIdentifier: SearchFoodViewCell.identifier)
     }
 }
 
@@ -84,4 +77,23 @@ extension BasketOrderViewController : FoodManagerDelegate {
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     func didFailWithError(error: String) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
+}
+
+extension BasketOrderViewController {
+    
+    private func setUpEverything() {
+        
+        addressLabel.text = address
+        nameSurnameLabel.text = "\(MyVariables.foodManager.user!.name) \(MyVariables.foodManager.user!.surname)"
+        phoneNumberLabel.text = MyVariables.foodManager.user?.phoneNumber
+        var totalPrice = 0
+        for dish in MyVariables.foodManager.basketDishes {
+            totalPrice = totalPrice + (Int(dish.price.digits) ?? 0)
+        }
+        totalPriceLabel.text = "\(totalPrice) KM"
+    }
+    
+    private func registerCells() {
+        basketTableView.register(UINib(nibName: SearchFoodViewCell.identifier, bundle: nil), forCellReuseIdentifier: SearchFoodViewCell.identifier)
+    }
 }

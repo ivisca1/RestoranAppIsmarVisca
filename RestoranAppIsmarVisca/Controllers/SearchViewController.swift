@@ -29,10 +29,7 @@ class SearchViewController: UIViewController {
         MyVariables.foodManager.delegate = self
         
         if MyVariables.foodManager.user != nil {
-            let tabBar = self.tabBarController!.tabBar
-            let basketItem = tabBar.items![2]
-            basketItem.badgeColor = UIColor.red
-            basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
+            self.updateBasketBadge()
         }
         
         if MyVariables.foodManager.user != nil && MyVariables.foodManager.ordered {

@@ -34,10 +34,7 @@ class HomeViewController: UIViewController {
         MyVariables.foodManager.delegate = self
         
         if MyVariables.foodManager.user != nil {
-            let tabBar = self.tabBarController!.tabBar
-            let basketItem = tabBar.items![2]
-            basketItem.badgeColor = UIColor.red
-            basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
+            self.updateBasketBadge()
         }
         
         if MyVariables.foodManager.user != nil && MyVariables.foodManager.ordered {
@@ -143,13 +140,11 @@ extension HomeViewController : FoodManagerDelegate {
         specialsCollectionView.reloadData()
     }
     
-    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {
-        let tabBar = self.tabBarController!.tabBar
-        let basketItem = tabBar.items![2]
-        basketItem.badgeColor = UIColor.red
-        basketItem.badgeValue = "\(dishes.count)"
+        self.updateBasketBadge()
     }
+    
+    func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didLogOutUser(_ foodManager: FoodManager) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
     func didFailWithError(error: String) {}

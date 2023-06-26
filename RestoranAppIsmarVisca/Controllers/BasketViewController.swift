@@ -24,29 +24,23 @@ class BasketViewController: UIViewController {
         orderButton.layer.cornerRadius = 20
         changeButton.layer.cornerRadius = 10
         basketTableView.layer.cornerRadius = 30
+        
+        if MyVariables.foodManager.user != nil {
+            self.updateBasketBadge()
+        }
+        
         registerCells()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         MyVariables.foodManager.delegate = self
         
-        var totalPrice = 0
-        for dish in MyVariables.foodManager.basketDishes {
-            totalPrice = totalPrice + (Int(dish.price.digits) ?? 0)
-        }
-        priceLabel.text = "\(totalPrice) KM"
-        basketTableView.reloadData()
-    }
-    
-    private func registerCells() {
-        basketTableView.register(UINib(nibName: BasketFoodCollectionViewCell.identifier, bundle: nil), forCellReuseIdentifier: BasketFoodCollectionViewCell.identifier)
+        setUpEverything()
     }
     
     @IBAction func orderButtonPressed(_ sender: UIButton) {
         if MyVariables.foodManager.basketDishes.isEmpty {
-            let alert = UIAlertController(title: "Neuspješna narudžba!", message: "Vaša korpa je prazna", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.showAlert(title: "Neuspješna narudžba!", message: "Vaša korpa je prazna")
         } else {
             MyVariables.foodManager.makeOrder(newAddress: addressLabel.text!)
         }
@@ -101,17 +95,9 @@ extension BasketViewController : FoodManagerDelegate {
     }
     
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {
-        var totalPrice = 0
-        for dish in MyVariables.foodManager.basketDishes {
-            totalPrice = totalPrice + (Int(dish.price.digits) ?? 0)
-        }
-        priceLabel.text = "\(totalPrice) KM"
+        setUpEverything()
         
-        basketTableView.reloadData()
-        let tabBar = self.tabBarController!.tabBar
-        let basketItem = tabBar.items![2]
-        basketItem.badgeColor = UIColor.red
-        basketItem.badgeValue = "\(MyVariables.foodManager.basketDishes.count)"
+        self.updateBasketBadge()
     }
     
     func didDeliverOrder(_ foodManager: FoodManager) {}
@@ -122,4 +108,24 @@ extension BasketViewController : FoodManagerDelegate {
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     func didFailWithError(error: String) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
+}
+
+extension BasketViewController {
+    
+    private func setUpEverything() {
+        
+        var totalPrice = 0
+        
+        for dish in MyVariables.foodManager.basketDishes {
+            totalPrice = totalPrice + (Int(dish.price.digits) ?? 0)
+        }
+        
+        priceLabel.text = "\(totalPrice) KM"
+        
+        basketTableView.reloadData()
+    }
+    
+    private func registerCells() {
+        basketTableView.register(UINib(nibName: BasketFoodCollectionViewCell.identifier, bundle: nil), forCellReuseIdentifier: BasketFoodCollectionViewCell.identifier)
+    }
 }

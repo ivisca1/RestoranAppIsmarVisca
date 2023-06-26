@@ -43,7 +43,7 @@ class FoodManager {
     
     var ordered = false
     
-    var orderNumber = 1
+    var orderNumber = 0
     
     init() {
         db.collection("food").getDocuments()  { (querySnapshot, err) in
@@ -197,13 +197,13 @@ class FoodManager {
                     "email": userToCreate.email,
                     "address": userToCreate.address,
                     "phoneNumber": userToCreate.phoneNumber,
-                    "orderNumber": 1
+                    "orderNumber": 0
                 ]) { err in
                     if let err = err {
                         print("Error writing document: \(err)")
                     } else {
                         print("Document successfully written!")
-                        self.orderNumber = 1
+                        self.orderNumber = 0
                         self.ordered = false
                         self.user = userToCreate
                         self.delegate?.didSignInUser(self, user: userToCreate)
@@ -290,7 +290,7 @@ class FoodManager {
                                 self.ordered = true
                                 self.delegate?.didMakeOrder(self)
                             }
-                            if foodArray.count > 0 {
+                            if foodArray.count > 0 && isDelivered == false {
                                 self.db.collection("food").whereField("name", in: foundOrder?.data()["food"] as! [String]).getDocuments() { (querySnapshot2, err2) in
                                     if let err = err2 {
                                         print("Error getting documents: \(err)")
@@ -306,6 +306,8 @@ class FoodManager {
                                         self.delegate?.didUpdateBasket(self, dishes: self.basketDishes)
                                     }
                                 }
+                            } else {
+                                self.delegate?.didUpdateBasket(self, dishes: self.basketDishes)
                             }
                         } else {
                             self.delegate?.didUpdateBasket(self, dishes: self.basketDishes)
