@@ -48,7 +48,7 @@ class BasketViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
-            MyVariables.foodManager.makeOrder()
+            MyVariables.foodManager.makeOrder(newAddress: addressLabel.text!)
         }
     }
     

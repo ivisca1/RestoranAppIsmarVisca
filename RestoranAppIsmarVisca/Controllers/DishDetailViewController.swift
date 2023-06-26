@@ -40,14 +40,20 @@ class DishDetailViewController: UIViewController {
     }
     @IBAction func placeOrderButtonClicked(_ sender: UIButton) {
         if MyVariables.foodManager.user != nil {
-            MyVariables.foodManager.addToBasket(dishName: dishTitleLabel.text ?? "Hamburger")
-            let alert = UIAlertController(title: "Dodano u korpu!", message: "", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            if MyVariables.foodManager.ordered {
+                showAlert(title: "Imate već naručenu narudžbu!", message: "Molimo Vas sačekajte da se završi narudžba!")
+            } else {
+                MyVariables.foodManager.addToBasket(dishName: dishTitleLabel.text ?? "Hamburger")
+                showAlert(title: "Dodano u korpu!", message: "")
+            }
         } else {
-            let alert = UIAlertController(title: "Niste prijavljeni!", message: "Molimo Vas prijavite se!", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            showAlert(title: "Niste prijavljeni!", message: "Molimo Vas prijavite se!")
         }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

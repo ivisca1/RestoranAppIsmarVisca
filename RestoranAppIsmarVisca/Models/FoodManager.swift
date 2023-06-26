@@ -43,6 +43,8 @@ class FoodManager {
     
     var ordered = false
     
+    var orderNumber = 1
+    
     init() {
         db.collection("food").getDocuments()  { (querySnapshot, err) in
             if let err = err {
@@ -96,10 +98,10 @@ class FoodManager {
         basketDishes.append(allDishes.first {
             $0.name == dishName
         }!)
-        db.collection("orders").whereField("email", isEqualTo: user?.email ?? "a").getDocuments { (result, error) in
+        db.collection("orders").whereField("email", isEqualTo: user!.email).whereField("ordered", isEqualTo: false).getDocuments { (result, error) in
             if error == nil{
                 if result!.documents.count > 0 {
-                    let order = self.db.collection("orders").document(self.user!.email)
+                    let order = self.db.collection("orders").document("\(self.user!.email)\(self.orderNumber)")
                     order.getDocument { (document, error) in
                         if let document = document, document.exists {
                             var foodArray = document.data()!["food"] as! [String]
@@ -118,12 +120,15 @@ class FoodManager {
                         }
                     }
                 } else {
-                    self.db.collection("orders").document(self.user!.email).setData([
+                    self.orderNumber = self.orderNumber + 1
+                    self.updateTodaysOrderNumber()
+                    self.db.collection("orders").document("\(self.user!.email)\(self.orderNumber)").setData([
                         "email": self.user!.email,
                         "address": self.user!.address,
                         "delivered": false,
                         "ordered": false,
-                        "food": [dishName]
+                        "food": [dishName],
+                        "orderNumber": self.orderNumber
                     ]) { err in
                         if let err = err {
                             print("Error writing document: \(err)")
@@ -142,7 +147,7 @@ class FoodManager {
         basketDishes.remove(at: index)
         db.collection("orders").whereField("email", isEqualTo: user!.email).getDocuments { (result, error) in
             if error == nil{
-                let order = self.db.collection("orders").document(self.user!.email)
+                let order = self.db.collection("orders").document("\(self.user!.email)\(self.orderNumber)")
                 order.getDocument { (document, error) in
                     if let document = document, document.exists {
                         var foodArray = document.data()!["food"] as! [String]
@@ -191,12 +196,15 @@ class FoodManager {
                     "surname": userToCreate.surname,
                     "email": userToCreate.email,
                     "address": userToCreate.address,
-                    "phoneNumber": userToCreate.phoneNumber
+                    "phoneNumber": userToCreate.phoneNumber,
+                    "orderNumber": 1
                 ]) { err in
                     if let err = err {
                         print("Error writing document: \(err)")
                     } else {
                         print("Document successfully written!")
+                        self.orderNumber = 1
+                        self.ordered = false
                         self.user = userToCreate
                         self.delegate?.didSignInUser(self, user: userToCreate)
                     }
@@ -211,12 +219,6 @@ class FoodManager {
                 let errCode = AuthErrorCode(_nsError: error! as NSError)
                 var errorMsg = ""
                 switch errCode.code {
-                /*case .accountExistsWithDifferentCredential, .credentialAlreadyInUse, .emailAlreadyInUse:
-                    errorMsg = "Account already exists"
-                case .missingEmail:
-                    errorMsg = "Email is missing"
-                case .weakPassword:
-                    errorMsg = "Password is weak."*/
                 case .userNotFound:
                     errorMsg = "Korisnik nije pronađen. Prvo kreirajte profil!"
                 case .wrongPassword:
@@ -234,6 +236,7 @@ class FoodManager {
                         } else {
                             let foundUser = querySnapshot?.documents[0]
                             self.user = User(name: foundUser?.data()["name"] as! String, surname: foundUser?.data()["surname"] as! String, phoneNumber: foundUser?.data()["phoneNumber"] as! String, email: foundUser?.data()["email"] as! String, address: foundUser?.data()["address"] as! String)
+                            self.orderNumber = foundUser?.data()["orderNumber"] as! Int
                             self.delegate?.didSignInUser(self, user: self.user!)
                         }
                 }
@@ -260,6 +263,7 @@ class FoodManager {
                     } else {
                         let foundUser = querySnapshot?.documents[0]
                         self.user = User(name: foundUser?.data()["name"] as! String, surname: foundUser?.data()["surname"] as! String, phoneNumber: foundUser?.data()["phoneNumber"] as! String, email: foundUser?.data()["email"] as! String, address: foundUser?.data()["address"] as! String)
+                        self.orderNumber = foundUser?.data()["orderNumber"] as! Int
                         self.delegate?.didSignInUser(self, user: self.user!)
                         self.fetchBasket()
                     }
@@ -272,7 +276,7 @@ class FoodManager {
     func fetchBasket() {
         basketDishes.removeAll()
         if user != nil {
-            db.collection("orders").whereField("email", isEqualTo: user?.email ?? "a")
+            db.collection("orders").whereField("email", isEqualTo: user!.email).whereField("orderNumber", isEqualTo: orderNumber)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -281,7 +285,9 @@ class FoodManager {
                             let foundOrder = querySnapshot?.documents[0]
                             let foodArray = foundOrder?.data()["food"] as! [String]
                             let isOrdered = foundOrder?.data()["ordered"] as! Bool
-                            if isOrdered {
+                            let isDelivered = foundOrder?.data()["delivered"] as! Bool
+                            if isOrdered && isDelivered == false {
+                                self.ordered = true
                                 self.delegate?.didMakeOrder(self)
                             }
                             if foodArray.count > 0 {
@@ -309,27 +315,24 @@ class FoodManager {
         }
     }
     
-    func makeOrder() {
-        db.collection("orders").whereField("email", isEqualTo: user!.email).getDocuments { (result, error) in
-            if error == nil{
-                let order = self.db.collection("orders").document(self.user!.email)
-                order.getDocument { (document, error) in
-                    if let document = document, document.exists {
-                        self.ordered = true
-                        order.updateData([
-                            "ordered": true
-                        ]) { err in
-                            if let err = err {
-                                print("Error updating document: \(err)")
-                            } else {
-                                print("Document successfully updated")
-                                self.delegate?.didMakeOrder(self)
-                            }
-                        }
+    func makeOrder(newAddress: String) {
+        let order = self.db.collection("orders").document("\(self.user!.email)\(self.orderNumber)")
+        order.getDocument { (document, error) in
+            if let document = document, document.exists {
+                self.ordered = true
+                order.updateData([
+                    "address": newAddress,
+                    "ordered": true
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
                     } else {
-                        print("Document does not exist")
+                        print("Document successfully updated")
+                        self.delegate?.didMakeOrder(self)
                     }
                 }
+            } else {
+                print("Document does not exist")
             }
         }
     }
@@ -337,11 +340,12 @@ class FoodManager {
     func isOrderDelivered() {
         db.collection("orders").whereField("email", isEqualTo: user!.email).getDocuments { (result, error) in
             if error == nil{
-                let order = self.db.collection("orders").document(self.user!.email)
+                let order = self.db.collection("orders").document("\(self.user!.email)\(self.orderNumber)")
                 order.getDocument { (document, error) in
                     if let document = document, document.exists {
                         let delivered = document.data()?["delivered"] as! Bool
                         if delivered {
+                            self.ordered = false
                             self.basketDishes.removeAll()
                             self.delegate?.didDeliverOrder(self)
                         }
@@ -363,6 +367,30 @@ class FoodManager {
                             "surname": surname,
                             "phoneNumber": phoneNumber,
                             "address": address
+                        ]) { err in
+                            if let err = err {
+                                print("Error updating document: \(err)")
+                            } else {
+                                print("Document successfully updated")
+                                self.delegate?.didUpdateUser(self)
+                            }
+                        }
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
+            }
+        }
+    }
+    
+    func updateTodaysOrderNumber() {
+        db.collection("users").whereField("email", isEqualTo: user!.email).getDocuments { (result, error) in
+            if error == nil{
+                let foundUser = self.db.collection("users").document(self.user!.email)
+                foundUser.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        foundUser.updateData([
+                            "orderNumber": self.orderNumber
                         ]) { err in
                             if let err = err {
                                 print("Error updating document: \(err)")

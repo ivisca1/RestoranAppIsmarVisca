@@ -68,12 +68,10 @@ extension UserProfileViewController : FoodManagerDelegate {
     }
     
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {
-        DispatchQueue.main.async {
-            let tabBar = self.tabBarController!.tabBar
-            let basketItem = tabBar.items![2]
-            basketItem.badgeColor = UIColor.red
-            basketItem.badgeValue = "\(dishes.count)"
-        }
+        let tabBar = self.tabBarController!.tabBar
+        let basketItem = tabBar.items![2]
+        basketItem.badgeColor = UIColor.red
+        basketItem.badgeValue = "\(dishes.count)"
     }
     
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
