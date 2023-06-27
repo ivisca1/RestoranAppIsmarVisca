@@ -9,6 +9,7 @@ import UIKit
 
 class BasketOrderViewController: UIViewController {
 
+    @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
@@ -82,6 +83,10 @@ extension BasketOrderViewController : FoodManagerDelegate {
 extension BasketOrderViewController {
     
     private func setUpEverything() {
+        
+        detailsView.clipsToBounds = true
+        detailsView.layer.cornerRadius = 70
+        detailsView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
         addressLabel.text = address
         nameSurnameLabel.text = "\(MyVariables.foodManager.user!.name) \(MyVariables.foodManager.user!.surname)"

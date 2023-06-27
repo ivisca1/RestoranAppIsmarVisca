@@ -54,6 +54,7 @@ extension UserProfileViewController : FoodManagerDelegate {
         let controller = BasketViewController.instantiate()
         tabBarController?.viewControllers?.insert(controller, at: 2)
         tabBarController?.viewControllers?.remove(at: 3)
+        self.updateBasketBadge()
     }
     
     func didLogOutUser(_ foodManager: FoodManager) {

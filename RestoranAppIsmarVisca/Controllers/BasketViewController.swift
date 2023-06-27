@@ -9,6 +9,7 @@ import UIKit
 
 class BasketViewController: UIViewController {
 
+    @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var basketTableView: UITableView!
     @IBOutlet weak var orderButton: UIButton!
@@ -20,10 +21,7 @@ class BasketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addressLabel.text = MyVariables.foodManager.user?.address
-        orderButton.layer.cornerRadius = 20
-        changeButton.layer.cornerRadius = 10
-        basketTableView.layer.cornerRadius = 30
+        setUpEverything()
         
         if MyVariables.foodManager.user != nil {
             self.updateBasketBadge()
@@ -35,7 +33,7 @@ class BasketViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         MyVariables.foodManager.delegate = self
         
-        setUpEverything()
+        refreshView()
     }
     
     @IBAction func orderButtonPressed(_ sender: UIButton) {
@@ -95,7 +93,7 @@ extension BasketViewController : FoodManagerDelegate {
     }
     
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {
-        setUpEverything()
+        refreshView()
         
         self.updateBasketBadge()
     }
@@ -113,6 +111,18 @@ extension BasketViewController : FoodManagerDelegate {
 extension BasketViewController {
     
     private func setUpEverything() {
+        
+        addressLabel.text = MyVariables.foodManager.user?.address
+        orderButton.layer.cornerRadius = 20
+        changeButton.layer.cornerRadius = 10
+        basketTableView.layer.cornerRadius = 30
+        
+        detailsView.clipsToBounds = true
+        detailsView.layer.cornerRadius = 70
+        detailsView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+    }
+    
+    private func refreshView() {
         
         var totalPrice = 0
         
