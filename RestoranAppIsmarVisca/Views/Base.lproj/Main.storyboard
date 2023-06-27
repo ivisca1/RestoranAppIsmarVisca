@@ -1023,14 +1023,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="etf2" translatesAutoresizingMaskIntoConstraints="NO" id="5ID-Pp-rOx">
-                                <rect key="frame" x="121.66666666666669" y="98" width="150" height="150"/>
+                                <rect key="frame" x="121.66666666666669" y="103" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="O6K-ZK-1xc"/>
                                     <constraint firstAttribute="width" constant="150" id="a4k-Vf-8IR"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yummie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6b-YI-Sl8">
-                                <rect key="frame" x="135" y="256" width="123" height="44"/>
+                                <rect key="frame" x="135" y="261" width="123" height="44"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
                                 <color key="textColor" red="0.83137254900000002" green="0.76470588240000004" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -1040,7 +1040,7 @@
                         <color key="backgroundColor" red="0.1069632396" green="0.1078381315" blue="0.1764785945" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Isl-DQ-b7w" firstAttribute="trailing" secondItem="Dut-hK-pMo" secondAttribute="trailing" constant="16" id="BVG-9c-kZF"/>
-                            <constraint firstItem="5ID-Pp-rOx" firstAttribute="top" secondItem="Isl-DQ-b7w" secondAttribute="top" constant="39" id="FRo-Ni-XfF"/>
+                            <constraint firstItem="5ID-Pp-rOx" firstAttribute="top" secondItem="Isl-DQ-b7w" secondAttribute="top" id="FRo-Ni-XfF"/>
                             <constraint firstItem="Dut-hK-pMo" firstAttribute="centerX" secondItem="7UP-6K-O7F" secondAttribute="centerX" id="LIo-00-Usa"/>
                             <constraint firstItem="Dut-hK-pMo" firstAttribute="centerY" secondItem="7UP-6K-O7F" secondAttribute="centerY" id="UhV-6t-c8h"/>
                             <constraint firstItem="T6b-YI-Sl8" firstAttribute="centerX" secondItem="5ID-Pp-rOx" secondAttribute="centerX" id="WM4-6U-nIq"/>
@@ -1049,12 +1049,13 @@
                             <constraint firstItem="T6b-YI-Sl8" firstAttribute="top" secondItem="5ID-Pp-rOx" secondAttribute="bottom" constant="8" id="xJU-vI-fiT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Korpa" image="basket" catalog="system" id="U7z-8X-leK"/>
+                    <tabBarItem key="tabBarItem" title="Korpa" image="basket" catalog="system" id="ywe-ww-gHI"/>
+                    <navigationItem key="navigationItem" id="4bn-aY-WGc"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Bo-8g-4FY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2838.9312977099235" y="940.84507042253529"/>
+            <point key="canvasLocation" x="3765.6488549618321" y="940.84507042253529"/>
         </scene>
         <!--Korpa-->
         <scene sceneID="aCe-Re-2jy">
@@ -1259,7 +1260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YyX-81-IYE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3765.6488549618321" y="940.84507042253529"/>
+            <point key="canvasLocation" x="4692.3664122137407" y="940.84507042253529"/>
         </scene>
         <!--Yummie-->
         <scene sceneID="hO9-Bg-kW9">
@@ -1276,7 +1277,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Traži" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hku-PD-TgB">
-                                                <rect key="frame" x="16" y="6" width="303.33333333333331" height="38.333333333333336"/>
+                                                <rect key="frame" x="16" y="6" width="303.33333333333337" height="38.333333333333336"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.329999999999998" id="ilD-TU-AtO"/>
@@ -1798,6 +1799,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YEF-YC-6fU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-147.32824427480915" y="1647.8873239436621"/>
+        </scene>
+        <!--No Basket Navigation View Controller-->
+        <scene sceneID="yR2-vv-n0b">
+            <objects>
+                <navigationController storyboardIdentifier="NoBasketNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="Ld9-KB-p1P" customClass="NoBasketNavigationViewController" customModule="RestoranAppIsmarVisca" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WiT-BL-AiG">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="faV-bh-dzR" kind="relationship" relationship="rootViewController" id="ctj-9p-7OR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0HW-z7-FY9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2838.9312977099235" y="940.84507042253529"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -57,7 +57,7 @@ extension UserProfileViewController : FoodManagerDelegate {
     }
     
     func didLogOutUser(_ foodManager: FoodManager) {
-        tabBarController?.viewControllers?.append(NoBasketViewController.instantiate())
+        tabBarController?.viewControllers?.append(NoBasketNavigationViewController.instantiate())
         tabBarController?.viewControllers?.append(ProfileNavigationViewController.instantiate())
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.last
         tabBarController?.viewControllers?.remove(at: 2)

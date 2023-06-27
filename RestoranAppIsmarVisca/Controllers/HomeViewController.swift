@@ -127,7 +127,7 @@ extension HomeViewController : FoodManagerDelegate {
             tabBarController?.viewControllers?.append(controller)
         } else {
             tabBarController?.viewControllers?.remove(at: 2)
-            tabBarController?.viewControllers?.insert(NoBasketViewController.instantiate(), at: 2)
+            tabBarController?.viewControllers?.insert(NoBasketNavigationViewController.instantiate(), at: 2)
         }
     }
     
