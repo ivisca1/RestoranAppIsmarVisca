@@ -273,7 +273,7 @@ extension SignUpViewController {
         if passwordAgain.isEmpty == false {
             if password == passwordAgain {
                 if nameValid && surnameValid && phoneNumberValid && addressValid && emailValid && passwordValid {
-                    let user = User(name: name, surname: surname, phoneNumber: phoneNumber, email: email, address: address)
+                    let user = User(name: name, surname: surname, phoneNumber: phoneNumber, email: email, address: address, orderNumber: 0, isCustomer: true, isEmployee: false)
                     MyVariables.foodManager.createUser(userToCreate: user, password: password)
                 }
             } else {

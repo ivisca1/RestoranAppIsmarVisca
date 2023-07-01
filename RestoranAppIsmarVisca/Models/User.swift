@@ -9,4 +9,6 @@ import Foundation
 
 struct User {
     var name, surname, phoneNumber, email, address : String
+    var orderNumber : Int
+    var isCustomer, isEmployee : Bool
 }

@@ -97,6 +97,7 @@ extension SearchViewController : FoodManagerDelegate {
         let controller = BasketViewController.instantiate()
         tabBarController?.viewControllers?.insert(controller, at: 2)
         tabBarController?.viewControllers?.remove(at: 3)
+        self.updateBasketBadge()
     }
     
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {
