@@ -111,6 +111,7 @@ extension HomeViewController : FoodManagerDelegate {
         let controller = BasketViewController.instantiate()
         tabBarController?.viewControllers?.insert(controller, at: 2)
         tabBarController?.viewControllers?.remove(at: 3)
+        self.updateBasketBadge()
     }
     
     func didMakeOrder(_ foodManager: FoodManager) {
