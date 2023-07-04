@@ -135,7 +135,7 @@ extension ChangeUserDetailsViewController {
         addressTextField.layer.cornerRadius = 15
         addressTextField.clipsToBounds = true
         
-        changeButton.layer.cornerRadius = 20
+        changeButton.layer.cornerRadius = 15
         
         invalidNameLabel.isHidden = true
         invalidSurnameLabel.isHidden = true

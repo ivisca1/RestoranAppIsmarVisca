@@ -411,4 +411,22 @@ class FoodManager {
             }
         }
     }
+    
+    func resetUserPassword(email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if error != nil {
+                let errCode = AuthErrorCode(_nsError: error! as NSError)
+                var errorMsg = ""
+                switch errCode.code {
+                case .userNotFound:
+                    errorMsg = "Korisnik sa datim emailom nije pronađen!"
+                default:
+                    errorMsg = "Neuspješno slanje!"
+                }
+                self.delegate?.didFailWithError(error: errorMsg)
+            } else {
+                self.delegate?.didUpdateUser(self)
+            }
+        }
+    }
 }

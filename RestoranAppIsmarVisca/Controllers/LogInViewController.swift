@@ -9,11 +9,11 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var invalidPasswordLabel: UILabel!
     @IBOutlet weak var invalidEmailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
-    @IBOutlet weak var passwordTextField: UITextField!
     
     let defaultColor = UIColor.lightGray.cgColor
     
@@ -27,6 +27,12 @@ class LogInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         MyVariables.foodManager.delegate = self
+    }
+    
+    
+    @IBAction func forgotPasswordPressed(_ sender: UIButton) {
+        let controller = PasswordResetViewController.instantiate()
+        self.navigationController!.pushViewController(controller, animated: true)
     }
     
     @IBAction func logInButtonPressed(_ sender: UIButton) {
@@ -112,7 +118,7 @@ extension LogInViewController {
         emailTextField.clipsToBounds = true
         passwordTextField.layer.cornerRadius = 15
         passwordTextField.clipsToBounds = true
-        logInButton.layer.cornerRadius = 20
+        logInButton.layer.cornerRadius = 15
         
         invalidEmailLabel.isHidden = true
         invalidPasswordLabel.isHidden = true

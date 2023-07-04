@@ -45,6 +45,7 @@
 		CE95508D2A34C67300467CE4 /* ProfileNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */; };
 		CE9B2EF72A3A5555007393B7 /* BasketOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B2EF62A3A5555007393B7 /* BasketOrderViewController.swift */; };
 		CEA38B902A4B487900815518 /* NoBasketNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA38B8F2A4B487900815518 /* NoBasketNavigationViewController.swift */; };
+		CEA5D4712A532F0B007567D5 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5D4702A532F0B007567D5 /* PasswordResetViewController.swift */; };
 		CEB508432A3B83FC008E7347 /* ChangeUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */; };
 		CEB508452A3B8633008E7347 /* UserProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */; };
 		CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */; };
@@ -88,6 +89,7 @@
 		CE95508C2A34C67300467CE4 /* ProfileNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationViewController.swift; sourceTree = "<group>"; };
 		CE9B2EF62A3A5555007393B7 /* BasketOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketOrderViewController.swift; sourceTree = "<group>"; };
 		CEA38B8F2A4B487900815518 /* NoBasketNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBasketNavigationViewController.swift; sourceTree = "<group>"; };
+		CEA5D4702A532F0B007567D5 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserDetailsViewController.swift; sourceTree = "<group>"; };
 		CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileNavigationController.swift; sourceTree = "<group>"; };
 		CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */,
 				CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */,
 				CEA38B8F2A4B487900815518 /* NoBasketNavigationViewController.swift */,
+				CEA5D4702A532F0B007567D5 /* PasswordResetViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE95508D2A34C67300467CE4 /* ProfileNavigationViewController.swift in Sources */,
+				CEA5D4712A532F0B007567D5 /* PasswordResetViewController.swift in Sources */,
 				CE9280B22A1E5E7C009AC83B /* ProfileViewController.swift in Sources */,
 				CE820DD32A20C3DC0043D8BC /* DishCategory.swift in Sources */,
 				CE4D25512A2E75EE00891CEE /* UIViewControllerExtension.swift in Sources */,

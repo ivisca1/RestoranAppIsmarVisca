@@ -25,7 +25,7 @@ class DishDetailViewController: UIViewController {
         dishTitleLabel.text = dish.name
         dishPriceLabel.text = dish.price
         dishDescriptionLabel.text = dish.description
-        orderButton.layer.cornerRadius = 20
+        orderButton.layer.cornerRadius = 15
         foodDetailView.layer.cornerRadius = 70
         navigationController?.navigationBar.tintColor = UIColor.white
         tabBarController?.tabBar.isHidden = true

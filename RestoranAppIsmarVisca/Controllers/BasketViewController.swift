@@ -113,7 +113,7 @@ extension BasketViewController {
     private func setUpEverything() {
         
         addressLabel.text = MyVariables.foodManager.user?.address
-        orderButton.layer.cornerRadius = 20
+        orderButton.layer.cornerRadius = 15
         changeButton.layer.cornerRadius = 10
         basketTableView.layer.cornerRadius = 30
         
@@ -129,6 +129,8 @@ extension BasketViewController {
         for dish in MyVariables.foodManager.basketDishes {
             totalPrice = totalPrice + (Int(dish.price.digits) ?? 0)
         }
+        
+        addressLabel.text = MyVariables.foodManager.user!.address
         
         priceLabel.text = "\(totalPrice) KM"
         

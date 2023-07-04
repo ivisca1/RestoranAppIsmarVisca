@@ -178,7 +178,7 @@ extension SignUpViewController {
         passwordAgainTextField.layer.cornerRadius = 15
         passwordAgainTextField.clipsToBounds = true
         
-        signUpButton.layer.cornerRadius = 20
+        signUpButton.layer.cornerRadius = 15
         
         invalidEmailLabel.isHidden = true
         invalidPasswordLabel.isHidden = true
