@@ -15,14 +15,7 @@ class BasketFoodCollectionViewCell: UITableViewCell {
     @IBOutlet weak var foodPriceLabel: UILabel!
     @IBOutlet weak var foodNameLabel: UILabel!
     
-    var index = 0
-    
-    @IBAction func cancelButtonPressed(_ sender: UIButton) {
-        MyVariables.foodManager.removeFromBasket(index: index)
-    }
-    
-    func setup(foodDish: FoodDish, indexRow: Int) {
-        index = indexRow
+    func setup(foodDish: FoodDish) {
         foodPriceLabel.text = foodDish.price
         foodNameLabel.text = foodDish.name
         foodImageView.image = UIImage(named: foodDish.image)

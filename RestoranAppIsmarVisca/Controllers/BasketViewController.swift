@@ -18,6 +18,8 @@ class BasketViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var basketTabBar: UITabBarItem!
     
+    var index = IndexPath()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,7 +71,7 @@ extension BasketViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BasketFoodCollectionViewCell.identifier) as! BasketFoodCollectionViewCell
-        cell.setup(foodDish: MyVariables.foodManager.basketDishes[indexPath.row], indexRow: indexPath.row)
+        cell.setup(foodDish: MyVariables.foodManager.basketDishes[indexPath.row])
         return cell
     }
     
@@ -79,6 +81,18 @@ extension BasketViewController : UITableViewDelegate, UITableViewDataSource {
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = backgroundView
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            index = indexPath
+            basketTableView.beginUpdates()
+            MyVariables.foodManager.removeFromBasket(index: indexPath.row)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Izbaci iz korpe"
     }
 }
 
@@ -93,6 +107,9 @@ extension BasketViewController : FoodManagerDelegate {
     }
     
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {
+        basketTableView.deleteRows(at: [index], with: .fade)
+        basketTableView.endUpdates()
+        
         refreshView()
         
         self.updateBasketBadge()
@@ -115,7 +132,6 @@ extension BasketViewController {
         addressLabel.text = MyVariables.foodManager.user?.address
         orderButton.layer.cornerRadius = 15
         changeButton.layer.cornerRadius = 10
-        basketTableView.layer.cornerRadius = 30
         
         detailsView.clipsToBounds = true
         detailsView.layer.cornerRadius = 70
