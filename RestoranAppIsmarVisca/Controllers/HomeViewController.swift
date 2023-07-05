@@ -23,6 +23,9 @@ class HomeViewController: UIViewController {
         MyVariables.foodManager.fetchCategories(document: "categories")
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "MarkerFelt-Thin", size: 36)!, NSAttributedString.Key.foregroundColor: UIColor(red: 0.831, green: 0.765, blue: 0.51, alpha: 1.0)]
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.instagramTap(_:)))
+        promotionView.addGestureRecognizer(tap)
 
         promotionView.layer.cornerRadius = 20
         registerCells()
@@ -39,6 +42,19 @@ class HomeViewController: UIViewController {
         
         if MyVariables.foodManager.user != nil && MyVariables.foodManager.ordered {
             MyVariables.foodManager.isOrderDelivered()
+        }
+    }
+    
+    @objc func instagramTap(_ sender: UITapGestureRecognizer? = nil) {
+        let username =  "instagram"
+        let appURL = URL(string: "instagram://user?username=\(username)")!
+        let application = UIApplication.shared
+
+        if application.canOpenURL(appURL) {
+            application.open(appURL)
+        } else {
+            let webURL = URL(string: "https://instagram.com/\(username)")!
+            application.open(webURL)
         }
     }
     

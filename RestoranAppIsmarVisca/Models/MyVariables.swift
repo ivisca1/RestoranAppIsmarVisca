@@ -22,7 +22,7 @@ func textFieldInvalid(_ msg: String, textField: UITextField!, label: UILabel!) {
 
 func containsOnlyLetters(str: String) -> Bool {
    for chr in str {
-      if (!(chr >= "a" && chr <= "z") && !(chr >= "A" && chr <= "Z") ) {
+      if (!(chr >= "a" && chr <= "z") && !(chr >= "A" && chr <= "Z") && !(chr=="ć") && !(chr=="Ć") && !(chr=="č") && !(chr=="Č") && !(chr=="ž") && !(chr=="Ž") && !(chr=="š") && !(chr=="Š") && !(chr=="đ") && !(chr=="Đ")) {
          return false
       }
    }
