@@ -19,6 +19,9 @@
 		CE569DD92A30CDE20002CC05 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE569DD82A30CDE20002CC05 /* StringExtension.swift */; };
 		CE57D1292A3247FE0009BBF3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57D1282A3247FD0009BBF3 /* LogInViewController.swift */; };
 		CE57D12B2A32481B0009BBF3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE57D12A2A32481B0009BBF3 /* SignUpViewController.swift */; };
+		CE5B38BD2A55D34800847D5A /* PromotionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B38BB2A55D34800847D5A /* PromotionViewCell.swift */; };
+		CE5B38BE2A55D34800847D5A /* PromotionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5B38BC2A55D34800847D5A /* PromotionViewCell.xib */; };
+		CE5B38C02A55D62B00847D5A /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B38BF2A55D62B00847D5A /* Promotion.swift */; };
 		CE6A6F412A222F0F0054017A /* DishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A6F402A222F0F0054017A /* DishDetailViewController.swift */; };
 		CE75EF0A2A1BC37600E5B8C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75EF092A1BC37600E5B8C9 /* AppDelegate.swift */; };
 		CE75EF0C2A1BC37600E5B8C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75EF0B2A1BC37600E5B8C9 /* SceneDelegate.swift */; };
@@ -64,6 +67,9 @@
 		CE569DD82A30CDE20002CC05 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		CE57D1282A3247FD0009BBF3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		CE57D12A2A32481B0009BBF3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CE5B38BB2A55D34800847D5A /* PromotionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewCell.swift; sourceTree = "<group>"; };
+		CE5B38BC2A55D34800847D5A /* PromotionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionViewCell.xib; sourceTree = "<group>"; };
+		CE5B38BF2A55D62B00847D5A /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		CE6A6F402A222F0F0054017A /* DishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
 		CE75EF062A1BC37600E5B8C9 /* RestoranAppIsmarVisca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestoranAppIsmarVisca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE75EF092A1BC37600E5B8C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +212,8 @@
 				CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */,
 				CE2BD5702A2BB20800F0A567 /* BasketFoodCollectionViewCell.swift */,
 				CE2BD5712A2BB20800F0A567 /* BasketFoodCollectionViewCell.xib */,
+				CE5B38BB2A55D34800847D5A /* PromotionViewCell.swift */,
+				CE5B38BC2A55D34800847D5A /* PromotionViewCell.xib */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -218,6 +226,7 @@
 				CE8059792A279DD00078887F /* FoodManager.swift */,
 				CE4C24C62A290B8200586A89 /* MyVariables.swift */,
 				CE15CA3C2A33687B00870A3C /* User.swift */,
+				CE5B38BF2A55D62B00847D5A /* Promotion.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,6 +301,7 @@
 			files = (
 				CE41DAAA2A24FFA5006429EE /* SearchFoodViewCell.xib in Resources */,
 				CE75EF162A1BC37800E5B8C9 /* LaunchScreen.storyboard in Resources */,
+				CE5B38BE2A55D34800847D5A /* PromotionViewCell.xib in Resources */,
 				CE820DD12A20BFFC0043D8BC /* CategoryViewCell.xib in Resources */,
 				CE75EF1E2A1BC64800E5B8C9 /* GoogleService-Info.plist in Resources */,
 				CE75EF132A1BC37800E5B8C9 /* Assets.xcassets in Resources */,
@@ -326,6 +336,7 @@
 				CEB508452A3B8633008E7347 /* UserProfileNavigationController.swift in Sources */,
 				CE75EF0A2A1BC37600E5B8C9 /* AppDelegate.swift in Sources */,
 				CE9B2EF72A3A5555007393B7 /* BasketOrderViewController.swift in Sources */,
+				CE5B38C02A55D62B00847D5A /* Promotion.swift in Sources */,
 				CE820DD52A20CDFE0043D8BC /* CategoryCardView.swift in Sources */,
 				CE2BD5722A2BB20800F0A567 /* BasketFoodCollectionViewCell.swift in Sources */,
 				CE75EF0C2A1BC37600E5B8C9 /* SceneDelegate.swift in Sources */,
@@ -337,6 +348,7 @@
 				CE569DD92A30CDE20002CC05 /* StringExtension.swift in Sources */,
 				CE9280AC2A1E5DF3009AC83B /* HomeViewController.swift in Sources */,
 				CEB508432A3B83FC008E7347 /* ChangeUserDetailsViewController.swift in Sources */,
+				CE5B38BD2A55D34800847D5A /* PromotionViewCell.swift in Sources */,
 				CE80597A2A279DD00078887F /* FoodManager.swift in Sources */,
 				CE15CA3D2A33687B00870A3C /* User.swift in Sources */,
 			);

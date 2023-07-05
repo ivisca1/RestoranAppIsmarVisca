@@ -10,6 +10,7 @@ import UIKit
 
 struct MyVariables {
     static var foodManager = FoodManager()
+    static var promotions = [Promotion(firstLabel: "Pratite nas na Instagramu!", secondLabel: "@yummiesarajevo", image: "instagram"), Promotion(firstLabel: "Pratite nas na Facebook-u", secondLabel: "Yummie Sarajevo", image: "facebook"), Promotion(firstLabel: "Kontaktirajte nas!", secondLabel: "+387 61 123 456", image: "phone")]
 }
 
 func textFieldInvalid(_ msg: String, textField: UITextField!, label: UILabel!) {

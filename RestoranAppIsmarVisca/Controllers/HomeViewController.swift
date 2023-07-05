@@ -9,12 +9,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var promotionCollectionView: UICollectionView!
     @IBOutlet weak var specialsCollectionView: UICollectionView!
     @IBOutlet weak var popularDishesCollectionView: UICollectionView!
-    @IBOutlet weak var promotionView: UIView!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
     var indexCategory = 0
+    var runAnimation = true
+    var moveRight = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +26,9 @@ class HomeViewController: UIViewController {
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "MarkerFelt-Thin", size: 36)!, NSAttributedString.Key.foregroundColor: UIColor(red: 0.831, green: 0.765, blue: 0.51, alpha: 1.0)]
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.instagramTap(_:)))
-        promotionView.addGestureRecognizer(tap)
-
-        promotionView.layer.cornerRadius = 20
         registerCells()
+        
+        runAnim()
         
         MyVariables.foodManager.isAnyoneSignedIn()
     }
@@ -43,22 +43,17 @@ class HomeViewController: UIViewController {
         if MyVariables.foodManager.user != nil && MyVariables.foodManager.ordered {
             MyVariables.foodManager.isOrderDelivered()
         }
+        
+        runAnim()
+        runAnimation = true
     }
     
-    @objc func instagramTap(_ sender: UITapGestureRecognizer? = nil) {
-        let username =  "instagram"
-        let appURL = URL(string: "instagram://user?username=\(username)")!
-        let application = UIApplication.shared
-
-        if application.canOpenURL(appURL) {
-            application.open(appURL)
-        } else {
-            let webURL = URL(string: "https://instagram.com/\(username)")!
-            application.open(webURL)
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        runAnimation = false
     }
     
     private func registerCells() {
+        promotionCollectionView.register(UINib(nibName: PromotionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: PromotionViewCell.identifier)
         categoryCollectionView.register(UINib(nibName: CategoryViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: CategoryViewCell.identifier)
         popularDishesCollectionView.register(UINib(nibName: HomeFoodViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeFoodViewCell.identifier)
         specialsCollectionView.register(UINib(nibName: HomeFoodViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeFoodViewCell.identifier)
@@ -76,6 +71,8 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             return MyVariables.foodManager.popularDishes.count
         case specialsCollectionView:
             return MyVariables.foodManager.restDishes.count
+        case promotionCollectionView:
+            return MyVariables.promotions.count
         default:
             return 0
         }
@@ -99,6 +96,10 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             let cell = specialsCollectionView.dequeueReusableCell(withReuseIdentifier: HomeFoodViewCell.identifier, for: indexPath) as! HomeFoodViewCell
             cell.setup(foodDish: MyVariables.foodManager.restDishes[indexPath.row])
             return cell
+        case promotionCollectionView:
+            let cell = promotionCollectionView.dequeueReusableCell(withReuseIdentifier: PromotionViewCell.identifier, for: indexPath) as! PromotionViewCell
+            cell.setup(promotion: MyVariables.promotions[indexPath.row])
+            return cell
         default:
             return UICollectionViewCell()
         }
@@ -113,10 +114,19 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             let controller = DishDetailViewController.instantiate()
             controller.dish = MyVariables.foodManager.popularDishes[indexPath.row]
             navigationController?.pushViewController(controller, animated: true)
-        } else {
+        } else if collectionView == specialsCollectionView {
             let controller = DishDetailViewController.instantiate()
             controller.dish = MyVariables.foodManager.restDishes[indexPath.row]
             navigationController?.pushViewController(controller, animated: true)
+        } else {
+            runAnimation = false
+            if indexPath.row == 0 {
+                instagramTap()
+            } else if indexPath.row == 1 {
+                facebookTap()
+            } else {
+                phoneDial()
+            }
         }
     }
 }
@@ -165,4 +175,74 @@ extension HomeViewController : FoodManagerDelegate {
     func didLogOutUser(_ foodManager: FoodManager) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
     func didFailWithError(error: String) {}
+}
+
+extension HomeViewController {
+    
+    func runAnim() {
+        
+        let dur: Double = 1
+        
+        let ptsPerSecond: Double = 10
+
+        let animator = UIViewPropertyAnimator(duration: dur, curve: .linear) {
+            let screenSize: CGRect = UIScreen.main.bounds
+            let screenWidth = screenSize.width
+            if self.promotionCollectionView.contentOffset.x >= (1147 - screenWidth - ptsPerSecond * dur) {
+                self.moveRight = false
+            } else if self.promotionCollectionView.contentOffset.x < 0 {
+                self.moveRight = true
+            }
+            if self.moveRight {
+                self.promotionCollectionView.contentOffset.x += ptsPerSecond * dur
+            } else {
+                self.promotionCollectionView.contentOffset.x -= ptsPerSecond * dur
+            }
+        }
+        
+        animator.addCompletion({_ in
+            if self.runAnimation {
+                self.runAnim()
+            }
+        })
+        
+        animator.startAnimation()
+    }
+    
+    private func instagramTap() {
+        
+        let username =  "instagram"
+        let appURL = URL(string: "instagram://user?username=\(username)")!
+        let application = UIApplication.shared
+
+        if application.canOpenURL(appURL) {
+            application.open(appURL)
+        } else {
+            let webURL = URL(string: "https://instagram.com/\(username)")!
+            application.open(webURL)
+        }
+    }
+    
+    private func facebookTap() {
+        
+        let username =  "Facebook"
+        let appURL = URL(string: "fb://profile/\(username)")!
+        let application = UIApplication.shared
+
+        if application.canOpenURL(appURL) {
+            application.open(appURL)
+        } else {
+            let webURL = URL(string: "https://facebook.com/\(username)")!
+            application.open(webURL)
+        }
+    }
+    
+    private func phoneDial() {
+        
+        let phoneNumber = "+38761123456"
+        let numberUrl = URL(string: "tel://\(phoneNumber)")!
+        if UIApplication.shared.canOpenURL(numberUrl) {
+            UIApplication.shared.open(numberUrl)
+        }
+    }
 }
