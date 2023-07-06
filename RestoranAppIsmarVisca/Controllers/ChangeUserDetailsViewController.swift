@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class ChangeUserDetailsViewController: UIViewController {
 
@@ -42,11 +43,8 @@ class ChangeUserDetailsViewController: UIViewController {
 
 extension ChangeUserDetailsViewController : FoodManagerDelegate {
     func didUpdateUser(_ foodManager: FoodManager) {
-        let alert = UIAlertController(title: "Uspješno ažurirani podaci", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [] (_) in
-            _ = self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
+        navigationController?.view.makeToast("Uspješno ažurirani podaci", duration: 2.0, position: .bottom)
+        navigationController?.popViewController(animated: true)
     }
     
     func didDeliverOrder(_ foodManager: FoodManager) {}

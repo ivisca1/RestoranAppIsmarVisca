@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class BasketViewController: UIViewController {
 
@@ -111,6 +112,8 @@ extension BasketViewController : FoodManagerDelegate {
         basketTableView.endUpdates()
         
         refreshView()
+        
+        view.makeToast("Izbačeno iz korpe!", duration: 1.0, position: .bottom)
         
         self.updateBasketBadge()
     }

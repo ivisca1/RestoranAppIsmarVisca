@@ -11,6 +11,7 @@
 		CE15CA3D2A33687B00870A3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15CA3C2A33687B00870A3C /* User.swift */; };
 		CE2BD5722A2BB20800F0A567 /* BasketFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BD5702A2BB20800F0A567 /* BasketFoodCollectionViewCell.swift */; };
 		CE2BD5732A2BB20800F0A567 /* BasketFoodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2BD5712A2BB20800F0A567 /* BasketFoodCollectionViewCell.xib */; };
+		CE347EB02A56F6F8004C120A /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CE347EAF2A56F6F8004C120A /* Toast */; };
 		CE3A8A462A43401E0039605A /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CE3A8A452A43401E0039605A /* IQKeyboardManagerSwift */; };
 		CE41DAA92A24FFA5006429EE /* SearchFoodViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41DAA72A24FFA5006429EE /* SearchFoodViewCell.swift */; };
 		CE41DAAA2A24FFA5006429EE /* SearchFoodViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE41DAA82A24FFA5006429EE /* SearchFoodViewCell.xib */; };
@@ -110,6 +111,7 @@
 				CE75EF212A1BC6D300E5B8C9 /* FirebaseAuth in Frameworks */,
 				CE3A8A462A43401E0039605A /* IQKeyboardManagerSwift in Frameworks */,
 				CE75EF232A1BC6D300E5B8C9 /* FirebaseFirestore in Frameworks */,
+				CE347EB02A56F6F8004C120A /* Toast in Frameworks */,
 				CE75EF252A1BC6D300E5B8C9 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +254,7 @@
 				CE75EF222A1BC6D300E5B8C9 /* FirebaseFirestore */,
 				CE75EF242A1BC6D300E5B8C9 /* FirebaseFirestoreSwift */,
 				CE3A8A452A43401E0039605A /* IQKeyboardManagerSwift */,
+				CE347EAF2A56F6F8004C120A /* Toast */,
 			);
 			productName = RestoranAppIsmarVisca;
 			productReference = CE75EF062A1BC37600E5B8C9 /* RestoranAppIsmarVisca.app */;
@@ -284,6 +287,7 @@
 			packageReferences = (
 				CE75EF1F2A1BC6D300E5B8C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CE3A8A442A43401D0039605A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				CE347EAE2A56F6F8004C120A /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = CE75EF072A1BC37600E5B8C9 /* Products */;
 			projectDirPath = "";
@@ -570,6 +574,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE347EAE2A56F6F8004C120A /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		CE3A8A442A43401D0039605A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
@@ -589,6 +601,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE347EAF2A56F6F8004C120A /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE347EAE2A56F6F8004C120A /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		CE3A8A452A43401E0039605A /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE3A8A442A43401D0039605A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;

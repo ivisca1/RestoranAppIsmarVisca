@@ -28,8 +28,6 @@ class HomeViewController: UIViewController {
         
         registerCells()
         
-        runAnim()
-        
         MyVariables.foodManager.isAnyoneSignedIn()
     }
     
@@ -232,7 +230,7 @@ extension HomeViewController {
         if application.canOpenURL(appURL) {
             application.open(appURL)
         } else {
-            let webURL = URL(string: "https://facebook.com/\(username)")!
+            let webURL = URL(string: "https://m.facebook.com/\(username)")!
             application.open(webURL)
         }
     }

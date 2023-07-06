@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class PasswordResetViewController: UIViewController {
 
@@ -44,6 +45,7 @@ class PasswordResetViewController: UIViewController {
         if email.isEmpty == false {
             if email.isValid(String.ValidityType.email) {
                 MyVariables.foodManager.resetUserPassword(email: email)
+                navigationController?.view.makeToast("Email poslan!", duration: 2.0, position: .bottom)
             } else {
                 textFieldInvalid("Format email adrese nije validan!",textField: emailTextField, label: invalidEmailLabel)
             }

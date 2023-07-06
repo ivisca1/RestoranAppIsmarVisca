@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class DishDetailViewController: UIViewController {
 
@@ -33,6 +34,7 @@ class DishDetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
+        navigationController?.view.hideAllToasts()
     }
 
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -41,13 +43,13 @@ class DishDetailViewController: UIViewController {
     @IBAction func placeOrderButtonClicked(_ sender: UIButton) {
         if MyVariables.foodManager.user != nil {
             if MyVariables.foodManager.ordered {
-                self.showAlert(title: "Imate već naručenu narudžbu!", message: "Molimo Vas sačekajte da se završi narudžba!")
+                navigationController?.view.makeToast("Molimo vas sačekajte da se završi narudžba!", duration: 2.0, position: .bottom, title: "Imate već naručenu narudžbu!", image: nil)
             } else {
+                navigationController?.view.makeToast("Dodano u korpu!", duration: 2.0, position: .bottom, title: dishTitleLabel.text, image: dishImageView.image)
                 MyVariables.foodManager.addToBasket(dishName: dishTitleLabel.text ?? "Hamburger")
-                self.showAlert(title: "Dodano u korpu!", message: "")
             }
         } else {
-            self.showAlert(title: "Niste prijavljeni!", message: "Molimo Vas prijavite se!")
+            navigationController?.view.makeToast("Molimo Vas prijavite se!", duration: 2.0, position: .bottom, title: "Niste prijavljeni!", image: nil)
         }
     }
 }
