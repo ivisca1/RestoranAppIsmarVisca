@@ -108,7 +108,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qI7-PH-dKI">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="150"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="etf2" translatesAutoresizingMaskIntoConstraints="NO" id="XKt-7c-SAb">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultProfilePicture" translatesAutoresizingMaskIntoConstraints="NO" id="XKt-7c-SAb">
                                                         <rect key="frame" x="121" y="0.0" width="150" height="150"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -319,6 +319,7 @@
                         <outlet property="emailLabel" destination="b4A-7d-JY4" id="PyM-Sf-2BI"/>
                         <outlet property="nameSurnameLabel" destination="A62-qB-z2O" id="r3Q-sk-BDR"/>
                         <outlet property="phoneNumberLabel" destination="xOf-EU-dxQ" id="s1F-IH-o3M"/>
+                        <outlet property="profileImageView" destination="XKt-7c-SAb" id="dwg-xp-6Qn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BKM-7q-atl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1353,7 +1354,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Traži" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hku-PD-TgB">
-                                                <rect key="frame" x="16" y="6" width="303.33333333333331" height="38.333333333333336"/>
+                                                <rect key="frame" x="16" y="6" width="303.33333333333337" height="38.333333333333336"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.329999999999998" id="ilD-TU-AtO"/>
@@ -1877,6 +1878,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="basket" catalog="system" width="128" height="108"/>
+        <image name="defaultProfilePicture" width="2048" height="2048"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="etf2" width="261" height="262"/>
         <image name="house" catalog="system" width="128" height="104"/>

@@ -70,6 +70,7 @@ extension LogInViewController : FoodManagerDelegate {
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
+    func didDownloadUpdatePicture(_ foodManager: FoodManager) {}
 }
 
 extension LogInViewController : UITextFieldDelegate {

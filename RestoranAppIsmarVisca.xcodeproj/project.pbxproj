@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE15CA3B2A33662500870A3C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15CA3A2A33662500870A3C /* UserProfileViewController.swift */; };
 		CE15CA3D2A33687B00870A3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15CA3C2A33687B00870A3C /* User.swift */; };
+		CE2896352A5862DF009A829E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CE2896342A5862DF009A829E /* FirebaseStorage */; };
 		CE2BD5722A2BB20800F0A567 /* BasketFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BD5702A2BB20800F0A567 /* BasketFoodCollectionViewCell.swift */; };
 		CE2BD5732A2BB20800F0A567 /* BasketFoodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2BD5712A2BB20800F0A567 /* BasketFoodCollectionViewCell.xib */; };
 		CE347EB02A56F6F8004C120A /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CE347EAF2A56F6F8004C120A /* Toast */; };
@@ -50,6 +51,7 @@
 		CE9B2EF72A3A5555007393B7 /* BasketOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B2EF62A3A5555007393B7 /* BasketOrderViewController.swift */; };
 		CEA38B902A4B487900815518 /* NoBasketNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA38B8F2A4B487900815518 /* NoBasketNavigationViewController.swift */; };
 		CEA5D4712A532F0B007567D5 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5D4702A532F0B007567D5 /* PasswordResetViewController.swift */; };
+		CEB21C382A574D3E0023B0A0 /* RSKImageCropper in Frameworks */ = {isa = PBXBuildFile; productRef = CEB21C372A574D3E0023B0A0 /* RSKImageCropper */; };
 		CEB508432A3B83FC008E7347 /* ChangeUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */; };
 		CEB508452A3B8633008E7347 /* UserProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */; };
 		CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */; };
@@ -112,13 +114,22 @@
 				CE3A8A462A43401E0039605A /* IQKeyboardManagerSwift in Frameworks */,
 				CE75EF232A1BC6D300E5B8C9 /* FirebaseFirestore in Frameworks */,
 				CE347EB02A56F6F8004C120A /* Toast in Frameworks */,
+				CE2896352A5862DF009A829E /* FirebaseStorage in Frameworks */,
 				CE75EF252A1BC6D300E5B8C9 /* FirebaseFirestoreSwift in Frameworks */,
+				CEB21C382A574D3E0023B0A0 /* RSKImageCropper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE2896332A5862DF009A829E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE4D254F2A2E75D700891CEE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +153,7 @@
 			children = (
 				CE75EF082A1BC37600E5B8C9 /* RestoranAppIsmarVisca */,
 				CE75EF072A1BC37600E5B8C9 /* Products */,
+				CE2896332A5862DF009A829E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -255,6 +267,8 @@
 				CE75EF242A1BC6D300E5B8C9 /* FirebaseFirestoreSwift */,
 				CE3A8A452A43401E0039605A /* IQKeyboardManagerSwift */,
 				CE347EAF2A56F6F8004C120A /* Toast */,
+				CEB21C372A574D3E0023B0A0 /* RSKImageCropper */,
+				CE2896342A5862DF009A829E /* FirebaseStorage */,
 			);
 			productName = RestoranAppIsmarVisca;
 			productReference = CE75EF062A1BC37600E5B8C9 /* RestoranAppIsmarVisca.app */;
@@ -288,6 +302,7 @@
 				CE75EF1F2A1BC6D300E5B8C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CE3A8A442A43401D0039605A /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				CE347EAE2A56F6F8004C120A /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				CEB21C362A574D3D0023B0A0 /* XCRemoteSwiftPackageReference "RSKImageCropper" */,
 			);
 			productRefGroup = CE75EF072A1BC37600E5B8C9 /* Products */;
 			projectDirPath = "";
@@ -598,9 +613,22 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		CEB21C362A574D3D0023B0A0 /* XCRemoteSwiftPackageReference "RSKImageCropper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ruslanskorb/RSKImageCropper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE2896342A5862DF009A829E /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE75EF1F2A1BC6D300E5B8C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		CE347EAF2A56F6F8004C120A /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE347EAE2A56F6F8004C120A /* XCRemoteSwiftPackageReference "Toast-Swift" */;
@@ -625,6 +653,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE75EF1F2A1BC6D300E5B8C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		CEB21C372A574D3E0023B0A0 /* RSKImageCropper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEB21C362A574D3D0023B0A0 /* XCRemoteSwiftPackageReference "RSKImageCropper" */;
+			productName = RSKImageCropper;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

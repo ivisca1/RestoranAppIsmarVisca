@@ -5,7 +5,7 @@
 //  Created by User on 7. 6. 2023..
 //
 
-import Foundation
+import UIKit
 
 extension String {
     var digits: String {

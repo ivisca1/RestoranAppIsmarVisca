@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 
 protocol FoodManagerDelegate {
+    func didDownloadUpdatePicture(_ foodManager: FoodManager)
     func didUpdateUser(_ foodManager: FoodManager)
     func didDeliverOrder(_ foodManager: FoodManager)
     func didMakeOrder(_ foodManager: FoodManager)
@@ -24,6 +27,8 @@ protocol FoodManagerDelegate {
 
 class FoodManager {
     let db = Firestore.firestore()
+    
+    let storage = Storage.storage()
     
     var categories = [DishCategory]()
     
@@ -42,6 +47,8 @@ class FoodManager {
     var user : User?
     
     var ordered = false
+    
+    var image = UIImage()
     
     init() {
         db.collection("food").getDocuments()  { (querySnapshot, err) in
@@ -205,6 +212,7 @@ class FoodManager {
                         print("Document successfully written!")
                         self.ordered = false
                         self.user = userToCreate
+                        self.uploadDefaultProfilePictureWhenSignUp(UIImage(named: "defaultProfilePicture")!, userToCreate)
                         self.delegate?.didSignInUser(self, user: userToCreate)
                     }
                 }
@@ -269,6 +277,7 @@ class FoodManager {
                         self.user = User(name: foundUser?.data()["name"] as! String, surname: foundUser?.data()["surname"] as! String, phoneNumber: foundUser?.data()["phoneNumber"] as! String, email: foundUser?.data()["email"] as! String, address: foundUser?.data()["address"] as! String, orderNumber: foundUser?.data()["orderNumber"] as! Int, isCustomer: foundUser?.data()["isCustomer"] as! Bool, isEmployee: foundUser?.data()["isEmployee"] as! Bool)
                         self.delegate?.didSignInUser(self, user: self.user!)
                         self.fetchBasket()
+                        self.getProfilePicture()
                     }
             }
         } else {
@@ -426,6 +435,47 @@ class FoodManager {
                 self.delegate?.didFailWithError(error: errorMsg)
             } else {
                 self.delegate?.didUpdateUser(self)
+            }
+        }
+    }
+    
+    func uploadProfilePicture(image: UIImage) {
+        self.image = image
+        let storageRef = storage.reference().child("\(user!.email).png")
+        let imgData = image.pngData()
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/png"
+        storageRef.putData(imgData!, metadata: metaData) { (metadata, error) in
+            if error == nil{
+                self.delegate?.didDownloadUpdatePicture(self)
+            } else {
+                print("error in save image")
+            }
+        }
+    }
+    
+    func uploadDefaultProfilePictureWhenSignUp(_ image: UIImage, _ user2: User) {
+        self.image = image
+        let storageRef = storage.reference().child("\(user!.email).png")
+        let imgData = image.pngData()
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/png"
+        storageRef.putData(imgData!, metadata: metaData) { (metadata, error) in
+            if error == nil{
+                self.delegate?.didSignInUser(self, user: user2)
+            } else {
+                print("error in save image")
+            }
+        }
+    }
+    
+    func getProfilePicture() {
+        let storageRef = storage.reference().child("\(user!.email).png")
+        storageRef.getData(maxSize: 100 * 1024 * 1024) { data, error in
+            if error == nil {
+                let image = UIImage(data: data!)
+                self.image = image!
+                self.delegate?.didDownloadUpdatePicture(self)
             }
         }
     }

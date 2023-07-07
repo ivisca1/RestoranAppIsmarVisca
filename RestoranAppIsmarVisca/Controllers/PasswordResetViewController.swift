@@ -45,7 +45,6 @@ class PasswordResetViewController: UIViewController {
         if email.isEmpty == false {
             if email.isValid(String.ValidityType.email) {
                 MyVariables.foodManager.resetUserPassword(email: email)
-                navigationController?.view.makeToast("Email poslan!", duration: 2.0, position: .bottom)
             } else {
                 textFieldInvalid("Format email adrese nije validan!",textField: emailTextField, label: invalidEmailLabel)
             }
@@ -59,7 +58,7 @@ class PasswordResetViewController: UIViewController {
 extension PasswordResetViewController : FoodManagerDelegate {
     
     func didUpdateUser(_ foodManager: FoodManager) {
-        //toast email sent
+        navigationController?.view.makeToast("Email poslan!", duration: 2.0, position: .bottom)
     }
     
     func didFailWithError(error: String) {
@@ -73,5 +72,6 @@ extension PasswordResetViewController : FoodManagerDelegate {
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
-    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) { }
+    func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
+    func didDownloadUpdatePicture(_ foodManager: FoodManager) {}
 }

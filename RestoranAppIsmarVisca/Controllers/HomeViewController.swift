@@ -173,6 +173,7 @@ extension HomeViewController : FoodManagerDelegate {
     func didLogOutUser(_ foodManager: FoodManager) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
     func didFailWithError(error: String) {}
+    func didDownloadUpdatePicture(_ foodManager: FoodManager) {}
 }
 
 extension HomeViewController {

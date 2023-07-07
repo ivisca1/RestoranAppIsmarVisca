@@ -112,5 +112,6 @@ extension SearchViewController : FoodManagerDelegate {
     func didLogOutUser(_ foodManager: FoodManager) {}
     func didSignInUser(_ foodManager: FoodManager, user: User?) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
+    func didDownloadUpdatePicture(_ foodManager: FoodManager) {}
 }
 

@@ -56,6 +56,7 @@ extension ChangeUserDetailsViewController : FoodManagerDelegate {
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     func didFailWithError(error: String) {}
+    func didDownloadUpdatePicture(_ foodManager: FoodManager) {}
 }
 
 extension ChangeUserDetailsViewController : UITextFieldDelegate {

@@ -41,7 +41,7 @@ class BasketViewController: UIViewController {
     
     @IBAction func orderButtonPressed(_ sender: UIButton) {
         if MyVariables.foodManager.basketDishes.isEmpty {
-            self.showAlert(title: "Neuspješna narudžba!", message: "Vaša korpa je prazna")
+            view.makeToast("Vaša korpa je prazna!", duration: 2.0, position: .bottom, title: "Neuspješna narudžba!", image: nil)
         } else {
             MyVariables.foodManager.makeOrder(newAddress: addressLabel.text!)
         }
@@ -126,6 +126,7 @@ extension BasketViewController : FoodManagerDelegate {
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     func didFailWithError(error: String) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
+    func didDownloadUpdatePicture(_ foodManager: FoodManager) {}
 }
 
 extension BasketViewController {

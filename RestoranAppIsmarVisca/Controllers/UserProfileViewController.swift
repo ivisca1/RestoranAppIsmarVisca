@@ -6,18 +6,44 @@
 //
 
 import UIKit
+import RSKImageCropper
 
 class UserProfileViewController: UIViewController {
-
+    
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var nameSurnameLabel: UILabel!
     
+    var imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MyVariables.foodManager.fetchBasket()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        profileImageView.layer.borderWidth = 1.0
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.white.cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.clipsToBounds = true
+        
+        MyVariables.foodManager.getProfilePicture()
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +102,10 @@ extension UserProfileViewController : FoodManagerDelegate {
         tabBarController?.viewControllers?.remove(at: 3)
     }
     
+    func didDownloadUpdatePicture(_ foodManager: FoodManager) {
+        profileImageView.image = MyVariables.foodManager.image
+    }
+    
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
@@ -83,3 +113,36 @@ extension UserProfileViewController : FoodManagerDelegate {
     func didSignInUser(_ foodManager: FoodManager, user: User?) {}
     func didUpdateUser(_ foodManager: FoodManager) {}
 }
+
+extension UserProfileViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate, RSKImageCropViewControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        
+        picker.dismiss(animated: false, completion: { () -> Void in
+
+            var imageCropVC : RSKImageCropViewController!
+
+            imageCropVC = RSKImageCropViewController(image: image, cropMode: RSKImageCropMode.circle)
+
+            imageCropVC.delegate = self
+
+            self.navigationController?.pushViewController(imageCropVC, animated: true)
+
+        })
+    }
+    
+    func imageCropViewControllerDidCancelCrop(_ controller: RSKImageCropViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+
+    func imageCropViewController(_ controller: RSKImageCropViewController, didCropImage croppedImage: UIImage, usingCropRect cropRect: CGRect, rotationAngle: CGFloat) {
+        profileImageView.image = croppedImage
+        MyVariables.foodManager.uploadProfilePicture(image: croppedImage)
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+
