@@ -48,7 +48,7 @@ class FoodManager {
     
     var ordered = false
     
-    var image = UIImage()
+    var image = UIImage(named: "defaultProfilePicture")
     
     init() {
         db.collection("food").getDocuments()  { (querySnapshot, err) in
@@ -260,6 +260,7 @@ class FoodManager {
         do {
             try FirebaseAuth.Auth.auth().signOut()
             user = nil
+            image = UIImage(named: "defaultProfilePicture")
             self.delegate?.didLogOutUser(self)
         } catch {
             print("An error occurred")

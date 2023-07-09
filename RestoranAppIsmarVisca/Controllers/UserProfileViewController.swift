@@ -23,51 +23,19 @@ class UserProfileViewController: UIViewController {
         
         MyVariables.foodManager.fetchBasket()
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        profileImageView.isUserInteractionEnabled = true
-        profileImageView.addGestureRecognizer(tapGestureRecognizer)
-        
-        profileImageView.layer.borderWidth = 1.0
-        profileImageView.layer.masksToBounds = false
-        profileImageView.layer.borderColor = UIColor.white.cgColor
-        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
-        profileImageView.clipsToBounds = true
-        
-        MyVariables.foodManager.getProfilePicture()
-    }
-    
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-            imagePicker.delegate = self
-            imagePicker.sourceType = .savedPhotosAlbum
-            imagePicker.allowsEditing = false
-
-            present(imagePicker, animated: true, completion: nil)
-        }
+        setUpEverything()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         MyVariables.foodManager.delegate = self
         
-        let user = MyVariables.foodManager.user!
-        
-        nameSurnameLabel.text = "\(user.name) \(user.surname)"
-        phoneNumberLabel.text = user.phoneNumber
-        emailLabel.text = user.email
-        addressLabel.text = user.address
-        
-        if MyVariables.foodManager.user != nil {
-            self.updateBasketBadge()
-        }
-        
-        if MyVariables.foodManager.user != nil && MyVariables.foodManager.ordered {
-            MyVariables.foodManager.isOrderDelivered()
-        }
+        refreshView()
     }
 
     @IBAction func logOutClicked(_ sender: UIButton) {
         MyVariables.foodManager.logOutUser()
     }
+    
     @IBAction func changeDetailsClicked(_ sender: UIButton) {
         let controller = ChangeUserDetailsViewController.instantiate()
         navigationController?.pushViewController(controller, animated: true)
@@ -118,7 +86,7 @@ extension UserProfileViewController : UIImagePickerControllerDelegate, UINavigat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else {
-            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+            fatalError("Očekivana je slika, ali je dostavljeno sljedeće:: \(info)")
         }
         
         picker.dismiss(animated: false, completion: { () -> Void in
@@ -145,4 +113,50 @@ extension UserProfileViewController : UIImagePickerControllerDelegate, UINavigat
     }
 }
 
+extension UserProfileViewController {
+    
+    private func setUpEverything() {
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        profileImageView.layer.borderWidth = 1.0
+        profileImageView.layer.masksToBounds = false
+        profileImageView.layer.borderColor = UIColor.white.cgColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.clipsToBounds = true
+        
+        profileImageView.image = MyVariables.foodManager.image
+        
+        MyVariables.foodManager.getProfilePicture()
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
 
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    private func refreshView() {
+        
+        let user = MyVariables.foodManager.user!
+        
+        nameSurnameLabel.text = "\(user.name) \(user.surname)"
+        phoneNumberLabel.text = user.phoneNumber
+        emailLabel.text = user.email
+        addressLabel.text = user.address
+        
+        if MyVariables.foodManager.user != nil {
+            self.updateBasketBadge()
+        }
+        
+        if MyVariables.foodManager.user != nil && MyVariables.foodManager.ordered {
+            MyVariables.foodManager.isOrderDelivered()
+        }
+    }
+}

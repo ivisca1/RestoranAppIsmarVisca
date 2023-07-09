@@ -27,6 +27,14 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
     let defaultColor = UIColor.lightGray.cgColor
+    let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = UIColor(red: 0.922, green: 0.294, blue: 0.302, alpha: 1.0)
+        return activityIndicator
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +57,7 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController : FoodManagerDelegate {
     
     func didSignInUser(_ foodManager: FoodManager, user: User?) {
+        stopSpinner()
         let controller = UserProfileNavigationController.instantiate()
         tabBarController?.viewControllers?.append(BasketViewController.instantiate())
         tabBarController?.viewControllers?.append(controller)
@@ -58,6 +67,7 @@ extension SignUpViewController : FoodManagerDelegate {
     }
     
     func didFailWithError(error: String) {
+        stopSpinner()
         if error == "Profil sa ovim email-om već postoji!" {
             textFieldInvalid(error, textField: emailTextField, label: invalidEmailLabel)
         } else {
@@ -275,6 +285,7 @@ extension SignUpViewController {
             if password == passwordAgain {
                 if nameValid && surnameValid && phoneNumberValid && addressValid && emailValid && passwordValid {
                     let user = User(name: name, surname: surname, phoneNumber: phoneNumber, email: email, address: address, orderNumber: 0, isCustomer: true, isEmployee: false)
+                    showSpinner()
                     MyVariables.foodManager.createUser(userToCreate: user, password: password)
                 }
             } else {
@@ -286,5 +297,26 @@ extension SignUpViewController {
         } else {
             textFieldInvalid("Potvrdi Šifru polje je obavezno!", textField: passwordAgainTextField, label: invalidPasswordAgainLabel)
         }
+    }
+    
+    private func showSpinner() {
+        
+        activityIndicator.startAnimating()
+
+        self.view.addSubview(activityIndicator)
+            
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+            
+        self.view.layoutSubviews()
+    }
+    
+    private func stopSpinner() {
+        
+        activityIndicator.stopAnimating()
+        
+        activityIndicator.removeFromSuperview()
     }
 }
