@@ -133,7 +133,8 @@ class FoodManager {
                         "delivered": false,
                         "ordered": false,
                         "food": [dishName],
-                        "orderNumber": self.user!.orderNumber
+                        "orderNumber": self.user!.orderNumber,
+                        "deliveryMan": ""
                     ]) { err in
                         if let err = err {
                             print("Error writing document: \(err)")
@@ -204,7 +205,9 @@ class FoodManager {
                     "phoneNumber": userToCreate.phoneNumber,
                     "orderNumber": 0,
                     "isCustomer": true,
-                    "isEmployee": false
+                    "isEmployee": false,
+                    "isAdmin": false,
+                    "status": "Neaktivan"
                 ]) { err in
                     if let err = err {
                         print("Error writing document: \(err)")
