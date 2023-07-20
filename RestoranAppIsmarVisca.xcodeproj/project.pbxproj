@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE15CA3B2A33662500870A3C /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15CA3A2A33662500870A3C /* UserProfileViewController.swift */; };
 		CE15CA3D2A33687B00870A3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15CA3C2A33687B00870A3C /* User.swift */; };
+		CE1C208B2A692F400096C2E0 /* ReservationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C208A2A692F400096C2E0 /* ReservationDetailsViewController.swift */; };
 		CE2896352A5862DF009A829E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CE2896342A5862DF009A829E /* FirebaseStorage */; };
 		CE2BD5722A2BB20800F0A567 /* BasketFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BD5702A2BB20800F0A567 /* BasketFoodCollectionViewCell.swift */; };
 		CE2BD5732A2BB20800F0A567 /* BasketFoodCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2BD5712A2BB20800F0A567 /* BasketFoodCollectionViewCell.xib */; };
@@ -52,6 +53,8 @@
 		CEA38B902A4B487900815518 /* NoBasketNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA38B8F2A4B487900815518 /* NoBasketNavigationViewController.swift */; };
 		CEA5D4712A532F0B007567D5 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5D4702A532F0B007567D5 /* PasswordResetViewController.swift */; };
 		CEB21C382A574D3E0023B0A0 /* RSKImageCropper in Frameworks */ = {isa = PBXBuildFile; productRef = CEB21C372A574D3E0023B0A0 /* RSKImageCropper */; };
+		CEB422AA2A6817A7001D778B /* ReservationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB422A92A6817A7001D778B /* ReservationsViewController.swift */; };
+		CEB422AC2A6821EC001D778B /* UIDatePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB422AB2A6821EC001D778B /* UIDatePickerExtension.swift */; };
 		CEB508432A3B83FC008E7347 /* ChangeUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */; };
 		CEB508452A3B8633008E7347 /* UserProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */; };
 		CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */; };
@@ -61,6 +64,7 @@
 /* Begin PBXFileReference section */
 		CE15CA3A2A33662500870A3C /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		CE15CA3C2A33687B00870A3C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE1C208A2A692F400096C2E0 /* ReservationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationDetailsViewController.swift; sourceTree = "<group>"; };
 		CE2BD5702A2BB20800F0A567 /* BasketFoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketFoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE2BD5712A2BB20800F0A567 /* BasketFoodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketFoodCollectionViewCell.xib; sourceTree = "<group>"; };
 		CE41DAA72A24FFA5006429EE /* SearchFoodViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFoodViewCell.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 		CE9B2EF62A3A5555007393B7 /* BasketOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketOrderViewController.swift; sourceTree = "<group>"; };
 		CEA38B8F2A4B487900815518 /* NoBasketNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBasketNavigationViewController.swift; sourceTree = "<group>"; };
 		CEA5D4702A532F0B007567D5 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
+		CEB422A92A6817A7001D778B /* ReservationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsViewController.swift; sourceTree = "<group>"; };
+		CEB422AB2A6821EC001D778B /* UIDatePickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerExtension.swift; sourceTree = "<group>"; };
 		CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserDetailsViewController.swift; sourceTree = "<group>"; };
 		CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileNavigationController.swift; sourceTree = "<group>"; };
 		CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
@@ -135,6 +141,7 @@
 			children = (
 				CE4D25502A2E75EE00891CEE /* UIViewControllerExtension.swift */,
 				CE569DD82A30CDE20002CC05 /* StringExtension.swift */,
+				CEB422AB2A6821EC001D778B /* UIDatePickerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -209,6 +216,8 @@
 				CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */,
 				CEA38B8F2A4B487900815518 /* NoBasketNavigationViewController.swift */,
 				CEA5D4702A532F0B007567D5 /* PasswordResetViewController.swift */,
+				CEB422A92A6817A7001D778B /* ReservationsViewController.swift */,
+				CE1C208A2A692F400096C2E0 /* ReservationDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -361,6 +370,7 @@
 				CE75EF0C2A1BC37600E5B8C9 /* SceneDelegate.swift in Sources */,
 				CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */,
 				CE57D12B2A32481B0009BBF3 /* SignUpViewController.swift in Sources */,
+				CEB422AA2A6817A7001D778B /* ReservationsViewController.swift in Sources */,
 				CEECAA2D2A35ECB5009107A7 /* NoBasketViewController.swift in Sources */,
 				CE4C24C72A290B8200586A89 /* MyVariables.swift in Sources */,
 				CE820DD02A20BFFC0043D8BC /* CategoryViewCell.swift in Sources */,
@@ -368,6 +378,8 @@
 				CE9280AC2A1E5DF3009AC83B /* HomeViewController.swift in Sources */,
 				CEB508432A3B83FC008E7347 /* ChangeUserDetailsViewController.swift in Sources */,
 				CE5B38BD2A55D34800847D5A /* PromotionViewCell.swift in Sources */,
+				CEB422AC2A6821EC001D778B /* UIDatePickerExtension.swift in Sources */,
+				CE1C208B2A692F400096C2E0 /* ReservationDetailsViewController.swift in Sources */,
 				CE80597A2A279DD00078887F /* FoodManager.swift in Sources */,
 				CE15CA3D2A33687B00870A3C /* User.swift in Sources */,
 			);

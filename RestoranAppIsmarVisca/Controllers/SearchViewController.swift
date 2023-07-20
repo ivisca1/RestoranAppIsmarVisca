@@ -104,6 +104,8 @@ extension SearchViewController : FoodManagerDelegate {
         tableView.reloadData()
     }
     
+    func didFetchReservation(_ foodManager: FoodManager, day: Int, month: Int, year: Int, hours: Int, numberOfPeople: Int, comment: String) {}
+    func didMakeReservation(_ foodManager: FoodManager) {}
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
     func didFailWithError(error: String) {}

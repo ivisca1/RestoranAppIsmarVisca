@@ -12,6 +12,8 @@ import FirebaseAuth
 import FirebaseStorage
 
 protocol FoodManagerDelegate {
+    func didFetchReservation(_ foodManager: FoodManager, day: Int, month: Int, year: Int, hours: Int, numberOfPeople: Int, comment: String)
+    func didMakeReservation(_ foodManager: FoodManager)
     func didDownloadUpdatePicture(_ foodManager: FoodManager)
     func didUpdateUser(_ foodManager: FoodManager)
     func didDeliverOrder(_ foodManager: FoodManager)
@@ -281,6 +283,7 @@ class FoodManager {
                         self.user = User(name: foundUser?.data()["name"] as! String, surname: foundUser?.data()["surname"] as! String, phoneNumber: foundUser?.data()["phoneNumber"] as! String, email: foundUser?.data()["email"] as! String, address: foundUser?.data()["address"] as! String, orderNumber: foundUser?.data()["orderNumber"] as! Int, isCustomer: foundUser?.data()["isCustomer"] as! Bool, isEmployee: foundUser?.data()["isEmployee"] as! Bool)
                         self.delegate?.didSignInUser(self, user: self.user!)
                         self.fetchBasket()
+                        self.fetchReservation()
                         self.getProfilePicture()
                     }
             }
@@ -480,6 +483,64 @@ class FoodManager {
                 let image = UIImage(data: data!)
                 self.image = image!
                 self.delegate?.didDownloadUpdatePicture(self)
+            }
+        }
+    }
+    
+    func checkIfReservationIsAvailable(day: Int, month: Int, year: Int, hours: Int, numberOfPeople: Int, comment: String) {
+        db.collection("reservations").whereField("day", isEqualTo: day).whereField("month", isEqualTo: month).whereField("year", isEqualTo: year).whereField("hours", isEqualTo: hours).getDocuments { (result, error) in
+            if error == nil{
+                var totalNumberOfPeople = 0
+                for document in result!.documents {
+                    let numberOfPeople = document.data()["numberOfPeople"] as! Int
+                    totalNumberOfPeople += numberOfPeople
+                }
+                if totalNumberOfPeople > 30 {
+                    self.delegate?.didFailWithError(error: "Termin je popunjen. Molimo Vas pokušajte drugi.")
+                } else {
+                    self.makeReservation(day: day, month: month, year: year, hours: hours, numberOfPeople: numberOfPeople, comment: comment)
+                }
+            }
+        }
+    }
+    
+    func makeReservation(day: Int, month: Int, year: Int, hours: Int, numberOfPeople: Int, comment: String) {
+        self.db.collection("reservations").document(user!.email).setData([
+            "day": day,
+            "month": month,
+            "year": year,
+            "hours": hours,
+            "numberOfPeople": numberOfPeople,
+            "email": user!.email,
+            "comment": comment
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+                self.delegate?.didMakeReservation(self)
+            }
+        }
+    }
+    
+    func fetchReservation() {
+        db.collection("reservations").whereField("email", isEqualTo: user!.email).getDocuments { (result, error) in
+            if error == nil{
+                if (result?.documents.count)! > 0 {
+                    let foundReservation = result?.documents[0]
+                    self.delegate?.didFetchReservation(self, day: foundReservation?.data()["day"] as! Int, month: foundReservation?.data()["month"] as! Int, year: foundReservation?.data()["year"] as! Int, hours: foundReservation?.data()["hours"] as! Int, numberOfPeople: foundReservation?.data()["numberOfPeople"] as! Int, comment: foundReservation?.data()["comment"] as! String)
+                }
+            }
+        }
+    }
+    
+    func cancelReservation() {
+        db.collection("reservations").document(user!.email).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+                self.delegate?.didUpdateUser(self)
             }
         }
     }

@@ -69,6 +69,8 @@ extension BasketOrderViewController : FoodManagerDelegate {
         tabBarController?.viewControllers?.remove(at: 3)
     }
     
+    func didFetchReservation(_ foodManager: FoodManager, day: Int, month: Int, year: Int, hours: Int, numberOfPeople: Int, comment: String) {}
+    func didMakeReservation(_ foodManager: FoodManager) {}
     func didMakeOrder(_ foodManager: FoodManager) {}
     func didLogOutUser(_ foodManager: FoodManager) {}
     func didSignInUser(_ foodManager: FoodManager, user: User?) {}

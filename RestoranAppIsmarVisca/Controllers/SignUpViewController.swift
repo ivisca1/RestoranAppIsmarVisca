@@ -60,8 +60,10 @@ extension SignUpViewController : FoodManagerDelegate {
         stopSpinner()
         let controller = UserProfileNavigationController.instantiate()
         tabBarController?.viewControllers?.append(BasketViewController.instantiate())
+        tabBarController?.viewControllers?.append(ReservationsViewController.instantiate())
         tabBarController?.viewControllers?.append(controller)
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.last
+        tabBarController?.viewControllers?.remove(at: 2)
         tabBarController?.viewControllers?.remove(at: 2)
         tabBarController?.viewControllers?.remove(at: 2)
     }
@@ -76,6 +78,8 @@ extension SignUpViewController : FoodManagerDelegate {
         }
     }
     
+    func didFetchReservation(_ foodManager: FoodManager, day: Int, month: Int, year: Int, hours: Int, numberOfPeople: Int, comment: String) {}
+    func didMakeReservation(_ foodManager: FoodManager) {}
     func didMakeOrder(_ foodManager: FoodManager) {}
     func didLogOutUser(_ foodManager: FoodManager) {}
     func didUpdateBasket(_ foodManager: FoodManager, dishes: [FoodDish]) {}

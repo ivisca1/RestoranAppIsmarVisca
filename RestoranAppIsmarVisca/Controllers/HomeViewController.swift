@@ -145,14 +145,32 @@ extension HomeViewController : FoodManagerDelegate {
         tabBarController?.viewControllers?.remove(at: 3)
     }
     
+    func didFetchReservation(_ foodManager: FoodManager, day: Int, month: Int, year: Int, hours: Int, numberOfPeople: Int, comment: String) {
+        let controller = ReservationDetailsViewController.instantiate()
+        
+        controller.day = day
+        controller.month = month
+        controller.year = year
+        controller.hours = hours
+        controller.numberOfPeople = numberOfPeople
+        controller.comment = comment
+        
+        tabBarController?.viewControllers?.insert(controller, at: 3)
+        tabBarController?.viewControllers?.remove(at: 4)
+    }
+    
     func didSignInUser(_ foodManager: FoodManager, user: User?) {
         if user != nil {
             tabBarController?.viewControllers?.removeLast()
             let controller = UserProfileNavigationController.instantiate()
             tabBarController?.viewControllers?.append(controller)
         } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let noReservationController = storyboard.instantiateViewController(identifier: "NoReservationNavigationController")
             tabBarController?.viewControllers?.remove(at: 2)
             tabBarController?.viewControllers?.insert(NoBasketNavigationViewController.instantiate(), at: 2)
+            tabBarController?.viewControllers?.remove(at: 3)
+            tabBarController?.viewControllers?.insert(noReservationController, at: 3)
         }
     }
     
@@ -169,6 +187,7 @@ extension HomeViewController : FoodManagerDelegate {
         self.updateBasketBadge()
     }
     
+    func didMakeReservation(_ foodManager: FoodManager) {}
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didLogOutUser(_ foodManager: FoodManager) {}
     func didUpdateUser(_ foodManager: FoodManager) {}

@@ -23,6 +23,8 @@ class UserProfileViewController: UIViewController {
         
         MyVariables.foodManager.fetchBasket()
         
+        MyVariables.foodManager.fetchReservation()
+        
         setUpEverything()
     }
     
@@ -52,9 +54,13 @@ extension UserProfileViewController : FoodManagerDelegate {
     }
     
     func didLogOutUser(_ foodManager: FoodManager) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let noReservationController = storyboard.instantiateViewController(identifier: "NoReservationNavigationController")
         tabBarController?.viewControllers?.append(NoBasketNavigationViewController.instantiate())
+        tabBarController?.viewControllers?.append(noReservationController)
         tabBarController?.viewControllers?.append(ProfileNavigationViewController.instantiate())
         tabBarController?.selectedViewController = tabBarController?.viewControllers?.last
+        tabBarController?.viewControllers?.remove(at: 2)
         tabBarController?.viewControllers?.remove(at: 2)
         tabBarController?.viewControllers?.remove(at: 2)
     }
@@ -74,6 +80,21 @@ extension UserProfileViewController : FoodManagerDelegate {
         profileImageView.image = MyVariables.foodManager.image
     }
     
+    func didFetchReservation(_ foodManager: FoodManager, day: Int, month: Int, year: Int, hours: Int, numberOfPeople: Int, comment: String) {
+        let controller = ReservationDetailsViewController.instantiate()
+        
+        controller.day = day
+        controller.month = month
+        controller.year = year
+        controller.hours = hours
+        controller.numberOfPeople = numberOfPeople
+        controller.comment = comment
+        
+        tabBarController?.viewControllers?.insert(controller, at: 3)
+        tabBarController?.viewControllers?.remove(at: 4)
+    }
+    
+    func didMakeReservation(_ foodManager: FoodManager) {}
     func didUpdateSearch(_ foodManager: FoodManager, dishes: [FoodDish]) {}
     func didUpdateCategories(_ foodManager: FoodManager, categoriesList: [DishCategory]) {}
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {}
