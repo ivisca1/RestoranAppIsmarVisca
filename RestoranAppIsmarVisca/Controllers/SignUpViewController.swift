@@ -50,6 +50,10 @@ class SignUpViewController: UIViewController {
     
 
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
+        sender.alpha = 0.7
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1
+        }
         tryToSignUp()
     }
 }

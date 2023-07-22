@@ -28,6 +28,8 @@ class HomeViewController: UIViewController {
         
         registerCells()
         
+        showSpinner(activityIndicator: MyVariables.activityIndicator)
+        
         MyVariables.foodManager.isAnyoneSignedIn()
     }
     
@@ -104,6 +106,10 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            collectionView.cellForItem(at: indexPath)?.alpha = 1
+        }
         if collectionView == categoryCollectionView {
             MyVariables.foodManager.fetchFood(document: "food", categoryId: MyVariables.foodManager.categories[indexPath.row].id)
             indexCategory = indexPath.row
@@ -117,7 +123,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             controller.dish = MyVariables.foodManager.restDishes[indexPath.row]
             navigationController?.pushViewController(controller, animated: true)
         } else {
-            runAnimation = false
+            //runAnimation = false
             if indexPath.row == 0 {
                 instagramTap()
             } else if indexPath.row == 1 {
@@ -179,6 +185,7 @@ extension HomeViewController : FoodManagerDelegate {
     }
     
     func didUpdateDishes(_ foodManager: FoodManager, popularDishes: [FoodDish], restDishes: [FoodDish]) {
+        stopSpinner(activityIndicator: MyVariables.activityIndicator)
         popularDishesCollectionView.reloadData()
         specialsCollectionView.reloadData()
     }

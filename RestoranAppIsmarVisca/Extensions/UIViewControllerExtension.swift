@@ -41,4 +41,25 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func showSpinner(activityIndicator: UIActivityIndicatorView) {
+            
+        activityIndicator.startAnimating()
+
+        self.view.addSubview(activityIndicator)
+            
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+            
+        self.view.layoutSubviews()
+    }
+    
+    func stopSpinner(activityIndicator: UIActivityIndicatorView) {
+        
+        activityIndicator.stopAnimating()
+        
+        activityIndicator.removeFromSuperview()
+    }
+    
 }

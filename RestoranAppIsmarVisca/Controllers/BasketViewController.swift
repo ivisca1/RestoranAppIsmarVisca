@@ -40,14 +40,23 @@ class BasketViewController: UIViewController {
     }
     
     @IBAction func orderButtonPressed(_ sender: UIButton) {
+        sender.alpha = 0.7
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1
+        }
         if MyVariables.foodManager.basketDishes.isEmpty {
             view.makeToast("Vaša korpa je prazna!", duration: 2.0, position: .bottom, title: "Neuspješna narudžba!", image: nil)
         } else {
+            showSpinner(activityIndicator: MyVariables.activityIndicator)
             MyVariables.foodManager.makeOrder(newAddress: addressLabel.text!)
         }
     }
     
     @IBAction func changeButtonPressed(_ sender: UIButton) {
+        sender.alpha = 0.7
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1
+        }
         let alert = UIAlertController(title: "Promjena adrese", message: "Promjena važi samo za ovu narudžbu!", preferredStyle: .alert)
 
         alert.addTextField { (textField) in
@@ -100,6 +109,7 @@ extension BasketViewController : UITableViewDelegate, UITableViewDataSource {
 extension BasketViewController : FoodManagerDelegate {
     
     func didMakeOrder(_ foodManager: FoodManager) {
+        stopSpinner(activityIndicator: MyVariables.activityIndicator)
         let controller = BasketOrderViewController.instantiate()
         controller.address = addressLabel.text!
         tabBarController?.viewControllers?.insert(controller, at: 2)

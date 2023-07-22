@@ -40,6 +40,11 @@ class PasswordResetViewController: UIViewController {
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         
+        sender.alpha = 0.7
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1
+        }
+        
         let email = emailTextField.text!
         
         if email.isEmpty == false {

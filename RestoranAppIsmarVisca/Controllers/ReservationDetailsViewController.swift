@@ -44,6 +44,11 @@ class ReservationDetailsViewController: UIViewController {
     
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        sender.alpha = 0.7
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1
+        }
+        
         let date = Date()
         let components = Calendar.current.dateComponents([.year, .day, .month], from: date)
         let currentYear = components.year!

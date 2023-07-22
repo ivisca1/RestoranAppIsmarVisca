@@ -37,6 +37,10 @@ class ChangeUserDetailsViewController: UIViewController {
     
 
     @IBAction func changeButtonPressed(_ sender: UIButton) {
+        sender.alpha = 0.7
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1
+        }
         tryToChange()
     }
 }

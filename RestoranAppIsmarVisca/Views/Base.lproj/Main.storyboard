@@ -1354,7 +1354,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Traži" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hku-PD-TgB">
-                                                <rect key="frame" x="16" y="6" width="303.33333333333331" height="38.333333333333336"/>
+                                                <rect key="frame" x="16" y="6" width="303.33333333333337" height="38.333333333333336"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="38.329999999999998" id="ilD-TU-AtO"/>
@@ -1562,7 +1562,7 @@
                                 <rect key="frame" x="16" y="103" width="361" height="284"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detalji rezervacije:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcZ-Qy-7aq">
-                                        <rect key="frame" x="8" y="20" width="337" height="32"/>
+                                        <rect key="frame" x="8" y="20" width="345" height="32"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1610,7 +1610,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Komentar/zahtjev:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhp-gf-QZ1">
-                                        <rect key="frame" x="8" y="188" width="337" height="24"/>
+                                        <rect key="frame" x="8" y="188" width="345" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1622,7 +1622,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mjesto do prozora." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="USN-fq-pRn">
-                                        <rect key="frame" x="8" y="220" width="337" height="44"/>
+                                        <rect key="frame" x="8" y="220" width="345" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="tZ3-TL-rBQ"/>
                                         </constraints>
@@ -1640,7 +1640,7 @@
                                     <constraint firstItem="fzm-ww-ebL" firstAttribute="leading" secondItem="GZT-Aj-r5f" secondAttribute="leading" constant="8" id="Eud-4i-pH1"/>
                                     <constraint firstItem="ff2-L8-IXF" firstAttribute="top" secondItem="fzm-ww-ebL" secondAttribute="bottom" constant="8" symbolic="YES" id="GbE-MF-k7h"/>
                                     <constraint firstItem="oOk-ao-iAm" firstAttribute="centerY" secondItem="iwI-Mg-Vzz" secondAttribute="centerY" id="LBE-o1-loz"/>
-                                    <constraint firstAttribute="trailing" secondItem="Fhp-gf-QZ1" secondAttribute="trailing" constant="16" id="M8Q-1N-h9A"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fhp-gf-QZ1" secondAttribute="trailing" constant="8" id="M8Q-1N-h9A"/>
                                     <constraint firstAttribute="height" constant="284" id="MYX-Fa-W76"/>
                                     <constraint firstItem="iwI-Mg-Vzz" firstAttribute="top" secondItem="vcZ-Qy-7aq" secondAttribute="bottom" constant="8" symbolic="YES" id="SYx-fl-97b"/>
                                     <constraint firstAttribute="trailing" secondItem="IV8-gT-l46" secondAttribute="trailing" constant="8" id="Sa0-vG-gq6"/>
@@ -1651,13 +1651,13 @@
                                     <constraint firstItem="ff2-L8-IXF" firstAttribute="leading" secondItem="GZT-Aj-r5f" secondAttribute="leading" constant="8" id="dAx-Zd-j2f"/>
                                     <constraint firstItem="vcZ-Qy-7aq" firstAttribute="top" secondItem="GZT-Aj-r5f" secondAttribute="top" constant="20" id="ega-KP-WtO"/>
                                     <constraint firstAttribute="trailing" secondItem="3gw-yO-9YR" secondAttribute="trailing" constant="8" id="gGl-nY-CLE"/>
-                                    <constraint firstAttribute="trailing" secondItem="vcZ-Qy-7aq" secondAttribute="trailing" constant="16" id="ieo-I2-DXx"/>
+                                    <constraint firstAttribute="trailing" secondItem="vcZ-Qy-7aq" secondAttribute="trailing" constant="8" id="ieo-I2-DXx"/>
                                     <constraint firstItem="USN-fq-pRn" firstAttribute="top" secondItem="Fhp-gf-QZ1" secondAttribute="bottom" constant="8" symbolic="YES" id="lLu-1o-Jej"/>
                                     <constraint firstItem="USN-fq-pRn" firstAttribute="leading" secondItem="GZT-Aj-r5f" secondAttribute="leading" constant="8" id="mF8-LU-0u4"/>
                                     <constraint firstItem="fzm-ww-ebL" firstAttribute="top" secondItem="bSR-SD-CKw" secondAttribute="bottom" constant="8" symbolic="YES" id="mbU-sx-G4v"/>
                                     <constraint firstAttribute="trailing" secondItem="qs7-Gb-GFS" secondAttribute="trailing" constant="8" id="nh9-zM-IZ5"/>
                                     <constraint firstItem="3gw-yO-9YR" firstAttribute="centerY" secondItem="bSR-SD-CKw" secondAttribute="centerY" id="oMl-RY-8GT"/>
-                                    <constraint firstAttribute="trailing" secondItem="USN-fq-pRn" secondAttribute="trailing" constant="16" id="uNS-NA-hAA"/>
+                                    <constraint firstAttribute="trailing" secondItem="USN-fq-pRn" secondAttribute="trailing" constant="8" id="uNS-NA-hAA"/>
                                     <constraint firstItem="vcZ-Qy-7aq" firstAttribute="leading" secondItem="GZT-Aj-r5f" secondAttribute="leading" constant="8" id="vf4-HU-qit"/>
                                 </constraints>
                             </view>

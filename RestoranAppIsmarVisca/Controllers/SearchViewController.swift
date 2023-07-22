@@ -44,6 +44,10 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController : UITextFieldDelegate {
     @IBAction func searchButtonPressed(_ sender: UIButton) {
+        sender.alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1
+        }
         let food = searchTextField.text!
         MyVariables.foodManager.fetchFoodSearch(document: "food", searchText: food)
         searchTextField.endEditing(true)
@@ -85,6 +89,10 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            tableView.cellForRow(at: indexPath)?.alpha = 1
+        }
         let controller = DishDetailViewController.instantiate()
         controller.dish = MyVariables.foodManager.searchDishes[indexPath.row]
         navigationController?.pushViewController(controller, animated: true)

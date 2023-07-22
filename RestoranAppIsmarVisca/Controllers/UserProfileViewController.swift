@@ -39,6 +39,10 @@ class UserProfileViewController: UIViewController {
     }
     
     @IBAction func changeDetailsClicked(_ sender: UIButton) {
+        sender.alpha = 0.7
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1
+        }
         let controller = ChangeUserDetailsViewController.instantiate()
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -154,6 +158,10 @@ extension UserProfileViewController {
     }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        profileImageView.alpha = 0.7
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.profileImageView.alpha = 1
+        }
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum

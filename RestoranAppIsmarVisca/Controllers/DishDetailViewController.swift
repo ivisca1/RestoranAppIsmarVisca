@@ -41,6 +41,10 @@ class DishDetailViewController: UIViewController {
         self.dismiss(animated: true,completion: nil)
     }
     @IBAction func placeOrderButtonClicked(_ sender: UIButton) {
+        sender.alpha = 0.7
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1
+        }
         if MyVariables.foodManager.user != nil {
             if MyVariables.foodManager.ordered {
                 navigationController?.view.makeToast("Molimo vas sačekajte da se završi narudžba!", duration: 2.0, position: .bottom, title: "Imate već naručenu narudžbu!", image: nil)

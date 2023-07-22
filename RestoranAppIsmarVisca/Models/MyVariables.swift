@@ -11,6 +11,14 @@ import UIKit
 struct MyVariables {
     static var foodManager = FoodManager()
     static var promotions = [Promotion(firstLabel: "Pratite nas na Instagramu!", secondLabel: "@yummiesarajevo", image: "instagram"), Promotion(firstLabel: "Pratite nas na Facebook-u", secondLabel: "Yummie Sarajevo", image: "facebook"), Promotion(firstLabel: "Kontaktirajte nas!", secondLabel: "+387 61 123 456", image: "phone")]
+    static let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = UIColor(red: 0.922, green: 0.294, blue: 0.302, alpha: 1.0)
+        return activityIndicator
+    }()
 }
 
 func textFieldInvalid(_ msg: String, textField: UITextField!, label: UILabel!) {
