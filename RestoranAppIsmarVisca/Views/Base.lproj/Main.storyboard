@@ -848,7 +848,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unesite email asociran sa vašim profilom i poslat ćemo Vam email sa instukcijama za promjenu šifre." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ww6-ni-AOh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unesite email asociran sa vašim profilom i poslat ćemo Vam email sa instrukcijama za promjenu šifre." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ww6-ni-AOh">
                                 <rect key="frame" x="16" y="99" width="361" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="oLC-8e-ljO"/>
@@ -931,12 +931,12 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Jd-Ek-xv0">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Korpa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cy0-hf-p9R">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Korpa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cy0-hf-p9R">
                                                         <rect key="frame" x="16" y="6" width="361" height="39"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="39" id="qda-aY-Tcd"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1109,8 +1109,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prijavite se da biste pristupili korpi!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dut-hK-pMo">
-                                <rect key="frame" x="16" y="411.66666666666669" width="361" height="28.666666666666686"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <rect key="frame" x="16" y="413" width="361" height="26.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1440,7 +1440,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="RBu-AD-G6t">
-                                <rect key="frame" x="15" y="132" width="360" height="50"/>
+                                <rect key="frame" x="15" y="132" width="359" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.42745098040000001" green="0.41960784309999999" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </datePicker>
@@ -1621,7 +1621,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mjesto do prozora." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="USN-fq-pRn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mjesto do prozora." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="USN-fq-pRn">
                                         <rect key="frame" x="8" y="220" width="345" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="tZ3-TL-rBQ"/>
@@ -2201,7 +2201,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 KM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4c5-m5-dAp">
-                                                        <rect key="frame" x="16" y="120.99999999999999" width="361" height="31.333333333333329"/>
+                                                        <rect key="frame" x="16" y="120.99999999999999" width="73" height="31.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
                                                         <color key="textColor" red="1" green="0.30980392159999998" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
@@ -2230,19 +2230,26 @@
                                                             <action selector="placeOrderButtonClicked:" destination="3f8-xH-33G" eventType="touchUpInside" id="Dye-yF-Sru"/>
                                                         </connections>
                                                     </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cr-9I-L2E">
+                                                        <rect key="frame" x="320.33333333333331" y="122.33333333333333" width="56.666666666666686" height="28.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="nxv-Xh-gXE" firstAttribute="top" secondItem="uAF-rM-9Pr" secondAttribute="bottom" constant="41" id="0JD-CW-V5r"/>
                                                     <constraint firstAttribute="height" constant="483" id="2YP-gZ-Lb4"/>
                                                     <constraint firstAttribute="trailing" secondItem="tvJ-NB-eSB" secondAttribute="trailing" constant="16" id="7Hm-ei-An8"/>
-                                                    <constraint firstAttribute="trailing" secondItem="4c5-m5-dAp" secondAttribute="trailing" constant="16" id="Alp-SY-36H"/>
                                                     <constraint firstItem="tvJ-NB-eSB" firstAttribute="top" secondItem="LXM-6q-DNQ" secondAttribute="top" constant="60" id="FUN-c8-YiG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="7cr-9I-L2E" secondAttribute="trailing" constant="16" id="L5R-JM-npR"/>
                                                     <constraint firstItem="tvJ-NB-eSB" firstAttribute="leading" secondItem="LXM-6q-DNQ" secondAttribute="leading" constant="16" id="MrJ-je-MLq"/>
                                                     <constraint firstAttribute="trailing" secondItem="uAF-rM-9Pr" secondAttribute="trailing" constant="16" id="Ni5-PR-lCa"/>
                                                     <constraint firstItem="uAF-rM-9Pr" firstAttribute="leading" secondItem="LXM-6q-DNQ" secondAttribute="leading" constant="16" id="Tsc-Gk-UXM"/>
                                                     <constraint firstItem="nxv-Xh-gXE" firstAttribute="leading" secondItem="LXM-6q-DNQ" secondAttribute="leading" constant="16" id="bd0-oC-2TO"/>
                                                     <constraint firstAttribute="trailing" secondItem="nxv-Xh-gXE" secondAttribute="trailing" constant="16" id="o8Z-5N-AHV"/>
+                                                    <constraint firstItem="7cr-9I-L2E" firstAttribute="centerY" secondItem="4c5-m5-dAp" secondAttribute="centerY" id="pxB-vl-NVI"/>
                                                     <constraint firstItem="4c5-m5-dAp" firstAttribute="leading" secondItem="LXM-6q-DNQ" secondAttribute="leading" constant="16" id="sX3-cZ-6ep"/>
                                                     <constraint firstItem="4c5-m5-dAp" firstAttribute="top" secondItem="tvJ-NB-eSB" secondAttribute="bottom" constant="25" id="wPh-AZ-A5b"/>
                                                     <constraint firstItem="uAF-rM-9Pr" firstAttribute="top" secondItem="4c5-m5-dAp" secondAttribute="bottom" constant="22.670000000000002" id="zT0-Ff-Rct"/>
@@ -2272,6 +2279,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="caloriesLabel" destination="7cr-9I-L2E" id="TkJ-43-ZjD"/>
                         <outlet property="dishDescriptionLabel" destination="uAF-rM-9Pr" id="Mm9-nS-GMf"/>
                         <outlet property="dishImageView" destination="mvi-xo-Wef" id="gaf-pJ-vgh"/>
                         <outlet property="dishPriceLabel" destination="4c5-m5-dAp" id="PTb-OR-7rg"/>
@@ -2366,8 +2374,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prijavite se da biste pristupili rezervacijama!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="El3-2V-a9o">
-                                <rect key="frame" x="16" y="402" width="361" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="16" y="399.66666666666669" width="361" height="52.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>

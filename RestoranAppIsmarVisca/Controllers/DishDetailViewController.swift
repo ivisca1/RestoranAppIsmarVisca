@@ -10,6 +10,7 @@ import Toast
 
 class DishDetailViewController: UIViewController {
 
+    @IBOutlet weak var caloriesLabel: UILabel!
     @IBOutlet weak var foodDetailView: UIView!
     @IBOutlet weak var orderButton: UIButton!
     @IBOutlet weak var dishDescriptionLabel: UILabel!
@@ -22,6 +23,7 @@ class DishDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        caloriesLabel.text = "\(dish.calories) cal"
         dishImageView.image = UIImage(named: dish.image)
         dishTitleLabel.text = dish.name
         dishPriceLabel.text = dish.price
