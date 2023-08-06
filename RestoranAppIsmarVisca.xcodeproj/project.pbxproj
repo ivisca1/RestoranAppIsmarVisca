@@ -26,6 +26,7 @@
 		CE5B38BE2A55D34800847D5A /* PromotionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5B38BC2A55D34800847D5A /* PromotionViewCell.xib */; };
 		CE5B38C02A55D62B00847D5A /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B38BF2A55D62B00847D5A /* Promotion.swift */; };
 		CE6A6F412A222F0F0054017A /* DishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A6F402A222F0F0054017A /* DishDetailViewController.swift */; };
+		CE740BD62A7B98C00040DFFD /* UserLoggedOutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE740BD52A7B98C00040DFFD /* UserLoggedOutUITests.swift */; };
 		CE75EF0A2A1BC37600E5B8C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75EF092A1BC37600E5B8C9 /* AppDelegate.swift */; };
 		CE75EF0C2A1BC37600E5B8C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE75EF0B2A1BC37600E5B8C9 /* SceneDelegate.swift */; };
 		CE75EF112A1BC37600E5B8C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE75EF0F2A1BC37600E5B8C9 /* Main.storyboard */; };
@@ -41,6 +42,8 @@
 		CE820DD12A20BFFC0043D8BC /* CategoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE820DCF2A20BFFC0043D8BC /* CategoryViewCell.xib */; };
 		CE820DD32A20C3DC0043D8BC /* DishCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE820DD22A20C3DC0043D8BC /* DishCategory.swift */; };
 		CE820DD52A20CDFE0043D8BC /* CategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE820DD42A20CDFD0043D8BC /* CategoryCardView.swift */; };
+		CE82734C2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82734B2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests.swift */; };
+		CE82734E2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82734D2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITestsLaunchTests.swift */; };
 		CE9280AC2A1E5DF3009AC83B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9280AB2A1E5DF3009AC83B /* HomeViewController.swift */; };
 		CE9280AE2A1E5E1E009AC83B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9280AD2A1E5E1E009AC83B /* SearchViewController.swift */; };
 		CE9280B02A1E5E4A009AC83B /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9280AF2A1E5E4A009AC83B /* BasketViewController.swift */; };
@@ -57,9 +60,20 @@
 		CEB422AC2A6821EC001D778B /* UIDatePickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB422AB2A6821EC001D778B /* UIDatePickerExtension.swift */; };
 		CEB508432A3B83FC008E7347 /* ChangeUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */; };
 		CEB508452A3B8633008E7347 /* UserProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */; };
+		CECA9FB42A7BD148000DF9CC /* UserLoggedInUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECA9FB32A7BD148000DF9CC /* UserLoggedInUITests.swift */; };
 		CECEFCA02A262A5B00B84B21 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */; };
 		CEECAA2D2A35ECB5009107A7 /* NoBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECAA2C2A35ECB5009107A7 /* NoBasketViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE82734F2A7A8C4200B00EA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE75EEFE2A1BC37600E5B8C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE75EF052A1BC37600E5B8C9;
+			remoteInfo = RestoranAppIsmarVisca;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CE15CA3A2A33662500870A3C /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +92,7 @@
 		CE5B38BC2A55D34800847D5A /* PromotionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PromotionViewCell.xib; sourceTree = "<group>"; };
 		CE5B38BF2A55D62B00847D5A /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		CE6A6F402A222F0F0054017A /* DishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
+		CE740BD52A7B98C00040DFFD /* UserLoggedOutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoggedOutUITests.swift; sourceTree = "<group>"; };
 		CE75EF062A1BC37600E5B8C9 /* RestoranAppIsmarVisca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestoranAppIsmarVisca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE75EF092A1BC37600E5B8C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE75EF0B2A1BC37600E5B8C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +107,9 @@
 		CE820DCF2A20BFFC0043D8BC /* CategoryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryViewCell.xib; sourceTree = "<group>"; };
 		CE820DD22A20C3DC0043D8BC /* DishCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCategory.swift; sourceTree = "<group>"; };
 		CE820DD42A20CDFD0043D8BC /* CategoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCardView.swift; sourceTree = "<group>"; };
+		CE8273492A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestoranAppIsmarViscaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE82734B2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoranAppIsmarViscaUITests.swift; sourceTree = "<group>"; };
+		CE82734D2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoranAppIsmarViscaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CE9280AB2A1E5DF3009AC83B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE9280AD2A1E5E1E009AC83B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CE9280AF2A1E5E4A009AC83B /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +125,7 @@
 		CEB422AB2A6821EC001D778B /* UIDatePickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerExtension.swift; sourceTree = "<group>"; };
 		CEB508422A3B83FC008E7347 /* ChangeUserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserDetailsViewController.swift; sourceTree = "<group>"; };
 		CEB508442A3B8633008E7347 /* UserProfileNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileNavigationController.swift; sourceTree = "<group>"; };
+		CECA9FB32A7BD148000DF9CC /* UserLoggedInUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoggedInUITests.swift; sourceTree = "<group>"; };
 		CECEFC9F2A262A5B00B84B21 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
 		CEECAA2C2A35ECB5009107A7 /* NoBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBasketViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +142,13 @@
 				CE2896352A5862DF009A829E /* FirebaseStorage in Frameworks */,
 				CE75EF252A1BC6D300E5B8C9 /* FirebaseFirestoreSwift in Frameworks */,
 				CEB21C382A574D3E0023B0A0 /* RSKImageCropper in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE8273462A7A8C4200B00EA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				CE75EF082A1BC37600E5B8C9 /* RestoranAppIsmarVisca */,
+				CE82734A2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests */,
 				CE75EF072A1BC37600E5B8C9 /* Products */,
 				CE2896332A5862DF009A829E /* Frameworks */,
 			);
@@ -168,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				CE75EF062A1BC37600E5B8C9 /* RestoranAppIsmarVisca.app */,
+				CE8273492A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -220,6 +248,17 @@
 				CE1C208A2A692F400096C2E0 /* ReservationDetailsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE82734A2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CE82734B2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests.swift */,
+				CE82734D2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITestsLaunchTests.swift */,
+				CE740BD52A7B98C00040DFFD /* UserLoggedOutUITests.swift */,
+				CECA9FB32A7BD148000DF9CC /* UserLoggedInUITests.swift */,
+			);
+			path = RestoranAppIsmarViscaUITests;
 			sourceTree = "<group>";
 		};
 		CE9280B32A1E662A009AC83B /* CustomViews */ = {
@@ -283,6 +322,24 @@
 			productReference = CE75EF062A1BC37600E5B8C9 /* RestoranAppIsmarVisca.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CE8273482A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE8273532A7A8C4200B00EA9 /* Build configuration list for PBXNativeTarget "RestoranAppIsmarViscaUITests" */;
+			buildPhases = (
+				CE8273452A7A8C4200B00EA9 /* Sources */,
+				CE8273462A7A8C4200B00EA9 /* Frameworks */,
+				CE8273472A7A8C4200B00EA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE8273502A7A8C4200B00EA9 /* PBXTargetDependency */,
+			);
+			name = RestoranAppIsmarViscaUITests;
+			productName = RestoranAppIsmarViscaUITests;
+			productReference = CE8273492A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -295,6 +352,10 @@
 				TargetAttributes = {
 					CE75EF052A1BC37600E5B8C9 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					CE8273482A7A8C4200B00EA9 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = CE75EF052A1BC37600E5B8C9;
 					};
 				};
 			};
@@ -318,6 +379,7 @@
 			projectRoot = "";
 			targets = (
 				CE75EF052A1BC37600E5B8C9 /* RestoranAppIsmarVisca */,
+				CE8273482A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -337,6 +399,13 @@
 				CE75EF282A1BD62500E5B8C9 /* DancingScript-VariableFont_wght.ttf in Resources */,
 				CE75EF112A1BC37600E5B8C9 /* Main.storyboard in Resources */,
 				CE2BD5732A2BB20800F0A567 /* BasketFoodCollectionViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE8273472A7A8C4200B00EA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +454,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE8273452A7A8C4200B00EA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE740BD62A7B98C00040DFFD /* UserLoggedOutUITests.swift in Sources */,
+				CECA9FB42A7BD148000DF9CC /* UserLoggedInUITests.swift in Sources */,
+				CE82734E2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITestsLaunchTests.swift in Sources */,
+				CE82734C2A7A8C4200B00EA9 /* RestoranAppIsmarViscaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE8273502A7A8C4200B00EA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE75EF052A1BC37600E5B8C9 /* RestoranAppIsmarVisca */;
+			targetProxy = CE82734F2A7A8C4200B00EA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CE75EF0F2A1BC37600E5B8C9 /* Main.storyboard */ = {
@@ -575,6 +663,40 @@
 			};
 			name = Release;
 		};
+		CE8273512A7A8C4200B00EA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZPURC57K73;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ismar.RestoranAppIsmarViscaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RestoranAppIsmarVisca;
+			};
+			name = Debug;
+		};
+		CE8273522A7A8C4200B00EA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZPURC57K73;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ismar.RestoranAppIsmarViscaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RestoranAppIsmarVisca;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -592,6 +714,15 @@
 			buildConfigurations = (
 				CE75EF1B2A1BC37800E5B8C9 /* Debug */,
 				CE75EF1C2A1BC37800E5B8C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE8273532A7A8C4200B00EA9 /* Build configuration list for PBXNativeTarget "RestoranAppIsmarViscaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE8273512A7A8C4200B00EA9 /* Debug */,
+				CE8273522A7A8C4200B00EA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

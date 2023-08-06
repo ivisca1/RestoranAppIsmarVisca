@@ -1166,12 +1166,12 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="In7-Uo-Sqr">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Korpa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yl-ki-q6r">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Korpa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yl-ki-q6r">
                                                         <rect key="frame" x="16" y="6" width="361" height="39"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="39" id="8jj-j9-OfL"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1440,7 +1440,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="RBu-AD-G6t">
-                                <rect key="frame" x="15" y="132" width="359" height="50"/>
+                                <rect key="frame" x="14" y="132" width="359" height="50"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.42745098040000001" green="0.41960784309999999" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </datePicker>
@@ -2138,7 +2138,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FpL-Iw-S08"/>
-                        <color key="backgroundColor" red="0.10588235294117647" green="0.10588235294117647" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.1069632396" green="0.1078381315" blue="0.1764785945" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="9nq-M3-yOd" firstAttribute="top" secondItem="FpL-Iw-S08" secondAttribute="top" id="0LK-Lm-lNG"/>
                             <constraint firstItem="9nq-M3-yOd" firstAttribute="trailing" secondItem="FpL-Iw-S08" secondAttribute="trailing" id="Lh6-xh-LzL"/>

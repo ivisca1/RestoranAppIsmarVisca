@@ -329,6 +329,7 @@ class FoodManager {
                                 self.delegate?.didUpdateBasket(self, dishes: self.basketDishes)
                             }
                         } else {
+                            self.ordered = false
                             self.delegate?.didUpdateBasket(self, dishes: self.basketDishes)
                         }
                     }

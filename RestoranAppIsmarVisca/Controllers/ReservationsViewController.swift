@@ -23,6 +23,9 @@ class ReservationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        reserveButton.layer.cornerRadius = 15
+        commentTextView.layer.cornerRadius = 15
+        
         datePicker.textColor = UIColor.white
         
         datePicker.minimumDate = Date()
